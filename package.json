@@ -1,0 +1,28 @@
+{
+  "name": "skillconnect-pakistan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/frontend",
+    "build": "NODE_ENV=production npm run build --workspace=apps/frontend && mkdir -p .next dist apps/frontend/dist && cp -a apps/frontend/.next/. .next/ && cp -a apps/frontend/.next/. dist/ && cp -a apps/frontend/.next/. apps/frontend/dist/ && mkdir -p .next/standalone/.next .next/standalone/public public && cp -a .next/static .next/standalone/.next/ 2>/dev/null || true && cp -a public/. .next/standalone/public/ 2>/dev/null || true && cp -f apps/frontend/.next/server/app/index.html dist/index.html 2>/dev/null || true",
+    "start": "node server.ts",
+    "test": "npm run test --workspace=apps/backend",
+    "lint": "npm run lint --workspace=apps/frontend"
+  },
+  "devDependencies": {
+    "eslint": "^10.8.1",
+    "eslint-config-next": "^16.3.0"
+  },
+  "dependencies": {
+    "@google/genai": "^2.16.0",
+    "@types/three": "^0.185.4",
+    "next": "15.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.185.1"
+  }
+}

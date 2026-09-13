@@ -1,0 +1,8 @@
+{
+  "name": "SkillConnect Pakistan",
+  "description": "Book CNIC-verified electricians, plumbers, AC technicians, carpenters and artisans across Karachi, Lahore, Islamabad & Pakistan with AI-powered skill matching.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
