@@ -1,8 +1,8 @@
-import { createServer } from 'node:http';
-import { parse } from 'node:url';
-import next from 'next';
-import fs from 'node:fs';
-import path from 'node:path';
+const { createServer } = require('node:http');
+const { parse } = require('node:url');
+const next = require('next');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = parseInt(process.env.PORT || '3000', 10);

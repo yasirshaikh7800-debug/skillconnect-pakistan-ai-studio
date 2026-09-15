@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getGeminiClient, GEMINI_MODEL } from '@/lib/gemini';
+import { generateContentWithFallback } from '@/lib/gemini';
 import { Type } from '@google/genai';
 
 export const dynamic = 'force-dynamic';
@@ -28,7 +28,6 @@ export async function POST(request: Request) {
 
     if (process.env.GEMINI_API_KEY) {
       try {
-        const ai = getGeminiClient();
         const prompt = `Analyze this Pakistani professional/student profile and generate realistic career skill matching tailored to the Pakistani job and freelancing market (e.g. Lahore, Karachi, Islamabad, Remote).
 
 User Details:
@@ -46,8 +45,7 @@ Provide structured output containing:
 3. "skillGaps": Array of 3 key skill gaps.
 4. "careerAdvice": A concise 2-sentence career recommendation tailored to Pakistan.`;
 
-        const response = await ai.models.generateContent({
-          model: GEMINI_MODEL,
+        const response = await generateContentWithFallback({
           contents: prompt,
           config: {
             systemInstruction:
@@ -96,7 +94,7 @@ Provide structured output containing:
           aiOutput = JSON.parse(response.text.trim());
         }
       } catch (err: any) {
-        console.error('Gemini API Error in skill-matcher:', err);
+        console.warn('Gemini API notice in skill-matcher (serving fallback):', err?.message || err);
       }
     }
 

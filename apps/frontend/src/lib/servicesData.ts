@@ -64,6 +64,7 @@ export const ALL_CATEGORIES: ServiceCategory[] = [
 ];
 
 export const ALL_PROVIDERS: ProviderProfile[] = [
+  // 0: Home & Repair - Master Electrician (Karachi)
   {
     id: 'prov-101',
     cnicNumber: '42101-1234567-1',
@@ -82,10 +83,11 @@ export const ALL_PROVIDERS: ProviderProfile[] = [
         lastName: 'Mahmood',
         city: 'Karachi',
         address: 'Gulshan-e-Iqbal Block 13-D, Karachi',
-        bio: 'Licensed electrician with 12+ years experience in hybrid solar setups, UPS wiring, and DB load balancing.',
+        bio: 'Licensed master electrician with 12+ years experience in hybrid solar setups, 3-phase DB wiring, and UPS load balancing.',
       },
     },
   },
+  // 1: Home & Repair - HVAC Master Technician (Lahore)
   {
     id: 'prov-102',
     cnicNumber: '35202-9876543-3',
@@ -104,10 +106,11 @@ export const ALL_PROVIDERS: ProviderProfile[] = [
         lastName: 'Ali',
         city: 'Lahore',
         address: 'Gulberg III, Main Boulevard, Lahore',
-        bio: 'HVAC Master Technician in Inverter AC chemical jet wash, gas charging, and PCB circuit fixes.',
+        bio: 'HVAC Master Technician specializing in inverter AC high-pressure jet wash, R410A/R32 gas charging, and PCB circuit repair.',
       },
     },
   },
+  // 2: Home & Repair - Plumbing Contractor (Islamabad)
   {
     id: 'prov-103',
     cnicNumber: '61101-4567890-5',
@@ -126,10 +129,34 @@ export const ALL_PROVIDERS: ProviderProfile[] = [
         lastName: 'Khan',
         city: 'Islamabad',
         address: 'Sector G-11/3, Islamabad',
-        bio: 'Plumbing expert specializing in underground pipeline leak detection, motor installation, and sanitary fittings.',
+        bio: 'Certified plumbing contractor specializing in acoustic underground leak detection, pressure pumps, and sanitary fixtures.',
       },
     },
   },
+  // 3: Home & Repair - Solar & Generator Specialist (Faisalabad)
+  {
+    id: 'prov-home-4',
+    cnicNumber: '33100-2219481-5',
+    isVerified: true,
+    hourlyRate: 1400,
+    rating: 4.88,
+    totalReviews: 59,
+    serviceRadiusKm: 18,
+    user: {
+      id: 'usr-home-4',
+      email: 'asif.solar@gmail.com',
+      phone: '+92 341 2219481',
+      avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Asif',
+        lastName: 'Mehmood',
+        city: 'Faisalabad',
+        address: 'Peoples Colony No. 1, Faisalabad',
+        bio: 'Solar inverter engineer and lithium battery maintenance specialist certified for DISCO net-metering compliance.',
+      },
+    },
+  },
+  // 4: Tech & IT - Full Stack Software Engineer (Karachi)
   {
     id: 'prov-104',
     cnicNumber: '42201-3344556-7',
@@ -148,7 +175,605 @@ export const ALL_PROVIDERS: ProviderProfile[] = [
         lastName: 'Rehman',
         city: 'Karachi',
         address: 'PECHS Block 6, Karachi',
-        bio: 'Full Stack Software Engineer & Tech Lead providing custom Web, Mobile, and Cloud Solutions across Pakistan.',
+        bio: 'Full Stack Software Engineer & Tech Lead providing custom Next.js, React, Node.js, and cloud architectures.',
+      },
+    },
+  },
+  // 5: Tech & IT - Mobile App Engineer (Lahore)
+  {
+    id: 'prov-tech-2',
+    cnicNumber: '35201-8842193-1',
+    isVerified: true,
+    hourlyRate: 2200,
+    rating: 4.88,
+    totalReviews: 76,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-tech-2',
+      email: 'hamza.flutter@gmail.com',
+      phone: '+92 334 8842193',
+      avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Hamza',
+        lastName: 'Ali',
+        city: 'Lahore',
+        address: 'Johar Town Phase 2, Lahore',
+        bio: 'Senior Flutter and React Native mobile developer with 15+ production apps released on iOS App Store and Play Store.',
+      },
+    },
+  },
+  // 6: Tech & IT - DevOps & Cloud Architect (Islamabad)
+  {
+    id: 'prov-tech-3',
+    cnicNumber: '61101-7721094-5',
+    isVerified: true,
+    hourlyRate: 2500,
+    rating: 4.92,
+    totalReviews: 58,
+    serviceRadiusKm: 22,
+    user: {
+      id: 'usr-tech-3',
+      email: 'bilal.cloud@gmail.com',
+      phone: '+92 312 7721094',
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Bilal',
+        lastName: 'Ahmed',
+        city: 'Islamabad',
+        address: 'Blue Area, Sector F-6, Islamabad',
+        bio: 'AWS & Kubernetes certified cloud architect specializing in CI/CD automation, server security, and zero-downtime deployments.',
+      },
+    },
+  },
+  // 7: Digital & Marketing - SEO Specialist (Lahore)
+  {
+    id: 'prov-mktg-1',
+    cnicNumber: '35202-6612984-2',
+    isVerified: true,
+    hourlyRate: 1800,
+    rating: 4.91,
+    totalReviews: 93,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-mktg-1',
+      email: 'zainab.seo@gmail.com',
+      phone: '+92 301 6612984',
+      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Zainab',
+        lastName: 'Fatima',
+        city: 'Lahore',
+        address: 'DHA Phase 3, Lahore',
+        bio: 'Google Search Console and Analytics certified specialist focusing on local SEO map-pack rankings and technical audits.',
+      },
+    },
+  },
+  // 8: Digital & Marketing - Meta & Google Ads Specialist (Karachi)
+  {
+    id: 'prov-mktg-2',
+    cnicNumber: '42101-5521943-3',
+    isVerified: true,
+    hourlyRate: 2000,
+    rating: 4.86,
+    totalReviews: 68,
+    serviceRadiusKm: 30,
+    user: {
+      id: 'usr-mktg-2',
+      email: 'saad.ads@gmail.com',
+      phone: '+92 322 5521943',
+      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Saad',
+        lastName: 'Qureshi',
+        city: 'Karachi',
+        address: 'Clifton Block 5, Karachi',
+        bio: 'Performance marketing manager managing high ROAS PPC advertising on Google Search, YouTube, and Meta for Pakistani brands.',
+      },
+    },
+  },
+  // 9: Digital & Marketing - Copywriter & Content Strategist (Rawalpindi)
+  {
+    id: 'prov-mktg-3',
+    cnicNumber: '37405-3319082-6',
+    isVerified: true,
+    hourlyRate: 1600,
+    rating: 4.89,
+    totalReviews: 54,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-mktg-3',
+      email: 'ayesha.copy@gmail.com',
+      phone: '+92 331 3319082',
+      avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Ayesha',
+        lastName: 'Malik',
+        city: 'Rawalpindi',
+        address: 'Bahria Town Phase 4, Rawalpindi',
+        bio: 'B2B/B2C copywriter crafting high-converting sales letters, social media calendars, and bilingual press releases.',
+      },
+    },
+  },
+  // 10: Media & Creative - Commercial Video Producer (Karachi)
+  {
+    id: 'prov-media-1',
+    cnicNumber: '42301-4491823-1',
+    isVerified: true,
+    hourlyRate: 2200,
+    rating: 4.94,
+    totalReviews: 82,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-media-1',
+      email: 'shahmeer.video@gmail.com',
+      phone: '+92 304 4491823',
+      avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Shahmeer',
+        lastName: 'Abbas',
+        city: 'Karachi',
+        address: 'Gulistan-e-Jauhar Block 7, Karachi',
+        bio: 'Commercial video director and DaVinci Resolve colorist specializing in 4K ad films, YouTube production, and drone footage.',
+      },
+    },
+  },
+  // 11: Media & Creative - Brand & UI/UX Designer (Lahore)
+  {
+    id: 'prov-media-2',
+    cnicNumber: '35201-7729104-4',
+    isVerified: true,
+    hourlyRate: 1900,
+    rating: 4.9,
+    totalReviews: 71,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-media-2',
+      email: 'hina.design@gmail.com',
+      phone: '+92 323 7729104',
+      avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Hina',
+        lastName: 'Siddiqui',
+        city: 'Lahore',
+        address: 'Model Town Block C, Lahore',
+        bio: 'Brand identity and UI designer crafting vector logos, print typography, packaging, and clean mobile UI mockups.',
+      },
+    },
+  },
+  // 12: Media & Creative - Voiceover & Audio Engineer (Islamabad)
+  {
+    id: 'prov-media-3',
+    cnicNumber: '61101-2291034-7',
+    isVerified: true,
+    hourlyRate: 1700,
+    rating: 4.85,
+    totalReviews: 49,
+    serviceRadiusKm: 15,
+    user: {
+      id: 'usr-media-3',
+      email: 'mustafa.audio@gmail.com',
+      phone: '+92 332 2291034',
+      avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Mustafa',
+        lastName: 'Kamal',
+        city: 'Islamabad',
+        address: 'Sector I-8/2, Islamabad',
+        bio: 'Professional Urdu & English voiceover artist with an acoustic-treated home studio for commercials, audiobooks, and IVR.',
+      },
+    },
+  },
+  // 13: Education & Tutoring - O/A Levels Science Tutor (Karachi)
+  {
+    id: 'prov-edu-1',
+    cnicNumber: '42101-8829104-9',
+    isVerified: true,
+    hourlyRate: 2000,
+    rating: 4.97,
+    totalReviews: 124,
+    serviceRadiusKm: 15,
+    user: {
+      id: 'usr-edu-1',
+      email: 'noman.tutor@gmail.com',
+      phone: '+92 300 8829104',
+      avatarUrl: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Dr. Noman',
+        lastName: 'Rauf',
+        city: 'Karachi',
+        address: 'North Nazimabad Block H, Karachi',
+        bio: 'Senior Cambridge certified teacher with 15+ years coaching O & A Level Physics, Chemistry, and Additional Mathematics.',
+      },
+    },
+  },
+  // 14: Education & Tutoring - FSc & MDCAT Instructor (Lahore)
+  {
+    id: 'prov-edu-2',
+    cnicNumber: '35202-4410293-8',
+    isVerified: true,
+    hourlyRate: 1800,
+    rating: 4.92,
+    totalReviews: 88,
+    serviceRadiusKm: 18,
+    user: {
+      id: 'usr-edu-2',
+      email: 'maryam.bio@gmail.com',
+      phone: '+92 321 4410293',
+      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Maryam',
+        lastName: 'Jamil',
+        city: 'Lahore',
+        address: 'Faisal Town, Lahore',
+        bio: 'MSc Biology gold medalist providing structured home and online tutoring for Punjab Board FSc Pre-Medical and MDCAT entry test.',
+      },
+    },
+  },
+  // 15: Education & Tutoring - IELTS 8.5 Master Coach (Islamabad)
+  {
+    id: 'prov-edu-3',
+    cnicNumber: '61101-5529183-3',
+    isVerified: true,
+    hourlyRate: 2200,
+    rating: 4.89,
+    totalReviews: 95,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-edu-3',
+      email: 'farhan.ielts@gmail.com',
+      phone: '+92 333 5529183',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Farhan',
+        lastName: 'Baig',
+        city: 'Islamabad',
+        address: 'Sector F-10/4, Islamabad',
+        bio: 'British Council certified IELTS Academic & General trainer (Band 8.5) and professional corporate English trainer.',
+      },
+    },
+  },
+  // 16: Construction & Trades - Master Mason & Tile Setter (Lahore)
+  {
+    id: 'prov-const-1',
+    cnicNumber: '35201-3391820-7',
+    isVerified: true,
+    hourlyRate: 1400,
+    rating: 4.87,
+    totalReviews: 67,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-const-1',
+      email: 'ghulam.mason@gmail.com',
+      phone: '+92 302 3391820',
+      avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Ghulam',
+        lastName: 'Rasool',
+        city: 'Lahore',
+        address: 'Allama Iqbal Town, Lahore',
+        bio: 'Master Mason and porcelain tile setter with 18+ years experience in Spanish tile laying, marble diamond polishing, and plaster.',
+      },
+    },
+  },
+  // 17: Construction & Trades - Custom Carpenter (Karachi)
+  {
+    id: 'prov-const-2',
+    cnicNumber: '42101-9921034-1',
+    isVerified: true,
+    hourlyRate: 1500,
+    rating: 4.83,
+    totalReviews: 52,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-const-2',
+      email: 'kashif.wood@gmail.com',
+      phone: '+92 322 9921034',
+      avatarUrl: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Kashif',
+        lastName: 'Javed',
+        city: 'Karachi',
+        address: 'Federal B Area Block 14, Karachi',
+        bio: 'Architectural woodworker specializing in modular kitchen cabinets, high-gloss UV sheet wardrobes, and solid wood doors.',
+      },
+    },
+  },
+  // 18: Construction & Trades - Welder & Fabricator (Rawalpindi)
+  {
+    id: 'prov-const-3',
+    cnicNumber: '37405-6619283-9',
+    isVerified: true,
+    hourlyRate: 1300,
+    rating: 4.86,
+    totalReviews: 44,
+    serviceRadiusKm: 22,
+    user: {
+      id: 'usr-const-3',
+      email: 'waheed.weld@gmail.com',
+      phone: '+92 334 6619283',
+      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Abdul',
+        lastName: 'Waheed',
+        city: 'Rawalpindi',
+        address: 'Westridge 1, Peshawar Road, Rawalpindi',
+        bio: 'Certified structural welder specializing in laser-cut safety gates, spiral iron stairs, window safety grills, and sheds.',
+      },
+    },
+  },
+  // 19: Automotive & Vehicles - EFI Engine Specialist (Lahore)
+  {
+    id: 'prov-auto-1',
+    cnicNumber: '35202-7719284-5',
+    isVerified: true,
+    hourlyRate: 1600,
+    rating: 4.93,
+    totalReviews: 102,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-auto-1',
+      email: 'naveed.auto@gmail.com',
+      phone: '+92 301 7719284',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Naveed',
+        lastName: 'Akhtar',
+        city: 'Lahore',
+        address: 'Walton Road, Cantt, Lahore',
+        bio: 'Chief EFI Diagnostic Specialist with computer OBD-II scanner tools for Japanese, European, and Pakistani automobiles.',
+      },
+    },
+  },
+  // 20: Automotive & Vehicles - Auto Electrician & Hybrid Tech (Karachi)
+  {
+    id: 'prov-auto-2',
+    cnicNumber: '42201-5510293-3',
+    isVerified: true,
+    hourlyRate: 1500,
+    rating: 4.88,
+    totalReviews: 79,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-auto-2',
+      email: 'sohail.hybrid@gmail.com',
+      phone: '+92 321 5510293',
+      avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Sohail',
+        lastName: 'Akhtar',
+        city: 'Karachi',
+        address: 'Korangi Industrial Area Road, Karachi',
+        bio: 'Certified hybrid battery technician (Aqua, Prius, Vezel) and auto electrician for wiring harness and ECM sensor repair.',
+      },
+    },
+  },
+  // 21: Automotive & Vehicles - Mobile Detailing & Ceramic Coat (Islamabad)
+  {
+    id: 'prov-auto-3',
+    cnicNumber: '61101-9921048-1',
+    isVerified: true,
+    hourlyRate: 1700,
+    rating: 4.85,
+    totalReviews: 63,
+    serviceRadiusKm: 18,
+    user: {
+      id: 'usr-auto-3',
+      email: 'waqar.detail@gmail.com',
+      phone: '+92 333 9921048',
+      avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Waqar',
+        lastName: 'Butt',
+        city: 'Islamabad',
+        address: 'Sector G-8/1, Islamabad',
+        bio: 'Doorstep car detailing, Meguiars 3-stage compound buffing, 9H ceramic coating, and steam interior sanitization.',
+      },
+    },
+  },
+  // 22: Personal & Lifestyle - Bridal & Party Makeup Artist (Lahore)
+  {
+    id: 'prov-life-1',
+    cnicNumber: '35202-1192847-6',
+    isVerified: true,
+    hourlyRate: 2500,
+    rating: 4.96,
+    totalReviews: 115,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-life-1',
+      email: 'saba.makeup@gmail.com',
+      phone: '+92 305 1192847',
+      avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Saba',
+        lastName: 'Tahir',
+        city: 'Lahore',
+        address: 'Gulberg II, Lahore',
+        bio: 'Certified luxury bridal makeup artist and hairstylist offering at-home Barat, Walima, and photoshoot makeup services.',
+      },
+    },
+  },
+  // 23: Personal & Lifestyle - Fitness & Nutrition Coach (Karachi)
+  {
+    id: 'prov-life-2',
+    cnicNumber: '42101-6629104-5',
+    isVerified: true,
+    hourlyRate: 1800,
+    rating: 4.89,
+    totalReviews: 73,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-life-2',
+      email: 'kamran.fitness@gmail.com',
+      phone: '+92 322 6629104',
+      avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Kamran',
+        lastName: 'Yousuf',
+        city: 'Karachi',
+        address: 'DHA Phase 6, Karachi',
+        bio: 'Certified personal fitness trainer providing home workouts, posture correction, and tailored Desi diet plans for fat loss.',
+      },
+    },
+  },
+  // 24: Personal & Lifestyle - Master Bespoke Tailor (Rawalpindi)
+  {
+    id: 'prov-life-3',
+    cnicNumber: '37405-8821903-7',
+    isVerified: true,
+    hourlyRate: 1400,
+    rating: 4.84,
+    totalReviews: 58,
+    serviceRadiusKm: 15,
+    user: {
+      id: 'usr-life-3',
+      email: 'rafiq.tailor@gmail.com',
+      phone: '+92 331 8821903',
+      avatarUrl: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Master',
+        lastName: 'Rafiq',
+        city: 'Rawalpindi',
+        address: 'Saddar, Bank Road, Rawalpindi',
+        bio: 'Master Tailor with 25+ years in doorstep measurement and bespoke stitching of gents Shalwar Kameez, Waistcoats, and Prince coats.',
+      },
+    },
+  },
+  // 25: Business & Legal - High Court Advocate & Corporate Counsel (Islamabad)
+  {
+    id: 'prov-biz-1',
+    cnicNumber: '61101-3319082-9',
+    isVerified: true,
+    hourlyRate: 3000,
+    rating: 4.94,
+    totalReviews: 91,
+    serviceRadiusKm: 30,
+    user: {
+      id: 'usr-biz-1',
+      email: 'rizwan.legal@gmail.com',
+      phone: '+92 300 3319082',
+      avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Advocate Rizwan',
+        lastName: 'Abbasi',
+        city: 'Islamabad',
+        address: 'High Court Bar, G-10/1, Islamabad',
+        bio: 'High Court Advocate specializing in SECP Pvt Ltd company incorporation, trademark registration, and partnership deeds.',
+      },
+    },
+  },
+  // 26: Business & Legal - Chartered Tax Practitioner & FBR Filing (Karachi)
+  {
+    id: 'prov-biz-2',
+    cnicNumber: '42101-7729104-3',
+    isVerified: true,
+    hourlyRate: 2000,
+    rating: 4.91,
+    totalReviews: 108,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-biz-2',
+      email: 'taha.tax@gmail.com',
+      phone: '+92 321 7729104',
+      avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Taha',
+        lastName: 'Siddiqui',
+        city: 'Karachi',
+        address: 'I.I. Chundrigar Road, Karachi',
+        bio: 'Active Tax Practitioner and accountant assisting salaried individuals and business owners with FBR Iris filing and wealth statements.',
+      },
+    },
+  },
+  // 27: Business & Legal - HR & Corporate Operations (Lahore)
+  {
+    id: 'prov-biz-3',
+    cnicNumber: '35201-9912038-4',
+    isVerified: true,
+    hourlyRate: 1800,
+    rating: 4.87,
+    totalReviews: 46,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-biz-3',
+      email: 'nida.hr@gmail.com',
+      phone: '+92 332 9912038',
+      avatarUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Nida',
+        lastName: 'Parvez',
+        city: 'Lahore',
+        address: 'Gulberg III, Lahore',
+        bio: 'HR Consultant and operations expert structuring employee handbooks, employment contracts, and remote team payroll systems.',
+      },
+    },
+  },
+  // 28: Agriculture & Gardening - Landscape Architect & Horticulturist (Islamabad)
+  {
+    id: 'prov-agri-1',
+    cnicNumber: '61101-4419203-5',
+    isVerified: true,
+    hourlyRate: 1500,
+    rating: 4.9,
+    totalReviews: 77,
+    serviceRadiusKm: 25,
+    user: {
+      id: 'usr-agri-1',
+      email: 'jahangir.landscape@gmail.com',
+      phone: '+92 303 4419203',
+      avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Malik',
+        lastName: 'Jahangir',
+        city: 'Islamabad',
+        address: 'Park Road, Chak Shahzad, Islamabad',
+        bio: 'Degree-holding Horticulturist creating rooftop kitchen gardens, Korean grass lawns, and automated drip watering systems.',
+      },
+    },
+  },
+  // 29: Agriculture & Gardening - Agronomist & Solar Drip Irrigation (Multan)
+  {
+    id: 'prov-agri-2',
+    cnicNumber: '36302-8819204-1',
+    isVerified: true,
+    hourlyRate: 1400,
+    rating: 4.86,
+    totalReviews: 53,
+    serviceRadiusKm: 40,
+    user: {
+      id: 'usr-agri-2',
+      email: 'bashir.farm@gmail.com',
+      phone: '+92 301 8819204',
+      avatarUrl: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Chaudhry',
+        lastName: 'Bashir',
+        city: 'Multan',
+        address: 'Vehari Road, Multan',
+        bio: 'Agricultural advisor with 20+ years in fruit orchard pest management, soil nutrient testing, and solar tube-well setups.',
+      },
+    },
+  },
+  // 30: Agriculture & Gardening - Urban Gardener & Nursery Expert (Lahore)
+  {
+    id: 'prov-agri-3',
+    cnicNumber: '35202-5519283-7',
+    isVerified: true,
+    hourlyRate: 1200,
+    rating: 4.88,
+    totalReviews: 64,
+    serviceRadiusKm: 20,
+    user: {
+      id: 'usr-agri-3',
+      email: 'sultan.gardens@gmail.com',
+      phone: '+92 322 5519283',
+      avatarUrl: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
+      profile: {
+        firstName: 'Sultan',
+        lastName: 'Ali',
+        city: 'Lahore',
+        address: 'Bedian Road, Cantt, Lahore',
+        bio: 'Professional gardener providing seasonal flower planting, organic lawn weed eradication, and ornamental shrub pruning.',
       },
     },
   },
@@ -165,7 +790,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-2',
@@ -175,7 +800,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 600,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-3',
@@ -185,7 +810,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 720,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-4',
@@ -195,7 +820,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-5',
@@ -205,7 +830,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 420,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-6',
@@ -215,7 +840,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-7',
@@ -225,7 +850,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-8',
@@ -235,7 +860,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-9',
@@ -245,7 +870,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-10',
@@ -255,7 +880,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-11',
@@ -265,7 +890,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-12',
@@ -275,7 +900,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-13',
@@ -285,7 +910,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-14',
@@ -295,7 +920,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-15',
@@ -305,7 +930,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-16',
@@ -315,7 +940,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-17',
@@ -325,7 +950,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
   {
     id: 'srv-tech-18',
@@ -335,7 +960,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[6],
   },
   {
     id: 'srv-tech-19',
@@ -345,7 +970,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 600,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[4],
   },
   {
     id: 'srv-tech-20',
@@ -355,7 +980,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[0],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[5],
   },
 
   // --- 2. DIGITAL & MARKETING (15) ---
@@ -367,7 +992,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[7],
   },
   {
     id: 'srv-mktg-2',
@@ -377,7 +1002,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[8],
   },
   {
     id: 'srv-mktg-3',
@@ -387,7 +1012,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[9],
   },
   {
     id: 'srv-mktg-4',
@@ -397,7 +1022,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[7],
   },
   {
     id: 'srv-mktg-5',
@@ -407,7 +1032,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[8],
   },
   {
     id: 'srv-mktg-6',
@@ -417,7 +1042,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[9],
   },
   {
     id: 'srv-mktg-7',
@@ -427,7 +1052,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[7],
   },
   {
     id: 'srv-mktg-8',
@@ -437,7 +1062,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[8],
   },
   {
     id: 'srv-mktg-9',
@@ -447,7 +1072,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[9],
   },
   {
     id: 'srv-mktg-10',
@@ -457,7 +1082,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[7],
   },
   {
     id: 'srv-mktg-11',
@@ -467,7 +1092,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[8],
   },
   {
     id: 'srv-mktg-12',
@@ -477,7 +1102,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[9],
   },
   {
     id: 'srv-mktg-13',
@@ -487,7 +1112,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[7],
   },
   {
     id: 'srv-mktg-14',
@@ -497,7 +1122,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[8],
   },
   {
     id: 'srv-mktg-15',
@@ -507,7 +1132,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[1],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[9],
   },
 
   // --- 3. MEDIA & CREATIVE (16) ---
@@ -519,7 +1144,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
   {
     id: 'srv-media-2',
@@ -529,7 +1154,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[11],
   },
   {
     id: 'srv-media-3',
@@ -539,7 +1164,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[12],
   },
   {
     id: 'srv-media-4',
@@ -549,7 +1174,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
   {
     id: 'srv-media-5',
@@ -559,7 +1184,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[11],
   },
   {
     id: 'srv-media-6',
@@ -569,7 +1194,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[12],
   },
   {
     id: 'srv-media-7',
@@ -579,7 +1204,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
   {
     id: 'srv-media-8',
@@ -589,7 +1214,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[11],
   },
   {
     id: 'srv-media-9',
@@ -599,7 +1224,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[12],
   },
   {
     id: 'srv-media-10',
@@ -609,7 +1234,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
   {
     id: 'srv-media-11',
@@ -619,7 +1244,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[11],
   },
   {
     id: 'srv-media-12',
@@ -629,7 +1254,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[12],
   },
   {
     id: 'srv-media-13',
@@ -639,7 +1264,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
   {
     id: 'srv-media-14',
@@ -649,7 +1274,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[11],
   },
   {
     id: 'srv-media-15',
@@ -659,7 +1284,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 150,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[12],
   },
   {
     id: 'srv-media-16',
@@ -669,7 +1294,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[2],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[10],
   },
 
   // --- 4. EDUCATION & TUTORING (11) ---
@@ -681,7 +1306,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[13],
   },
   {
     id: 'srv-edu-2',
@@ -691,7 +1316,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[14],
   },
   {
     id: 'srv-edu-3',
@@ -701,7 +1326,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[15],
   },
   {
     id: 'srv-edu-4',
@@ -711,7 +1336,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[13],
   },
   {
     id: 'srv-edu-5',
@@ -721,7 +1346,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[14],
   },
   {
     id: 'srv-edu-6',
@@ -731,7 +1356,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[15],
   },
   {
     id: 'srv-edu-7',
@@ -741,7 +1366,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[13],
   },
   {
     id: 'srv-edu-8',
@@ -751,7 +1376,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[14],
   },
   {
     id: 'srv-edu-9',
@@ -761,7 +1386,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[15],
   },
   {
     id: 'srv-edu-10',
@@ -771,7 +1396,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[13],
   },
   {
     id: 'srv-edu-11',
@@ -781,7 +1406,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[3],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[14],
   },
 
   // --- 5. HOME & REPAIR (15) ---
@@ -883,7 +1508,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[4],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[3],
   },
   {
     id: 'srv-home-11',
@@ -893,7 +1518,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[4],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[3],
   },
   {
     id: 'srv-home-12',
@@ -903,7 +1528,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[4],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[3],
   },
   {
     id: 'srv-home-13',
@@ -945,7 +1570,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[16],
   },
   {
     id: 'srv-const-2',
@@ -955,7 +1580,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[17],
   },
   {
     id: 'srv-const-3',
@@ -965,7 +1590,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[18],
   },
   {
     id: 'srv-const-4',
@@ -975,7 +1600,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[16],
   },
   {
     id: 'srv-const-5',
@@ -985,7 +1610,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[17],
   },
   {
     id: 'srv-const-6',
@@ -995,7 +1620,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[18],
   },
   {
     id: 'srv-const-7',
@@ -1005,7 +1630,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[16],
   },
   {
     id: 'srv-const-8',
@@ -1015,7 +1640,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[17],
   },
   {
     id: 'srv-const-9',
@@ -1025,7 +1650,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[18],
   },
   {
     id: 'srv-const-10',
@@ -1035,7 +1660,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[16],
   },
   {
     id: 'srv-const-11',
@@ -1045,7 +1670,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[17],
   },
   {
     id: 'srv-const-12',
@@ -1055,7 +1680,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[18],
   },
   {
     id: 'srv-const-13',
@@ -1065,7 +1690,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[16],
   },
   {
     id: 'srv-const-14',
@@ -1075,7 +1700,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[17],
   },
   {
     id: 'srv-const-15',
@@ -1085,7 +1710,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[5],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[18],
   },
 
   // --- 7. AUTOMOTIVE (12) ---
@@ -1097,7 +1722,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[19],
   },
   {
     id: 'srv-auto-2',
@@ -1107,7 +1732,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[20],
   },
   {
     id: 'srv-auto-3',
@@ -1117,7 +1742,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[21],
   },
   {
     id: 'srv-auto-4',
@@ -1127,7 +1752,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 75,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[19],
   },
   {
     id: 'srv-auto-5',
@@ -1137,7 +1762,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[20],
   },
   {
     id: 'srv-auto-6',
@@ -1147,7 +1772,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 45,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[21],
   },
   {
     id: 'srv-auto-7',
@@ -1157,7 +1782,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[19],
   },
   {
     id: 'srv-auto-8',
@@ -1167,7 +1792,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[20],
   },
   {
     id: 'srv-auto-9',
@@ -1177,7 +1802,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 45,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[21],
   },
   {
     id: 'srv-auto-10',
@@ -1187,7 +1812,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 30,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[19],
   },
   {
     id: 'srv-auto-11',
@@ -1197,7 +1822,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[20],
   },
   {
     id: 'srv-auto-12',
@@ -1207,7 +1832,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[6],
-    provider: ALL_PROVIDERS[1],
+    provider: ALL_PROVIDERS[21],
   },
 
   // --- 8. PERSONAL & LIFESTYLE (12) ---
@@ -1219,7 +1844,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[22],
   },
   {
     id: 'srv-life-2',
@@ -1229,7 +1854,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[23],
   },
   {
     id: 'srv-life-3',
@@ -1239,7 +1864,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[24],
   },
   {
     id: 'srv-life-4',
@@ -1249,7 +1874,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 45,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[22],
   },
   {
     id: 'srv-life-5',
@@ -1259,7 +1884,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[23],
   },
   {
     id: 'srv-life-6',
@@ -1269,7 +1894,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[24],
   },
   {
     id: 'srv-life-7',
@@ -1279,7 +1904,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 60,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[22],
   },
   {
     id: 'srv-life-8',
@@ -1289,7 +1914,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 45,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[23],
   },
   {
     id: 'srv-life-9',
@@ -1299,7 +1924,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 480,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[24],
   },
   {
     id: 'srv-life-10',
@@ -1309,7 +1934,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[22],
   },
   {
     id: 'srv-life-11',
@@ -1319,7 +1944,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[23],
   },
   {
     id: 'srv-life-12',
@@ -1329,7 +1954,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[7],
-    provider: ALL_PROVIDERS[0],
+    provider: ALL_PROVIDERS[24],
   },
 
   // --- 9. BUSINESS & LEGAL (10) ---
@@ -1341,7 +1966,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[25],
   },
   {
     id: 'srv-biz-2',
@@ -1351,7 +1976,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[26],
   },
   {
     id: 'srv-biz-3',
@@ -1361,7 +1986,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[27],
   },
   {
     id: 'srv-biz-4',
@@ -1371,7 +1996,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[25],
   },
   {
     id: 'srv-biz-5',
@@ -1381,7 +2006,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[26],
   },
   {
     id: 'srv-biz-6',
@@ -1391,7 +2016,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 300,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[27],
   },
   {
     id: 'srv-biz-7',
@@ -1401,7 +2026,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[25],
   },
   {
     id: 'srv-biz-8',
@@ -1411,7 +2036,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[26],
   },
   {
     id: 'srv-biz-9',
@@ -1421,7 +2046,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[27],
   },
   {
     id: 'srv-biz-10',
@@ -1431,7 +2056,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[8],
-    provider: ALL_PROVIDERS[3],
+    provider: ALL_PROVIDERS[25],
   },
 
   // --- 10. AGRICULTURE & GARDENING (8) ---
@@ -1443,7 +2068,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 180,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[28],
   },
   {
     id: 'srv-agri-2',
@@ -1453,7 +2078,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 360,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[29],
   },
   {
     id: 'srv-agri-3',
@@ -1463,7 +2088,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[30],
   },
   {
     id: 'srv-agri-4',
@@ -1473,7 +2098,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[28],
   },
   {
     id: 'srv-agri-5',
@@ -1483,7 +2108,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 240,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[29],
   },
   {
     id: 'srv-agri-6',
@@ -1493,7 +2118,7 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 90,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[30],
   },
   {
     id: 'srv-agri-7',
@@ -1503,16 +2128,16 @@ export const ALL_100_SERVICES: ServiceItem[] = [
     durationMinutes: 120,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[28],
   },
   {
     id: 'srv-agri-8',
     title: 'Tree Pruning & Safe Removal Services',
-    description: 'Safe trimming of overgrown tree branches near power lines, stump removal, and green waste disposal.',
+    description: 'Safe trimming of overgrown tree branches near power lines, stump removal, and blue waste disposal.',
     basePrice: 7000,
     durationMinutes: 150,
     isAvailable: true,
     category: ALL_CATEGORIES[9],
-    provider: ALL_PROVIDERS[2],
+    provider: ALL_PROVIDERS[29],
   },
 ];

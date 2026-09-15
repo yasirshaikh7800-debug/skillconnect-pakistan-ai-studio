@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getGeminiClient, GEMINI_MODEL } from '@/lib/gemini';
+import { generateContentWithFallback } from '@/lib/gemini';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,8 +14,6 @@ export async function POST(request: Request) {
 
     if (process.env.GEMINI_API_KEY) {
       try {
-        const ai = getGeminiClient();
-        
         const historyText = messages
           .slice(-6)
           .map((m: any) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
@@ -23,8 +21,7 @@ export async function POST(request: Request) {
 
         const prompt = `${historyText}\nAssistant:`;
 
-        const response = await ai.models.generateContent({
-          model: GEMINI_MODEL,
+        const response = await generateContentWithFallback({
           contents: prompt,
           config: {
             systemInstruction:
@@ -36,7 +33,7 @@ export async function POST(request: Request) {
           reply = response.text.trim();
         }
       } catch (err: any) {
-        console.error('Gemini API Error in chat assistant:', err);
+        console.warn('Gemini API notice in chat assistant (serving fallback):', err?.message || err);
       }
     }
 

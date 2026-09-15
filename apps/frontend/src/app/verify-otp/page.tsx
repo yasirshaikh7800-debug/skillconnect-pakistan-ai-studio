@@ -215,45 +215,45 @@ function OtpVerificationContent() {
       <ThreeAuth3D isSuccess={success} isError={Boolean(error)} isVerifying={loading} />
 
       {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(#14b8a6_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
 
       {/* Ambient Radial Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] sm:w-[600px] h-[480px] sm:h-[600px] bg-gradient-to-tr from-teal-500/15 via-emerald-500/10 to-cyan-500/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] sm:w-[600px] h-[480px] sm:h-[600px] bg-gradient-to-tr from-blue-900/15 via-blue-900/10 to-blue-800/15 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-md space-y-6">
         {/* Top Header Branding */}
         <div className="text-center space-y-3">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-teal-500/30 text-teal-400 text-xs font-semibold tracking-wider uppercase shadow-lg shadow-teal-500/10 backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-teal-400 animate-ping" />
+          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-600/30 text-blue-600 text-xs font-semibold tracking-wider uppercase shadow-lg shadow-blue-600/10 backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
             <span className="font-mono text-[11px]">SkillConnect.pk</span>
             <span className="text-slate-600">|</span>
-            <span className="flex items-center space-x-1 text-slate-300">
-              <Lock className="w-3 h-3 text-teal-400" />
+            <span className="flex items-center space-x-1 text-slate-600">
+              <Lock className="w-3 h-3 text-blue-600" />
               <span>Secure Verification</span>
             </span>
           </div>
 
           {/* Shield Icon */}
           <div className="relative w-20 h-20 mx-auto flex items-center justify-center my-2">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-teal-500/20 via-emerald-500/20 to-cyan-500/20" />
-            <div className="relative w-16 h-16 rounded-full bg-gradient-to-tr from-slate-900 to-[#0f1d2e] border border-teal-400/50 flex items-center justify-center shadow-[0_0_25px_rgba(20,184,166,0.35)]">
+            <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-800/20 via-blue-800/20 to-blue-900/20" />
+            <div className="relative w-16 h-16 rounded-full bg-gradient-to-tr from-slate-900 to-[#0f1d2e] border border-blue-600/50 flex items-center justify-center shadow-[0_0_25px_rgba(37,99,235,0.35)]">
               {success ? (
-                <Check className="w-8 h-8 text-emerald-400 animate-bounce" />
+                <Check className="w-8 h-8 text-blue-600 animate-bounce" />
               ) : (
-                <ShieldCheck className="w-8 h-8 text-teal-300" />
+                <ShieldCheck className="w-8 h-8 text-blue-600" />
               )}
             </div>
           </div>
         </div>
 
-        {/* Center Card - Premium Floating Glass Panel */}
+        {/* Center Card - Floating Panel */}
         <div
           className={`relative p-6 sm:p-8 rounded-3xl bg-[#0d1527]/90 backdrop-blur-2xl border transition-all duration-300 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] ${
             error
               ? 'animate-shake border-red-500/70 shadow-[0_0_30px_rgba(239,68,68,0.3)]'
               : success
-              ? 'border-emerald-500/70 shadow-[0_0_35px_rgba(16,185,129,0.35)] scale-[1.02]'
-              : 'border-teal-500/30 hover:border-teal-500/50'
+              ? 'border-blue-600/70 shadow-[0_0_35px_rgba(16,185,129,0.35)] scale-[1.02]'
+              : 'border-blue-600/30 hover:border-blue-600/50'
           }`}
         >
           <div className="space-y-6">
@@ -264,8 +264,8 @@ function OtpVerificationContent() {
               <p className="text-xs text-slate-400">
                 Enter the verification code sent to your phone
               </p>
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900/90 border border-teal-500/30 text-xs font-mono text-teal-300 font-semibold shadow-inner">
-                <Phone className="w-3.5 h-3.5 text-teal-400" />
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-600/30 text-xs font-mono text-blue-300 font-semibold shadow-inner">
+                <Phone className="w-3.5 h-3.5 text-blue-600" />
                 <span>{maskPhoneNumber(phoneParam)}</span>
               </div>
             </div>
@@ -293,28 +293,28 @@ function OtpVerificationContent() {
                       onPaste={handlePaste}
                       className={`w-14 sm:w-16 h-16 sm:h-20 text-center text-2xl sm:text-3xl font-black rounded-2xl border transition-all duration-200 outline-none select-none ${
                         success
-                          ? 'bg-emerald-950/80 border-emerald-400 text-emerald-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] scale-105'
+                          ? 'bg-blue-900/80 border-blue-600 text-blue-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] scale-105'
                           : error
                           ? 'bg-red-950/40 border-red-500 text-red-300 shadow-[0_0_15px_rgba(239,68,68,0.3)]'
                           : loading
-                          ? 'bg-slate-900/90 border-teal-500/50 text-teal-400 opacity-80'
+                          ? 'bg-blue-50 border-blue-600/50 text-blue-600 opacity-80'
                           : isFilled
-                          ? 'bg-slate-900/90 border-teal-400 text-teal-300 shadow-[0_0_18px_rgba(20,184,166,0.3)] scale-[1.03]'
+                          ? 'bg-blue-50 border-blue-600 text-blue-300 shadow-[0_0_18px_rgba(37,99,235,0.3)] scale-[1.03]'
                           : isActive
-                          ? 'bg-slate-900/80 border-teal-400 ring-4 ring-teal-500/25 text-white shadow-[0_0_20px_rgba(20,184,166,0.3)] scale-105'
-                          : 'bg-slate-950/60 border-slate-700/60 text-slate-300 hover:border-slate-600'
+                          ? 'bg-white/80 border-blue-600 ring-4 ring-blue-600/25 text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] scale-105'
+                          : 'bg-white border-slate-300 text-slate-600 hover:border-blue-600'
                       }`}
                     />
 
                     {loading && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-900/80 rounded-2xl pointer-events-none">
-                        <Loader2 className="w-6 h-6 text-teal-400 animate-spin" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-white/80 rounded-2xl pointer-events-none">
+                        <Loader2 className="w-6 h-6 text-blue-600 animate-spin" />
                       </div>
                     )}
 
                     {success && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-emerald-950/90 rounded-2xl pointer-events-none animate-fadeIn">
-                        <Check className="w-7 h-7 text-emerald-400 stroke-[3]" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-blue-900/90 rounded-2xl pointer-events-none animate-fadeIn">
+                        <Check className="w-7 h-7 text-blue-600 stroke-[3]" />
                       </div>
                     )}
                   </div>
@@ -325,15 +325,15 @@ function OtpVerificationContent() {
             {/* STATUS MESSAGE BELOW BOXES */}
             <div className="text-center min-h-[24px]">
               {loading && (
-                <p className="text-xs font-semibold text-teal-300 animate-pulse flex items-center justify-center space-x-1.5">
-                  <Loader2 className="w-3.5 h-3.5 animate-spin text-teal-400" />
+                <p className="text-xs font-semibold text-blue-300 animate-pulse flex items-center justify-center space-x-1.5">
+                  <Loader2 className="w-3.5 h-3.5 animate-spin text-blue-600" />
                   <span>Verifying code...</span>
                 </p>
               )}
 
               {success && (
-                <p className="text-xs font-black text-emerald-400 animate-fadeIn flex items-center justify-center space-x-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <p className="text-xs font-black text-blue-600 animate-fadeIn flex items-center justify-center space-x-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600" />
                   <span>Verification Successful!</span>
                 </p>
               )}
@@ -351,15 +351,15 @@ function OtpVerificationContent() {
               type="button"
               onClick={() => handleVerify()}
               disabled={loading || success || otp.some((d) => d === '')}
-              className="w-full relative group overflow-hidden py-4 rounded-2xl bg-gradient-to-r from-teal-500 via-emerald-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-black text-sm shadow-[0_10px_30px_rgba(20,184,166,0.35)] transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full relative group overflow-hidden py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-black text-sm shadow-[0_10px_30px_rgba(37,99,235,0.35)] transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
             >
               {loading ? (
-                <div className="flex items-center space-x-2 text-slate-950 font-bold">
+                <div className="flex items-center space-x-2 text-white font-bold">
                   <Loader2 className="w-4 h-4 animate-spin" />
                   <span>Verifying Code...</span>
                 </div>
               ) : success ? (
-                <div className="flex items-center space-x-2 text-slate-950 font-bold">
+                <div className="flex items-center space-x-2 text-white font-bold">
                   <Check className="w-4 h-4" />
                   <span>Verified</span>
                 </div>
@@ -380,17 +380,17 @@ function OtpVerificationContent() {
                 disabled={!canResend || resending || loading || success}
                 className={`font-semibold flex items-center space-x-1.5 transition-all ${
                   canResend && !loading && !success
-                    ? 'text-teal-400 hover:text-teal-300 hover:underline cursor-pointer'
+                    ? 'text-blue-600 hover:text-blue-600 hover:underline cursor-pointer'
                     : 'text-slate-500 cursor-not-allowed opacity-80'
                 }`}
               >
                 {resending ? (
-                  <RefreshCw className="w-3.5 h-3.5 animate-spin text-teal-400" />
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin text-blue-600" />
                 ) : canResend ? (
-                  <span className="text-teal-400 font-bold">Resend OTP</span>
+                  <span className="text-blue-600 font-bold">Resend OTP</span>
                 ) : (
                   <span className="font-mono text-slate-400">
-                    Resend code in <strong className="text-teal-400 font-bold">{formattedCountdown}</strong>
+                    Resend code in <strong className="text-blue-600 font-bold">{formattedCountdown}</strong>
                   </span>
                 )}
               </button>
@@ -400,7 +400,7 @@ function OtpVerificationContent() {
 
         {/* Footer Note */}
         <div className="text-center text-[11px] text-slate-500 flex items-center justify-center space-x-1.5 pt-2">
-          <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
           <span>SkillConnect Pakistan Security Layer • Encrypted 256-bit</span>
         </div>
       </div>
@@ -412,7 +412,7 @@ export default function OtpVerificationPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#070b14] flex items-center justify-center text-teal-400 text-xs font-mono">
+        <div className="min-h-screen bg-[#070b14] flex items-center justify-center text-blue-600 text-xs font-mono">
           Loading Secure Verification...
         </div>
       }

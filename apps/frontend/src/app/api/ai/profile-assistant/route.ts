@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getGeminiClient, GEMINI_MODEL } from '@/lib/gemini';
+import { generateContentWithFallback } from '@/lib/gemini';
 import { Type } from '@google/genai';
 
 export const dynamic = 'force-dynamic';
@@ -20,7 +20,6 @@ export async function POST(request: Request) {
 
     if (process.env.GEMINI_API_KEY) {
       try {
-        const ai = getGeminiClient();
         const prompt = `Refine and improve this Pakistani service worker or job seeker profile. Do NOT invent fake jobs, fake degrees, or false claims. Enhance the clarity, professional tone, and impact based ONLY on provided details.
 
 User Input:
@@ -39,8 +38,7 @@ Return JSON with:
 5. "jobIntro": Concise outreach note for clients or employers.
 6. "missingSuggestions": Array of 3 key profile completion suggestions (e.g. "Add CNIC verification badge", "Upload portfolio photo").`;
 
-        const response = await ai.models.generateContent({
-          model: GEMINI_MODEL,
+        const response = await generateContentWithFallback({
           contents: prompt,
           config: {
             systemInstruction:
@@ -78,7 +76,7 @@ Return JSON with:
           aiOutput = JSON.parse(response.text.trim());
         }
       } catch (err: any) {
-        console.error('Gemini API Error in profile-assistant:', err);
+        console.warn('Gemini API notice in profile-assistant (serving fallback):', err?.message || err);
       }
     }
 

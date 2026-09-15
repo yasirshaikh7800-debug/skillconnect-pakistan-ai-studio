@@ -64,7 +64,7 @@ export default function AdminProtectionPage() {
       {!isAdminAuthenticated ? (
         /* Unauthorized / Admin Protection Security Gate */
         <div className="max-w-md mx-auto space-y-6">
-          <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-red-200 dark:border-red-900/50 shadow-2xl space-y-6 text-center">
+          <div className="p-8 rounded-3xl bg-white dark:bg-white border border-red-200 dark:border-red-900/50 shadow-2xl space-y-6 text-center">
             <div className="w-16 h-16 rounded-2xl bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400 mx-auto flex items-center justify-center">
               <ShieldAlert className="w-9 h-9" />
             </div>
@@ -73,10 +73,10 @@ export default function AdminProtectionPage() {
               <span className="px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/80 text-red-700 dark:text-red-300 text-xs font-black uppercase tracking-wider">
                 HTTP 403 / Access Denied
               </span>
-              <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+              <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-900">
                 Admin Console Protected
               </h1>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-600 leading-relaxed">
                 National provider CNIC verification registry and platform financial logs are strictly restricted. Unauthorized access attempts are monitored and recorded.
               </p>
             </div>
@@ -90,7 +90,7 @@ export default function AdminProtectionPage() {
 
             <form onSubmit={handleAdminLogin} className="space-y-4 text-left">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1">
                   Administrator Access Key
                 </label>
                 <div className="relative">
@@ -101,11 +101,11 @@ export default function AdminProtectionPage() {
                     value={adminKey}
                     onChange={(e) => setAdminKey(e.target.value)}
                     placeholder="Enter Admin Secret (e.g. admin123)"
-                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                   />
                 </div>
                 <span className="text-[10px] text-slate-400 block mt-1">
-                  Demo authorization credentials: <code className="text-emerald-500 font-mono">admin123</code>
+                  Demo authorization credentials: <code className="text-blue-600 font-mono">admin123</code>
                 </span>
               </div>
 
@@ -118,8 +118,8 @@ export default function AdminProtectionPage() {
               </button>
             </form>
 
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 text-center">
-              <Link href="/" className="text-xs font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-200">
+            <div className="pt-2 border-t border-slate-100 dark:border-slate-200 text-center">
+              <Link href="/" className="text-xs font-bold text-slate-500 hover:text-slate-800 dark:hover:text-slate-700">
                 ← Return to Public Marketplace
               </Link>
             </div>
@@ -128,11 +128,11 @@ export default function AdminProtectionPage() {
       ) : (
         /* Authenticated Admin Dashboard */
         <div className="space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-200">
             <div>
               <div className="flex items-center space-x-2">
-                <ShieldCheck className="w-6 h-6 text-emerald-600" />
-                <h1 className="text-2xl font-black text-slate-900 dark:text-white">
+                <ShieldCheck className="w-6 h-6 text-blue-600" />
+                <h1 className="text-2xl font-black text-slate-900 dark:text-slate-900">
                   SkillConnect Pakistan — Admin Operations
                 </h1>
               </div>
@@ -143,7 +143,7 @@ export default function AdminProtectionPage() {
 
             <button
               onClick={() => setIsAdminAuthenticated(false)}
-              className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-red-500/10 text-slate-700 dark:text-slate-200 hover:text-red-500 font-bold text-xs flex items-center space-x-1.5 transition-colors"
+              className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-50 hover:bg-red-500/10 text-slate-700 dark:text-slate-800 hover:text-red-500 font-bold text-xs flex items-center space-x-1.5 transition-colors"
             >
               <LogOut className="w-4 h-4" />
               <span>Admin Logout</span>
@@ -152,19 +152,19 @@ export default function AdminProtectionPage() {
 
           {/* Key Metrics */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-2">
               <span className="text-xs font-semibold text-slate-500">Active Verified Providers</span>
-              <p className="text-3xl font-black text-slate-900 dark:text-white">1,482</p>
-              <p className="text-[11px] text-emerald-600 font-semibold">Covering 399 Pakistani Cities</p>
+              <p className="text-3xl font-black text-slate-900 dark:text-slate-900">1,482</p>
+              <p className="text-[11px] text-blue-600 font-semibold">Covering 399 Pakistani Cities</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-2">
               <span className="text-xs font-semibold text-slate-500">Gross Platform Volume</span>
-              <p className="text-3xl font-black text-emerald-600 dark:text-emerald-400">PKR 8.42M</p>
+              <p className="text-3xl font-black text-blue-600 dark:text-blue-600">PKR 8.42M</p>
               <p className="text-[11px] text-slate-400 font-semibold">JazzCash, EasyPaisa & COD</p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+            <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-2">
               <span className="text-xs font-semibold text-slate-500">Awaiting CNIC Verification</span>
               <p className="text-3xl font-black text-amber-500">
                 {pendingProviders.filter((p) => p.status === 'PENDING').length}
@@ -174,9 +174,9 @@ export default function AdminProtectionPage() {
           </div>
 
           {/* Pending CNIC Verification Registry */}
-          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+          <div className="p-6 rounded-3xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-6">
             <div>
-              <h2 className="text-lg font-black text-slate-900 dark:text-white">
+              <h2 className="text-lg font-black text-slate-900 dark:text-slate-900">
                 Service Providers Awaiting Identity Approval
               </h2>
               <p className="text-xs text-slate-500">
@@ -188,19 +188,19 @@ export default function AdminProtectionPage() {
               {pendingProviders.map((prov) => (
                 <div
                   key={prov.id}
-                  className="p-4 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                  className="p-4 rounded-2xl border border-slate-200 dark:border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4"
                 >
                   <div className="space-y-1">
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-sm text-slate-900 dark:text-white">{prov.name}</span>
-                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                      <span className="font-bold text-sm text-slate-900 dark:text-slate-900">{prov.name}</span>
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-50 text-slate-600 dark:text-slate-700">
                         {prov.trade}
                       </span>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-xs text-slate-500">
                       <span>City: {prov.city}</span>
                       <span>•</span>
-                      <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">CNIC: {prov.cnic}</span>
+                      <span className="font-mono text-blue-600 dark:text-blue-600 font-bold">CNIC: {prov.cnic}</span>
                       <span>•</span>
                       <span>Submitted: {prov.submittedDate}</span>
                     </div>
@@ -211,14 +211,14 @@ export default function AdminProtectionPage() {
                       <>
                         <button
                           onClick={() => handleVerify(prov.id, true)}
-                          className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center space-x-1"
+                          className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center space-x-1"
                         >
                           <CheckCircle2 className="w-3.5 h-3.5" />
                           <span>Approve & Verify</span>
                         </button>
                         <button
                           onClick={() => handleVerify(prov.id, false)}
-                          className="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-red-600 hover:text-white text-slate-700 dark:text-slate-300 font-semibold text-xs flex items-center space-x-1"
+                          className="px-3.5 py-1.5 rounded-xl bg-slate-200 dark:bg-slate-50 hover:bg-red-600 hover:text-white text-slate-700 dark:text-slate-700 font-semibold text-xs flex items-center space-x-1"
                         >
                           <XCircle className="w-3.5 h-3.5" />
                           <span>Reject</span>
@@ -228,7 +228,7 @@ export default function AdminProtectionPage() {
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-bold ${
                           prov.status === 'APPROVED'
-                            ? 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300'
+                            ? 'bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600'
                             : 'bg-red-100 dark:bg-red-950 text-red-700 dark:text-red-300'
                         }`}
                       >

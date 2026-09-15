@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getGeminiClient, GEMINI_MODEL } from '@/lib/gemini';
+import { generateContentWithFallback } from '@/lib/gemini';
 import { Type } from '@google/genai';
 
 export const dynamic = 'force-dynamic';
@@ -13,7 +13,6 @@ export async function POST(request: Request) {
 
     if (process.env.GEMINI_API_KEY) {
       try {
-        const ai = getGeminiClient();
         const prompt = `Generate a structured, step-by-step career learning roadmap for someone aiming to become a "${targetRole}" in Pakistan (timeframe: ${timeframe}).
 
 Return JSON with an array "roadmapSteps".
@@ -27,8 +26,7 @@ Each step should have:
 - "estimatedDifficulty": "Easy", "Medium", or "Hard"
 - "prerequisites": string e.g. "None" or "Basic JS"`;
 
-        const response = await ai.models.generateContent({
-          model: GEMINI_MODEL,
+        const response = await generateContentWithFallback({
           contents: prompt,
           config: {
             systemInstruction:
@@ -75,7 +73,7 @@ Each step should have:
           aiOutput = JSON.parse(response.text.trim());
         }
       } catch (err: any) {
-        console.error('Gemini API Error in career-roadmap:', err);
+        console.warn('Gemini API notice in career-roadmap (serving fallback):', err?.message || err);
       }
     }
 

@@ -14,26 +14,26 @@ export default function AiCareerHubPage() {
     <div className="space-y-8 max-w-7xl mx-auto pb-16">
       {/* Top Banner */}
       <div className="text-center space-y-3 max-w-2xl mx-auto pt-4">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-600 dark:text-blue-600 text-xs font-bold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5" />
           <span>SkillConnect Pakistan AI Engine</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-slate-900">
           AI Career & Skills Hub
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-600">
           Match your skills with top Pakistani job market demands, generate interactive career roadmaps, and polish your professional service profile.
         </p>
       </div>
 
       {/* Tabs Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-fit mx-auto">
+      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-white border border-slate-200 dark:border-slate-200 w-fit mx-auto">
         <button
           onClick={() => setActiveTab('matcher')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 ${
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'matcher'
-              ? 'bg-emerald-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-blue-600 text-white shadow-md'
+              : 'text-slate-600 dark:text-slate-600 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <BrainCircuit className="w-4 h-4" />
@@ -42,10 +42,10 @@ export default function AiCareerHubPage() {
 
         <button
           onClick={() => setActiveTab('roadmap')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 ${
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'roadmap'
-              ? 'bg-indigo-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-blue-600 text-white shadow-md'
+              : 'text-slate-600 dark:text-slate-600 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <Route className="w-4 h-4" />
@@ -54,10 +54,10 @@ export default function AiCareerHubPage() {
 
         <button
           onClick={() => setActiveTab('profile')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 ${
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'profile'
-              ? 'bg-teal-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-blue-600 text-white shadow-md'
+              : 'text-slate-600 dark:text-slate-600 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <UserCheck className="w-4 h-4" />
@@ -66,10 +66,10 @@ export default function AiCareerHubPage() {
 
         <button
           onClick={() => setActiveTab('insights')}
-          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 ${
+          className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'insights'
-              ? 'bg-cyan-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-blue-600 text-white shadow-md'
+              : 'text-slate-600 dark:text-slate-600 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
           <LayoutDashboard className="w-4 h-4" />

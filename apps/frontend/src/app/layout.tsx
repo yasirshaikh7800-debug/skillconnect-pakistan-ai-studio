@@ -2,6 +2,7 @@ import React from 'react';
 import './globals.css';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { Navbar } from '@/components/Navbar';
+import SkillConnectLogo from '@/components/SkillConnectLogo';
 import { ShieldCheck, PhoneCall, Heart, CheckCircle2 } from 'lucide-react';
 
 export const metadata = {
@@ -20,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
+      <body className="min-h-screen flex flex-col bg-white dark:bg-white text-slate-900 dark:text-slate-900 transition-colors duration-200">
         <ThemeProvider>
           <Navbar />
           <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -28,23 +29,16 @@ export default function RootLayout({
           </main>
           
           {/* Footer */}
-          <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 mt-12 transition-colors">
+          <footer className="border-t border-slate-200 dark:border-slate-200 bg-slate-50/50 dark:bg-white mt-12 transition-colors">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {/* Col 1 */}
                 <div className="space-y-4">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
-                      <ShieldCheck className="w-5 h-5" />
-                    </div>
-                    <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white">
-                      SkillConnect<span className="text-emerald-500">.pk</span>
-                    </span>
-                  </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                    Pakistan&apos;s premier digital platform empowering CNIC-verified skilled workers and home service artisans across major cities.
+                  <SkillConnectLogo variant="full" size="md" />
+                  <p className="text-xs text-slate-500 dark:text-slate-600 leading-relaxed">
+                    Pakistan&apos;s digital platform empowering CNIC-verified skilled workers and home service artisans across major cities.
                   </p>
-                  <div className="flex items-center space-x-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1.5 rounded-md w-fit border border-emerald-200 dark:border-emerald-800">
+                  <div className="flex items-center space-x-2 text-xs font-semibold text-blue-600 dark:text-blue-600 bg-blue-50 dark:bg-blue-50 px-3 py-1.5 rounded-md w-fit border border-blue-200 dark:border-blue-600">
                     <CheckCircle2 className="w-4 h-4" />
                     <span>NADRA CNIC Verification Guaranteed</span>
                   </div>
@@ -52,10 +46,10 @@ export default function RootLayout({
 
                 {/* Col 2 */}
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-3">
+                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-800 uppercase tracking-wider mb-3">
                     Major Cities
                   </h4>
-                  <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                  <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-600">
                     <li>Electricians in Karachi (DHA, Gulshan)</li>
                     <li>AC Technicians in Lahore (Gulberg, DHA)</li>
                     <li>Plumbers in Islamabad (F-Sector, G-Sector)</li>
@@ -66,12 +60,12 @@ export default function RootLayout({
 
                 {/* Col 3 */}
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-3">
+                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-800 uppercase tracking-wider mb-3">
                     Payment & Trust
                   </h4>
-                  <div className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+                  <div className="space-y-2 text-xs text-slate-600 dark:text-slate-600">
                     <p className="flex items-center space-x-1.5">
-                      <span className="px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300 font-bold">JazzCash</span>
+                      <span className="px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600 font-bold">JazzCash</span>
                       <span className="px-2 py-0.5 rounded bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-300 font-bold">EasyPaisa</span>
                     </p>
                     <p>Cash on Delivery (COD) supported</p>
@@ -82,11 +76,11 @@ export default function RootLayout({
 
                 {/* Col 4 */}
                 <div>
-                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-200 uppercase tracking-wider mb-3">
+                  <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-800 uppercase tracking-wider mb-3">
                     Support Hotline
                   </h4>
-                  <div className="flex items-center space-x-3 text-slate-700 dark:text-slate-300 mb-2">
-                    <PhoneCall className="w-5 h-5 text-emerald-500" />
+                  <div className="flex items-center space-x-3 text-slate-700 dark:text-slate-700 mb-2">
+                    <PhoneCall className="w-5 h-5 text-blue-600 dark:text-blue-600" />
                     <div>
                       <p className="text-sm font-bold">+92 (021) 111-SKILL (75455)</p>
                       <p className="text-[11px] text-slate-400">Mon-Sat: 8:00 AM - 10:00 PM PST</p>
@@ -96,7 +90,7 @@ export default function RootLayout({
                 </div>
               </div>
 
-              <div className="border-t border-slate-200 dark:border-slate-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
+              <div className="border-t border-slate-200 dark:border-slate-200 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
                 <p>© {new Date().getFullYear()} SkillConnect Pakistan. All rights reserved.</p>
                 <p className="flex items-center space-x-1 mt-2 sm:mt-0">
                   <span>Crafted with</span>

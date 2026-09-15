@@ -114,7 +114,7 @@ export default function ThreeMap3D({
 
         // Scene
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x060a12, 0.035);
+        scene.fog = new THREE.FogExp2(0xf8fafc, 0.035);
 
         // Perspective Camera with initial 3D tilt perspective
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
@@ -162,7 +162,7 @@ export default function ThreeMap3D({
 
         // Dark Futuristic Tech Terrain Material
         const terrainMat = new THREE.MeshStandardMaterial({
-          color: 0x0a1422,
+          color: 0xf8fafc,
           roughness: 0.75,
           metalness: 0.25,
           flatShading: true,
@@ -174,7 +174,7 @@ export default function ThreeMap3D({
 
         // Subtle Contour Line Overlay
         const wireMat = new THREE.MeshBasicMaterial({
-          color: 0x0d9488,
+          color: 0x1e3a8a,
           wireframe: true,
           transparent: true,
           opacity: 0.15,
@@ -200,12 +200,12 @@ export default function ThreeMap3D({
           new THREE.Vector3(-0.4, 0.04, -1.9), // Peshawar
         ]);
         const highwayGeo = new THREE.TubeGeometry(highwayCurve, 64, 0.04, 8, false);
-        const highwayMat = new THREE.MeshBasicMaterial({ color: 0x14b8a6 });
+        const highwayMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
         const highwayMesh = new THREE.Mesh(highwayGeo, highwayMat);
         roadGroup.add(highwayMesh);
 
         // Secondary Arterial Grid
-        const gridHelper = new THREE.GridHelper(12, 24, 0x14b8a6, 0x1e293b);
+        const gridHelper = new THREE.GridHelper(12, 24, 0x3b82f6, 0x1e293b);
         gridHelper.position.y = 0.02;
         (gridHelper.material as any).transparent = true;
         (gridHelper.material as any).opacity = 0.22;
@@ -218,14 +218,14 @@ export default function ThreeMap3D({
 
         // Shared Geometries & Materials for minimal GPU draw calls
         const bMatStandard = new THREE.MeshStandardMaterial({
-          color: 0x111c2e,
-          emissive: 0x09202f,
+          color: 0xe2e8f0,
+          emissive: 0xe2e8f0,
           roughness: 0.3,
           metalness: 0.7,
         });
 
-        const roofMatEmerald = new THREE.MeshBasicMaterial({ color: 0x10b981 });
-        const roofMatCyan = new THREE.MeshBasicMaterial({ color: 0x06b6d4 });
+        const roofMatEmerald = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
+        const roofMatCyan = new THREE.MeshBasicMaterial({ color: 0x2563eb });
 
         PAKISTAN_3D_LOCATIONS.forEach((loc) => {
           const clusterCount = Math.floor(loc.height * 4) + 2;
@@ -269,8 +269,8 @@ export default function ThreeMap3D({
           // 3D Extruded Metallic Pin
           const pinGeo = new THREE.ConeGeometry(0.18, 0.38, 16);
           const pinMat = new THREE.MeshStandardMaterial({
-            color: isSelected ? 0x10b981 : 0x06b6d4,
-            emissive: isSelected ? 0x059669 : 0x0891b2,
+            color: isSelected ? 0x2563eb : 0x2563eb,
+            emissive: isSelected ? 0x1e3a8a : 0x1e3a8a,
             roughness: 0.2,
             metalness: 0.8,
           });
@@ -282,7 +282,7 @@ export default function ThreeMap3D({
           // Top Glowing Orb
           const orbGeo = new THREE.SphereGeometry(0.11, 16, 16);
           const orbMat = new THREE.MeshBasicMaterial({
-            color: isSelected ? 0x34d399 : 0x38bdf8,
+            color: isSelected ? 0x60a5fa : 0x60a5fa,
           });
           const orbMesh = new THREE.Mesh(orbGeo, orbMat);
           orbMesh.position.y = 0.95;
@@ -291,7 +291,7 @@ export default function ThreeMap3D({
           // Pulsating Ground Aura Ring
           const ringGeo = new THREE.RingGeometry(0.08, 0.32, 24);
           const ringMat = new THREE.MeshBasicMaterial({
-            color: isSelected ? 0x10b981 : 0x06b6d4,
+            color: isSelected ? 0x2563eb : 0x2563eb,
             side: THREE.DoubleSide,
             transparent: true,
             opacity: 0.7,
@@ -315,7 +315,7 @@ export default function ThreeMap3D({
         const beaconGroup = new THREE.Group();
         const beaconGeo = new THREE.CylinderGeometry(0.02, 0.25, 3.5, 16, 1, true);
         const beaconMat = new THREE.MeshBasicMaterial({
-          color: 0x34d399,
+          color: 0x60a5fa,
           transparent: true,
           opacity: 0.45,
           side: THREE.DoubleSide,
@@ -330,15 +330,15 @@ export default function ThreeMap3D({
         scene.add(beaconGroup);
 
         // ==================== 6. LIGHTING ====================
-        const ambientLight = new THREE.AmbientLight(0x0a1422, 1.8);
+        const ambientLight = new THREE.AmbientLight(0xf8fafc, 1.8);
         scene.add(ambientLight);
 
-        const dirLight = new THREE.DirectionalLight(0x38bdf8, 2.5);
+        const dirLight = new THREE.DirectionalLight(0x60a5fa, 2.5);
         dirLight.position.set(6, 12, 8);
         dirLight.castShadow = !isMobile;
         scene.add(dirLight);
 
-        const fillLight = new THREE.PointLight(0x10b981, 2.5, 20);
+        const fillLight = new THREE.PointLight(0x3b82f6, 2.5, 20);
         fillLight.position.set(-6, 4, -4);
         scene.add(fillLight);
 
@@ -377,16 +377,16 @@ export default function ThreeMap3D({
             const ringMat = node.userData.ringMesh.material as any;
 
             if (isSel) {
-              pinMat.color.setHex(0x10b981);
-              pinMat.emissive.setHex(0x059669);
-              orbMat.color.setHex(0x34d399);
-              ringMat.color.setHex(0x10b981);
+              pinMat.color.setHex(0x2563eb);
+              pinMat.emissive.setHex(0x1e3a8a);
+              orbMat.color.setHex(0x60a5fa);
+              ringMat.color.setHex(0x2563eb);
               node.scale.set(1.35, 1.35, 1.35);
             } else {
-              pinMat.color.setHex(0x06b6d4);
-              pinMat.emissive.setHex(0x0891b2);
-              orbMat.color.setHex(0x38bdf8);
-              ringMat.color.setHex(0x06b6d4);
+              pinMat.color.setHex(0x2563eb);
+              pinMat.emissive.setHex(0x1e3a8a);
+              orbMat.color.setHex(0x60a5fa);
+              ringMat.color.setHex(0x2563eb);
               node.scale.set(1.0, 1.0, 1.0);
             }
           });
@@ -653,7 +653,7 @@ export default function ThreeMap3D({
 
   if (!mounted) {
     return (
-      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-slate-900 border border-slate-800 animate-pulse flex items-center justify-center text-slate-500 text-xs ${className}`}>
+      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-white border border-slate-200 animate-pulse flex items-center justify-center text-slate-600 text-xs ${className}`}>
         Initializing 3D Map Engine...
       </div>
     );
@@ -661,10 +661,10 @@ export default function ThreeMap3D({
 
   if (!webglSupported) {
     return (
-      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-teal-950 border border-teal-500/20 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden ${className}`}>
-        <MapPin className="w-12 h-12 text-teal-400 mb-2 animate-bounce" />
-        <h3 className="font-extrabold text-white text-base">SkillConnect Interactive Map</h3>
-        <p className="text-xs text-slate-400 max-w-sm mt-1">
+      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-white border border-slate-200/20 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden ${className}`}>
+        <MapPin className="w-12 h-12 text-blue-600 mb-2 animate-bounce" />
+        <h3 className="font-extrabold text-slate-900 text-base">SkillConnect Interactive Map</h3>
+        <p className="text-xs text-slate-600 max-w-sm mt-1">
           399 Pakistani cities covered with CNIC-verified technicians.
         </p>
       </div>
@@ -672,32 +672,32 @@ export default function ThreeMap3D({
   }
 
   return (
-    <div className={`relative w-full ${compact ? 'h-80' : 'h-[480px]'} rounded-3xl overflow-hidden border border-teal-500/30 bg-[#060a12] shadow-2xl glow-cyan-emerald group ${className}`}>
+    <div className={`relative w-full ${compact ? 'h-80' : 'h-[480px]'} rounded-3xl overflow-hidden border border-slate-200 bg-blue-50 shadow-2xl group ${className}`}>
       {/* Three.js Canvas Container */}
       <div ref={containerRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
 
       {/* Top Floating Badge */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
-        <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-teal-500/40 text-teal-300 text-xs font-bold shadow-xl backdrop-blur-md pointer-events-auto">
-          <Sparkles className="w-3.5 h-3.5 text-teal-400" />
+        <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/40 text-blue-700 text-xs font-bold shadow-xl backdrop-blur-md pointer-events-auto">
+          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
           <span>SkillConnect 3D Map • {activeLocation?.name || selectedCity}</span>
           <span className="text-slate-600">|</span>
-          <span className="text-[10px] text-emerald-400 font-mono">{activeLocation?.providers} Artisans</span>
+          <span className="text-[10px] text-blue-600 font-mono">{activeLocation?.providers} Artisans</span>
         </div>
 
         {/* Orbit Angle Display */}
-        <div className="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-[10px] font-mono text-slate-400 backdrop-blur-md">
-          <Compass className="w-3 h-3 text-teal-400" />
+        <div className="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[10px] font-mono text-slate-600 backdrop-blur-md">
+          <Compass className="w-3 h-3 text-blue-600" />
           <span>Pitch: {pitch}° | Yaw: {yaw}°</span>
         </div>
       </div>
 
       {/* Active City Location Card Drawer */}
       {activeLocation && (
-        <div className="absolute bottom-16 left-4 max-w-xs p-4 rounded-2xl bg-slate-900/95 border border-teal-500/40 text-white text-xs shadow-2xl space-y-2.5 backdrop-blur-md animate-fadeIn pointer-events-auto z-10">
+        <div className="absolute bottom-16 left-4 max-w-xs p-4 rounded-2xl bg-white/95 border border-slate-200/40 text-slate-900 text-xs shadow-2xl space-y-2.5 backdrop-blur-md animate-fadeIn pointer-events-auto z-10">
           <div className="flex items-center justify-between">
-            <h4 className="font-extrabold text-sm text-teal-300 flex items-center space-x-1.5">
-              <MapPin className="w-4 h-4 text-teal-400" />
+            <h4 className="font-extrabold text-sm text-blue-700 flex items-center space-x-1.5">
+              <MapPin className="w-4 h-4 text-blue-600" />
               <span>{activeLocation.name}, {activeLocation.province}</span>
             </h4>
             <span className="flex items-center space-x-1 text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
@@ -706,22 +706,22 @@ export default function ThreeMap3D({
             </span>
           </div>
 
-          <p className="text-[11px] text-slate-300 leading-relaxed">
+          <p className="text-[11px] text-slate-700 leading-relaxed">
             {activeLocation.providers} CNIC-verified background-checked technicians active in this sector.
           </p>
 
-          <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
+          <div className="pt-2 border-t border-slate-200 flex items-center justify-between">
             <button
               onClick={() => {
                 if (onCitySelect) onCitySelect(activeLocation.name);
               }}
-              className="px-3.5 py-1.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-[11px] flex items-center space-x-1.5 shadow-md shadow-teal-500/20 transition-all"
+              className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] flex items-center space-x-1.5 shadow-md shadow-blue-600/20 transition-all cursor-pointer"
             >
               <CheckCircle2 className="w-3.5 h-3.5" />
               <span>Select {activeLocation.name}</span>
             </button>
-            <span className="text-[10px] text-emerald-400 font-semibold flex items-center space-x-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span className="text-[10px] text-blue-600 font-semibold flex items-center space-x-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" />
               <span>Live Dispatch</span>
             </span>
           </div>
@@ -729,11 +729,11 @@ export default function ThreeMap3D({
       )}
 
       {/* Floating 3D Map Control Toolbar */}
-      <div className="absolute bottom-4 right-4 flex items-center space-x-1 p-1.5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-md pointer-events-auto z-10">
+      <div className="absolute bottom-4 right-4 flex items-center space-x-1 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xl backdrop-blur-md pointer-events-auto z-10">
         <button
           onClick={() => handleControlAction('zoomIn')}
           title="Zoom In"
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all"
+          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
         >
           <ZoomIn className="w-4 h-4" />
         </button>
@@ -741,7 +741,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('zoomOut')}
           title="Zoom Out"
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all"
+          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
         >
           <ZoomOut className="w-4 h-4" />
         </button>
@@ -749,7 +749,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('rotateLeft')}
           title="Rotate Left"
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all"
+          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
         >
           <RotateCw className="w-4 h-4 -scale-x-100" />
         </button>
@@ -757,7 +757,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('rotateRight')}
           title="Rotate Right"
-          className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-slate-800 transition-all"
+          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
         >
           <RotateCw className="w-4 h-4" />
         </button>
@@ -765,17 +765,17 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('focusCity')}
           title="Center Active City"
-          className="p-2 rounded-xl text-slate-300 hover:text-teal-300 hover:bg-slate-800 transition-all"
+          className="p-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer"
         >
           <Crosshair className="w-4 h-4" />
         </button>
 
-        <div className="w-px h-4 bg-slate-800 my-auto mx-0.5" />
+        <div className="w-px h-4 bg-slate-300 my-auto mx-0.5" />
 
         <button
           onClick={() => handleControlAction('reset')}
           title="Reset View"
-          className="px-3 py-1.5 rounded-xl bg-teal-500/20 text-teal-300 hover:bg-teal-500/30 text-xs font-bold transition-all"
+          className="px-3 py-1.5 rounded-xl bg-blue-100 text-blue-700 hover:bg-blue-200 text-xs font-bold transition-all cursor-pointer"
         >
           Reset 3D
         </button>

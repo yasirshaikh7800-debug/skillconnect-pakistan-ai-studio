@@ -88,15 +88,15 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         const ambientLight = new THREE.AmbientLight(0x0a1329, 1.8);
         scene.add(ambientLight);
 
-        const pointLightCyan = new THREE.PointLight(0x06b6d4, 3.5, 35);
+        const pointLightCyan = new THREE.PointLight(0x2563eb, 3.5, 35);
         pointLightCyan.position.set(6, 6, 6);
         scene.add(pointLightCyan);
 
-        const pointLightEmerald = new THREE.PointLight(0x10b981, 2.5, 35);
+        const pointLightEmerald = new THREE.PointLight(0x1e3a8a, 2.5, 35);
         pointLightEmerald.position.set(-6, -5, 4);
         scene.add(pointLightEmerald);
 
-        const pointLightAccent = new THREE.PointLight(0x38bdf8, 2, 25);
+        const pointLightAccent = new THREE.PointLight(0x60a5fa, 2, 25);
         pointLightAccent.position.set(0, 8, -4);
         scene.add(pointLightAccent);
 
@@ -107,18 +107,18 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         const count = isMobile ? 5 : 10;
 
         const glassMaterial = new THREE.MeshPhongMaterial({
-          color: 0x0e2a38,
-          emissive: 0x064e3b,
-          specular: 0x38bdf8,
+          color: 0x0f2744,
+          emissive: 0x1e3a8a,
+          specular: 0x60a5fa,
           shininess: 100,
           transparent: true,
           opacity: 0.38,
         });
 
         const accentGlassMaterial = new THREE.MeshPhongMaterial({
-          color: 0x0284c7,
-          emissive: 0x0284c7,
-          specular: 0x7dd3fc,
+          color: 0x1e3a8a,
+          emissive: 0x2563eb,
+          specular: 0x93c5fd,
           shininess: 120,
           transparent: true,
           opacity: 0.25,
@@ -160,7 +160,7 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const particleMat = new THREE.PointsMaterial({
-          color: 0x34d399,
+          color: 0x60a5fa,
           size: 0.09,
           transparent: true,
           opacity: 0.55,
@@ -205,20 +205,20 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
             // Status light adjustments
             if (isSuccessRef.current) {
               pointLightEmerald.intensity = 5;
-              pointLightCyan.color.setHex(0x10b981);
-              particleMat.color.setHex(0x34d399);
+              pointLightCyan.color.setHex(0x3b82f6);
+              particleMat.color.setHex(0x60a5fa);
               particleSystem.rotation.y = time * 0.08;
             } else if (isErrorRef.current) {
               pointLightCyan.color.setHex(0xef4444);
               pointLightCyan.intensity = 4;
             } else if (isVerifyingRef.current) {
-              pointLightCyan.color.setHex(0x38bdf8);
+              pointLightCyan.color.setHex(0x60a5fa);
               pointLightCyan.intensity = 4.5;
             } else {
-              pointLightCyan.color.setHex(0x06b6d4);
+              pointLightCyan.color.setHex(0x2563eb);
               pointLightCyan.intensity = 3.5;
               pointLightEmerald.intensity = 2.5;
-              particleMat.color.setHex(0x34d399);
+              particleMat.color.setHex(0x60a5fa);
             }
 
             particleSystem.rotation.y = time * 0.015;
@@ -273,10 +273,10 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
   // WebGL Fallback / Reduced Motion 2D Glass Scene
   if (!webglSupported) {
     return (
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-[#070b14]">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-cyan-500/10 blur-[80px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-emerald-500/10 blur-[100px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#14b8a6_1px,transparent_1px)] [background-size:32px_32px] opacity-10" />
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-blue-50">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-blue-100/30 blur-[80px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-100/30 blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:32px_32px] opacity-10" />
       </div>
     );
   }
