@@ -42,23 +42,23 @@ export default function RegisterPage() {
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-700 to-blue-800 mx-auto flex items-center justify-center text-white shadow-lg shadow-blue-600/30">
             <ShieldCheck className="w-7 h-7" />
           </div>
-          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-slate-900">
+          <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">
             Join SkillConnect Pakistan
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-600">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Sign up as a customer or register your skilled trade with NADRA CNIC verification
           </p>
         </div>
 
-        <div className="p-8 rounded-3xl bg-white/90 dark:bg-white backdrop-blur-xl border border-slate-200 dark:border-blue-600/20 shadow-2xl space-y-6">
-          <div className="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-slate-100 dark:bg-slate-50">
+        <div className="p-8 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl space-y-6">
+          <div className="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800">
             <button
               type="button"
               onClick={() => setRole('PROVIDER')}
-              className={`py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 role === 'PROVIDER'
-                  ? 'bg-white dark:bg-white text-blue-600 dark:text-blue-600 shadow-sm'
-                  : 'text-slate-500'
+                  ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
+                  : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               Become a Provider
@@ -66,10 +66,10 @@ export default function RegisterPage() {
             <button
               type="button"
               onClick={() => setRole('CUSTOMER')}
-              className={`py-2 rounded-xl text-xs font-bold transition-all ${
+              className={`py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 role === 'CUSTOMER'
-                  ? 'bg-white dark:bg-white text-blue-600 dark:text-blue-600 shadow-sm'
-                  : 'text-slate-500'
+                  ? 'bg-white dark:bg-slate-700 text-blue-600 dark:text-blue-400 shadow-sm'
+                  : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               Customer
@@ -79,31 +79,31 @@ export default function RegisterPage() {
           <form onSubmit={handleRegister} className="space-y-4 text-xs">
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">First Name</label>
+                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">First Name</label>
                 <input
                   type="text"
                   required
                   placeholder="Muhammad"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 focus:outline-none focus:border-blue-600 text-slate-900 dark:text-slate-900"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 focus:outline-none focus:border-blue-600 text-slate-900 dark:text-white"
                 />
               </div>
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Last Name</label>
+                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Last Name</label>
                 <input
                   type="text"
                   required
                   placeholder="Ali"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 focus:outline-none focus:border-blue-600 text-slate-900 dark:text-slate-900"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 focus:outline-none focus:border-blue-600 text-slate-900 dark:text-white"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">
+              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
                 Pakistani Phone Number (For SMS OTP)
               </label>
               <div className="relative">
@@ -114,28 +114,28 @@ export default function RegisterPage() {
                   placeholder="+923001234567"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 focus:outline-none focus:border-blue-600 font-mono text-slate-900 dark:text-slate-900"
+                  className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 focus:outline-none focus:border-blue-600 font-mono text-slate-900 dark:text-white"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Location</label>
+              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Location</label>
               <CitySearchSelect
                 value={city}
                 onChange={setCity}
-                buttonClassName="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 font-semibold"
+                buttonClassName="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 font-semibold"
               />
             </div>
 
             <div>
-              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Service Location</label>
+              <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Service Location</label>
               <CitySearchSelect
                 value={serviceLocation}
                 onChange={setServiceLocation}
-                buttonClassName="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 font-semibold"
+                buttonClassName="w-full py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 font-semibold"
               />
-              <p className="text-[10px] text-blue-600 dark:text-blue-600 font-medium mt-1 flex items-center space-x-1">
+              <p className="text-[10px] text-blue-600 dark:text-blue-400 font-medium mt-1 flex items-center space-x-1">
                 <CheckCircle2 className="w-3 h-3" />
                 <span>Automatically filled from Location</span>
               </p>
@@ -144,7 +144,7 @@ export default function RegisterPage() {
             {role === 'PROVIDER' && (
               <>
                 <div>
-                  <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">
+                  <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
                     NADRA CNIC Number (13 Digits)
                   </label>
                   <input
@@ -153,16 +153,16 @@ export default function RegisterPage() {
                     placeholder="42101-1234567-1"
                     value={cnic}
                     onChange={(e) => setCnic(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 font-mono focus:outline-none focus:border-blue-600 text-slate-900 dark:text-slate-900"
+                    className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 font-mono focus:outline-none focus:border-blue-600 text-slate-900 dark:text-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Primary Skill / Trade</label>
+                  <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Primary Skill / Trade</label>
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50/80 dark:bg-slate-50/80 font-semibold focus:outline-none focus:border-blue-600 text-slate-900 dark:text-slate-900"
+                    className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 font-semibold focus:outline-none focus:border-blue-600 text-slate-900 dark:text-white"
                   >
                     {CATEGORIES.map((cat) => (
                       <option key={cat.id} value={cat.slug}>
@@ -172,8 +172,8 @@ export default function RegisterPage() {
                   </select>
                 </div>
 
-                <div className="p-3 bg-blue-50/80 dark:bg-blue-50 rounded-xl border border-blue-200 dark:border-blue-600 flex items-center space-x-2 text-blue-600 dark:text-blue-600">
-                  <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-blue-600" />
+                <div className="p-3 bg-blue-50/80 dark:bg-blue-950/50 rounded-xl border border-blue-200 dark:border-blue-800 flex items-center space-x-2 text-blue-600 dark:text-blue-400">
+                  <CheckCircle2 className="w-5 h-5 flex-shrink-0 text-blue-600 dark:text-blue-400" />
                   <p className="text-[11px]">
                     Providers undergo CNIC background check and receive 90% direct payout on completed jobs via JazzCash / EasyPaisa.
                   </p>

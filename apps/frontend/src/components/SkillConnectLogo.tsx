@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
+import { useTheme } from '@/context/ThemeContext';
 
 interface SkillConnectLogoProps {
   variant?: 'full' | 'compact' | 'icon-only';
   size?: 'sm' | 'md' | 'lg' | 'xl';
   className?: string;
   showSubtitle?: boolean;
+  forceTheme?: 'light' | 'dark';
 }
 
 export function SkillConnectIcon({
@@ -99,7 +101,21 @@ export default function SkillConnectLogo({
   size = 'md',
   className = '',
   showSubtitle = true,
+  forceTheme,
 }: SkillConnectLogoProps) {
+  let isDark = false;
+  try {
+    const { theme } = useTheme();
+    isDark = theme === 'dark';
+  } catch {
+    // If rendered outside ThemeProvider
+    isDark = false;
+  }
+
+  if (forceTheme) {
+    isDark = forceTheme === 'dark';
+  }
+
   const iconSizes = {
     sm: 28,
     md: 38,
@@ -113,13 +129,33 @@ export default function SkillConnectLogo({
     return <SkillConnectIcon size={currentIconSize} className={className} />;
   }
 
+  // Explicit text styling based on theme or caller classes
+  const isCustomColor = className.includes('text-white') || className.includes('text-slate-');
+  const mainTextColor = isCustomColor 
+    ? '' 
+    : isDark 
+      ? 'text-white' 
+      : 'text-slate-900';
+
+  const dotPkColor = className.includes('text-white')
+    ? 'text-blue-300'
+    : isDark
+      ? 'text-blue-400'
+      : 'text-blue-600';
+
+  const subtitleColor = className.includes('text-white')
+    ? 'text-blue-100'
+    : isDark
+      ? 'text-slate-400'
+      : 'text-slate-500';
+
   return (
     <div className={`inline-flex items-center space-x-2.5 select-none ${className}`}>
       <SkillConnectIcon size={currentIconSize} />
       <div className="flex flex-col leading-none">
         <div className="flex items-baseline">
           <span
-            className={`font-bold tracking-tight ${className.includes('text-') ? '' : 'text-slate-900 dark:text-slate-900'} ${
+            className={`font-bold tracking-tight ${mainTextColor} ${
               size === 'sm'
                 ? 'text-lg'
                 : size === 'md'
@@ -132,7 +168,7 @@ export default function SkillConnectLogo({
             SkillConnect
           </span>
           <span
-            className={`font-extrabold ${className.includes('text-white') ? 'text-blue-200' : 'text-slate-100 dark:text-slate-100'} ${
+            className={`font-extrabold ${dotPkColor} ${
               size === 'sm'
                 ? 'text-lg'
                 : size === 'md'
@@ -148,7 +184,7 @@ export default function SkillConnectLogo({
 
         {(variant === 'full' || showSubtitle) && (
           <span
-            className={`font-semibold uppercase tracking-wider ${className.includes('text-white') ? 'text-blue-100' : 'text-slate-500 dark:text-slate-500'} ${
+            className={`font-semibold uppercase tracking-wider ${subtitleColor} ${
               size === 'sm'
                 ? 'text-[8.5px]'
                 : size === 'md'

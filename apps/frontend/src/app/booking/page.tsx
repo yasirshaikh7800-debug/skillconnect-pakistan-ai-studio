@@ -132,16 +132,16 @@ function BookingContent() {
         </Link>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-200">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-slate-900">
+          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">
             Book Verified Service
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             NADRA CNIC-verified skilled workers across Pakistan with upfront PKR pricing
           </p>
         </div>
-        <div className="flex items-center space-x-1.5 text-xs font-bold text-blue-600 dark:text-blue-600 bg-blue-600/10 px-3 py-1.5 rounded-full border border-blue-600/20">
+        <div className="flex items-center space-x-1.5 text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-600/10 px-3 py-1.5 rounded-full border border-blue-600/20">
           <ShieldCheck className="w-4 h-4" />
           <span>SkillConnect Guarantee</span>
         </div>
@@ -150,14 +150,14 @@ function BookingContent() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Booking Form */}
         <div className="lg:col-span-2 space-y-6">
-          <form onSubmit={handleSubmit} className="p-6 rounded-3xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-5">
-            <h2 className="text-base font-bold text-slate-900 dark:text-slate-900 border-b border-slate-100 dark:border-slate-200 pb-3">
+          <form onSubmit={handleSubmit} className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-5">
+            <h2 className="text-base font-bold text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3">
               Schedule & Location Details
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1 flex items-center space-x-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center space-x-1">
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
                   <span>Preferred Date</span>
                 </label>
@@ -166,46 +166,46 @@ function BookingContent() {
                   required
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:ring-2 focus:ring-brand-500"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1 flex items-center space-x-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center space-x-1">
                   <Clock className="w-3.5 h-3.5 text-slate-400" />
                   <span>Arrival Time Slot</span>
                 </label>
                 <select
                   value={timeSlot}
                   onChange={(e) => setTimeSlot(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:ring-2 focus:ring-brand-500"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600"
                 >
-                  <option value="09:00 AM - 12:00 PM">Morning (09:00 AM - 12:00 PM)</option>
-                  <option value="01:00 PM - 04:00 PM">Afternoon (01:00 PM - 04:00 PM)</option>
-                  <option value="05:00 PM - 08:00 PM">Evening (05:00 PM - 08:00 PM)</option>
+                  <option value="09:00 AM - 12:00 PM" className="dark:bg-slate-900">Morning (09:00 AM - 12:00 PM)</option>
+                  <option value="01:00 PM - 04:00 PM" className="dark:bg-slate-900">Afternoon (01:00 PM - 04:00 PM)</option>
+                  <option value="05:00 PM - 08:00 PM" className="dark:bg-slate-900">Evening (05:00 PM - 08:00 PM)</option>
                 </select>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1 flex items-center space-x-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center space-x-1">
                   <MapPin className="w-3.5 h-3.5 text-slate-400" />
                   <span>City</span>
                 </label>
                 <select
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white"
                 >
                   {PAKISTAN_CITIES.slice(0, 15).map((c) => (
-                    <option key={c} value={c}>{c}</option>
+                    <option key={c} value={c} className="dark:bg-slate-900">{c}</option>
                   ))}
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1 flex items-center space-x-1">
+                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1 flex items-center space-x-1">
                   <Phone className="w-3.5 h-3.5 text-slate-400" />
                   <span>Phone Number (for Worker SMS)</span>
                 </label>
@@ -215,13 +215,13 @@ function BookingContent() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+92 300 1234567"
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:ring-2 focus:ring-brand-500"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 House / Building Address & Sector
               </label>
               <input
@@ -230,12 +230,12 @@ function BookingContent() {
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="e.g. House 42, Street 8, Sector F-7/2 or Gulberg III"
-                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:ring-2 focus:ring-brand-500"
+                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-700 mb-1">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
                 Problem Description (Optional)
               </label>
               <textarea
@@ -243,23 +243,23 @@ function BookingContent() {
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Describe the issue (e.g. UPS not shifting load, AC water leakage)..."
-                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-xs text-slate-900 dark:text-slate-900 focus:ring-2 focus:ring-brand-500"
+                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-600"
               />
             </div>
 
             {/* Payment Method Selector */}
-            <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-200">
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-700">
+            <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300">
                 Payment Option in Pakistan
               </label>
               <div className="grid grid-cols-3 gap-3">
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('COD')}
-                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all ${
+                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all cursor-pointer ${
                     paymentMethod === 'COD'
-                      ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 ring-2 ring-brand-500/20'
-                      : 'border-slate-200 dark:border-slate-200 text-slate-600 dark:text-slate-600'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 ring-2 ring-blue-600/20'
+                      : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
                   Cash on Delivery
@@ -267,10 +267,10 @@ function BookingContent() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('JAZZCASH')}
-                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all ${
+                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all cursor-pointer ${
                     paymentMethod === 'JAZZCASH'
-                      ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 ring-2 ring-brand-500/20'
-                      : 'border-slate-200 dark:border-slate-200 text-slate-600 dark:text-slate-600'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 ring-2 ring-blue-600/20'
+                      : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
                   JazzCash
@@ -278,10 +278,10 @@ function BookingContent() {
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('EASYPAISA')}
-                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all ${
+                  className={`p-3 rounded-xl border text-xs font-bold text-center transition-all cursor-pointer ${
                     paymentMethod === 'EASYPAISA'
-                      ? 'border-brand-500 bg-brand-50/50 dark:bg-brand-950/40 text-brand-600 dark:text-brand-400 ring-2 ring-brand-500/20'
-                      : 'border-slate-200 dark:border-slate-200 text-slate-600 dark:text-slate-600'
+                      ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 ring-2 ring-blue-600/20'
+                      : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
                 >
                   EasyPaisa
@@ -291,7 +291,7 @@ function BookingContent() {
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-sm shadow-lg shadow-brand-500/20 transition-all flex items-center justify-center space-x-2"
+              className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-lg shadow-blue-600/20 transition-all flex items-center justify-center space-x-2 cursor-pointer"
             >
               <span>Confirm & Dispatch Verified Worker</span>
               <ArrowRight className="w-4 h-4" />
@@ -301,27 +301,27 @@ function BookingContent() {
 
         {/* Order Summary Card */}
         <div className="space-y-6">
-          <div className="p-6 rounded-3xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-4">
-            <h3 className="font-bold text-sm text-slate-900 dark:text-slate-900 border-b border-slate-100 dark:border-slate-200 pb-3">
+          <div className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white border-b border-slate-100 dark:border-slate-800 pb-3">
               Order Summary
             </h3>
 
             <div className="space-y-2">
-              <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-600 uppercase tracking-wider">
+              <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
                 {selectedService.category?.name || 'Home Service'}
               </span>
-              <h4 className="text-base font-extrabold text-slate-900 dark:text-slate-900">
+              <h4 className="text-base font-extrabold text-slate-900 dark:text-white">
                 {selectedService.title}
               </h4>
-              <p className="text-xs text-slate-500 leading-relaxed">
+              <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
                 {selectedService.description}
               </p>
             </div>
 
             {/* Assigned / Selected Specialist */}
             {selectedProvider && (
-              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-50/80 border border-slate-200/80 dark:border-slate-300/60 space-y-2">
-                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 block">
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
+                <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
                   Assigned Verified Specialist
                 </span>
                 <div className="flex items-center space-x-3">
@@ -334,18 +334,18 @@ function BookingContent() {
                     className="w-10 h-10 rounded-xl object-cover border border-blue-600 shrink-0"
                   />
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-slate-900 dark:text-slate-900 flex items-center space-x-1">
+                    <p className="text-xs font-bold text-slate-900 dark:text-white flex items-center space-x-1">
                       <span className="truncate">
                         {selectedProvider.user?.profile?.firstName}{' '}
                         {selectedProvider.user?.profile?.lastName}
                       </span>
-                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                     </p>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-600">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       {selectedProvider.user?.profile?.city || city} • ★{' '}
                       {selectedProvider.rating.toFixed(1)} ({selectedProvider.totalReviews} reviews)
                     </p>
-                    <p className="text-[10px] text-blue-600 dark:text-blue-600 font-semibold">
+                    <p className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold">
                       CNIC: {selectedProvider.cnicNumber}
                     </p>
                   </div>
@@ -353,18 +353,18 @@ function BookingContent() {
               </div>
             )}
 
-            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-50 space-y-1.5 text-xs text-slate-600 dark:text-slate-700">
+            <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 space-y-1.5 text-xs text-slate-600 dark:text-slate-300">
               <div className="flex justify-between">
                 <span>Standard Visiting Fee</span>
-                <span className="font-bold text-slate-900 dark:text-slate-900">PKR {selectedService.basePrice.toLocaleString()}</span>
+                <span className="font-bold text-slate-900 dark:text-white">PKR {selectedService.basePrice.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-blue-600 dark:text-blue-600 font-semibold">
+              <div className="flex justify-between text-blue-600 dark:text-blue-400 font-semibold">
                 <span>Platform Guarantee & Insurance</span>
                 <span>FREE</span>
               </div>
-              <div className="flex justify-between font-extrabold text-sm text-slate-900 dark:text-slate-900 pt-2 border-t border-slate-200 dark:border-slate-300">
+              <div className="flex justify-between font-extrabold text-sm text-slate-900 dark:text-white pt-2 border-t border-slate-200 dark:border-slate-700">
                 <span>Total Payable</span>
-                <span className="text-blue-600 dark:text-blue-600">PKR {selectedService.basePrice.toLocaleString()}</span>
+                <span className="text-blue-600 dark:text-blue-400">PKR {selectedService.basePrice.toLocaleString()}</span>
               </div>
             </div>
 

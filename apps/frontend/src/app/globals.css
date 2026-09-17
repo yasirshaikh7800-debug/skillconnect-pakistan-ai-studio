@@ -8,6 +8,8 @@
     --text-main: #0f172a;
     --card-bg: #ffffff;
     --border-color: #e2e8f0;
+    --muted-bg: #f8fafc;
+    --muted-text: #64748b;
   }
 
   .dark {
@@ -15,6 +17,8 @@
     --text-main: #f8fafc;
     --card-bg: #0f172a;
     --border-color: #1e293b;
+    --muted-bg: #131d33;
+    --muted-text: #94a3b8;
   }
 
   body {
@@ -23,6 +27,31 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
+}
+
+/* Custom Semantic Theme Utility Classes */
+.bg-canvas {
+  background-color: var(--bg-main);
+}
+
+.bg-surface {
+  background-color: var(--card-bg);
+}
+
+.bg-muted-surface {
+  background-color: var(--muted-bg);
+}
+
+.text-primary {
+  color: var(--text-main);
+}
+
+.text-secondary {
+  color: var(--muted-text);
+}
+
+.border-theme {
+  border-color: var(--border-color);
 }
 
 /* Custom Glassmorphism */

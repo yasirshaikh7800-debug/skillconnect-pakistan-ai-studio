@@ -7,20 +7,12 @@ import { SendOtpDto, VerifyOtpDto } from './dto/otp.dto';
 import { UserRole, UserStatus } from '@prisma/client';
 import * as bcrypt from 'bcryptjs';
 import { authenticator } from 'otplib';
+import * as crypto from 'crypto';
 import * as QRCode from 'qrcode';
-
-interface OtpRecord {
-  phone: string;
-  code: string;
-  expiresAt: number; // timestamp ms
-  attempts: number;
-  lastSentAt: number; // timestamp ms
-}
 
 @Injectable()
 export class AuthService {
   private readonly logger = new Logger(AuthService.name);
-  private otpStore = new Map<string, OtpRecord>();
 
   constructor(
     private readonly prisma: PrismaService,
@@ -36,12 +28,15 @@ export class AuthService {
       throw new BadRequestException('Valid phone number is required');
     }
 
-    const now = Date.now();
-    const existing = this.otpStore.get(formattedPhone);
+    const now = new Date();
+    const existing = await this.prisma.otpVerification.findFirst({
+      where: { phone: formattedPhone, isConsumed: false },
+      orderBy: { createdAt: 'desc' },
+    });
 
     // Rate Limit: Must wait 60 seconds between resend requests
-    if (existing && now - existing.lastSentAt < 60000) {
-      const waitTime = Math.ceil((60000 - (now - existing.lastSentAt)) / 1000);
+    if (existing && existing.createdAt.getTime() > now.getTime() - 60000) {
+      const waitTime = Math.ceil((60000 - (now.getTime() - existing.createdAt.getTime())) / 1000);
       throw new HttpException(
         `Please wait ${waitTime} seconds before requesting a new verification code.`,
         HttpStatus.TOO_MANY_REQUESTS,
@@ -50,14 +45,15 @@ export class AuthService {
 
     // Generate secure cryptographically random 6-digit code
     const code = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = now + 5 * 60 * 1000; // 5 minutes expiration
+    const codeHash = crypto.createHash('sha256').update(code).digest('hex');
+    const expiresAt = new Date(now.getTime() + 5 * 60 * 1000); // 5 minutes expiration
 
-    this.otpStore.set(formattedPhone, {
-      phone: formattedPhone,
-      code,
-      expiresAt,
-      attempts: 0,
-      lastSentAt: now,
+    await this.prisma.otpVerification.create({
+      data: {
+        phone: formattedPhone,
+        codeHash,
+        expiresAt,
+      },
     });
 
     this.logger.log(`[OTP SENT] Sent verification code to ${formattedPhone}`);
@@ -77,9 +73,12 @@ export class AuthService {
   async verifyOtp(dto: VerifyOtpDto) {
     const formattedPhone = dto.phone.trim();
     const userCode = dto.code.trim();
-    const now = Date.now();
+    const now = new Date();
 
-    const record = this.otpStore.get(formattedPhone);
+    const record = await this.prisma.otpVerification.findFirst({
+      where: { phone: formattedPhone, isConsumed: false },
+      orderBy: { createdAt: 'desc' },
+    });
 
     if (!record) {
       throw new BadRequestException('No OTP found for this phone number. Please request a new code.');
@@ -87,13 +86,19 @@ export class AuthService {
 
     // Expiration check
     if (now > record.expiresAt) {
-      this.otpStore.delete(formattedPhone);
+      await this.prisma.otpVerification.update({
+        where: { id: record.id },
+        data: { isConsumed: true, consumedAt: now },
+      });
       throw new BadRequestException('Verification code has expired. Please request a new code.');
     }
 
     // Rate limiting attempt check (max 5 attempts)
     if (record.attempts >= 5) {
-      this.otpStore.delete(formattedPhone);
+      await this.prisma.otpVerification.update({
+        where: { id: record.id },
+        data: { isConsumed: true, consumedAt: now },
+      });
       throw new HttpException(
         'Too many failed verification attempts. This code is invalidated. Please request a new code.',
         HttpStatus.TOO_MANY_REQUESTS,
@@ -101,16 +106,24 @@ export class AuthService {
     }
 
     // Code verification check
-    if (record.code !== userCode) {
-      record.attempts += 1;
-      const remainingAttempts = 5 - record.attempts;
+    const inputHash = crypto.createHash('sha256').update(userCode).digest('hex');
+    if (record.codeHash !== inputHash) {
+      const newAttempts = record.attempts + 1;
+      await this.prisma.otpVerification.update({
+        where: { id: record.id },
+        data: { attempts: newAttempts },
+      });
+      const remainingAttempts = 5 - newAttempts;
       throw new BadRequestException(
         `Invalid verification code. ${remainingAttempts} attempts remaining.`,
       );
     }
 
     // Success! Clear the OTP from store to prevent replay attacks
-    this.otpStore.delete(formattedPhone);
+    await this.prisma.otpVerification.update({
+      where: { id: record.id },
+      data: { isConsumed: true, consumedAt: now },
+    });
 
     // Optionally update user's phone verification status in DB if user exists
     const user = await this.prisma.user.findFirst({

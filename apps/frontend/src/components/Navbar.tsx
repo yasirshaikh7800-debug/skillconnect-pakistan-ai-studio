@@ -140,7 +140,7 @@ export function Navbar() {
             {/* Login / Join CTA */}
             <Link
               href="/login"
-              className="text-sm font-semibold text-slate-700 dark:text-slate-800 hover:text-white px-3 py-2"
+              className="text-sm font-semibold text-blue-100 hover:text-white px-3 py-2"
             >
               Log In
             </Link>
@@ -156,13 +156,15 @@ export function Navbar() {
           <div className="flex md:hidden items-center space-x-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-blue-600 hover:bg-blue-900 text-blue-200"
+              className="p-2 rounded-lg bg-blue-800 hover:bg-blue-700 text-blue-100"
+              title="Toggle Theme"
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-blue-600 hover:bg-blue-900 text-blue-200"
+              className="p-2 rounded-lg bg-blue-800 hover:bg-blue-700 text-blue-100"
+              aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -172,7 +174,7 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-slate-200 bg-blue-900 backdrop-blur-lg px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden border-b border-blue-700 bg-blue-900 backdrop-blur-lg px-4 pt-2 pb-6 space-y-2">
           <Link
             href="/ai-hub"
             id="mobile-nav-aihub-link"

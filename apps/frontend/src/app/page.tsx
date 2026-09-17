@@ -222,43 +222,43 @@ export default function HomePage() {
 
       {/* STATS STRIP */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="p-5 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm flex items-center space-x-4">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-50 text-blue-600 dark:text-blue-600 flex items-center justify-center">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-slate-900 dark:text-slate-900">100+ Unique</p>
-            <p className="text-xs text-slate-500">Skilled Services</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">100+ Unique</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Skilled Services</p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm flex items-center space-x-4">
-          <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-50 text-blue-600 dark:text-blue-600 flex items-center justify-center">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center space-x-4">
+          <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
             <Users className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-slate-900 dark:text-slate-900">4,500+</p>
-            <p className="text-xs text-slate-500">CNIC Workers</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">4,500+</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">CNIC Workers</p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm flex items-center space-x-4">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center space-x-4">
           <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-slate-900 dark:text-slate-900">4.9 / 5.0</p>
-            <p className="text-xs text-slate-500">Average Rating</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">4.9 / 5.0</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Average Rating</p>
           </div>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm flex items-center space-x-4">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center space-x-4">
           <div className="w-12 h-12 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center">
             <Building2 className="w-6 h-6" />
           </div>
           <div>
-            <p className="text-xl font-bold text-slate-900 dark:text-slate-900">399 Cities</p>
-            <p className="text-xs text-slate-500">Across 7 Provinces/Regions</p>
+            <p className="text-xl font-bold text-slate-900 dark:text-white">399 Cities</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Across 7 Provinces/Regions</p>
           </div>
         </div>
       </section>
@@ -267,17 +267,17 @@ export default function HomePage() {
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               Service Categories
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Browse skilled categories available in {selectedCity}
             </p>
           </div>
           {selectedCategory && (
             <button
               onClick={() => setSelectedCategory(null)}
-              className="text-xs font-semibold text-blue-600 dark:text-blue-600 hover:underline"
+              className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline"
             >
               Reset Filter
             </button>
@@ -297,8 +297,8 @@ export default function HomePage() {
                 aria-label={`Explore ${cat.name}, ${count} services available`}
                 className={`group p-4 rounded-2xl border text-left flex flex-col justify-between space-y-3 cursor-pointer pointer-events-auto relative transition-all duration-200 ease-out hover:-translate-y-1 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 ${
                   isSelected
-                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-50 ring-2 ring-blue-600/40 shadow-lg shadow-blue-600/10'
-                    : 'border-slate-200 dark:border-slate-200/80 bg-white dark:bg-white hover:border-blue-600/50 hover:bg-slate-50 hover:bg-slate-100/60 shadow-sm hover:shadow-md hover:shadow-blue-600/20'
+                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 ring-2 ring-blue-600/40 shadow-lg shadow-blue-600/10'
+                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 shadow-sm hover:shadow-md hover:shadow-blue-600/20'
                 }`}
               >
                 {/* Header: Icon & Counter Badge */}
@@ -307,7 +307,7 @@ export default function HomePage() {
                     className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                       isSelected
                         ? 'bg-blue-600 text-white font-black shadow-md shadow-blue-600/30 scale-105'
-                        : 'bg-slate-100 dark:bg-slate-50/90 text-blue-600 dark:text-blue-600 group-hover:scale-105 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/40'
+                        : 'bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 group-hover:scale-105 group-hover:bg-blue-50 dark:group-hover:bg-blue-950/60'
                     }`}
                   >
                     <Icon className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
@@ -316,7 +316,7 @@ export default function HomePage() {
                     className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full transition-colors ${
                       isSelected
                         ? 'bg-blue-600 text-white font-black shadow-sm'
-                        : 'bg-slate-100 dark:bg-slate-50 text-slate-600 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'
                     }`}
                   >
                     {count}
@@ -328,19 +328,19 @@ export default function HomePage() {
                   <h3
                     className={`font-bold text-sm tracking-tight transition-colors line-clamp-1 ${
                       isSelected
-                        ? 'text-blue-600 dark:text-blue-600'
-                        : 'text-slate-900 dark:text-slate-900 group-hover:text-blue-600'
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
                     }`}
                   >
                     {cat.name}
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-600 line-clamp-2 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-1 leading-relaxed">
                     {cat.description}
                   </p>
                 </div>
 
                 {/* Footer: Subtle visual affordance */}
-                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-200/70 flex items-center justify-between text-[11px] font-semibold text-blue-600 dark:text-blue-600">
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold text-blue-600 dark:text-blue-400">
                   <span>Explore Category</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
                 </div>
@@ -354,16 +354,16 @@ export default function HomePage() {
       <section className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               Top Popular Services in {selectedCity}
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Transparent upfront PKR pricing with verified home visit
             </p>
           </div>
           <Link
             href="/services"
-            className="text-xs font-bold text-blue-600 dark:text-blue-600 hover:underline flex items-center space-x-1"
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center space-x-1"
           >
             <span>View All Services</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -374,36 +374,36 @@ export default function HomePage() {
           {filteredServices.map((service) => (
             <div
               key={service.id}
-              className="rounded-2xl border border-slate-200 dark:border-slate-200 bg-white dark:bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
+              className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
                     {service.category.name}
                   </span>
-                  <span className="flex items-center space-x-1 text-xs font-bold text-blue-600 dark:text-blue-600">
+                  <span className="flex items-center space-x-1 text-xs font-bold text-blue-600 dark:text-blue-400">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>CNIC Verified</span>
                   </span>
                 </div>
 
-                <h3 className="font-bold text-lg text-slate-900 dark:text-slate-900">
+                <h3 className="font-bold text-lg text-slate-900 dark:text-white">
                   {service.title}
                 </h3>
 
-                <p className="text-xs text-slate-600 dark:text-slate-600 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                   {service.description}
                 </p>
 
                 {/* Provider info snippet */}
-                <div className="flex items-center space-x-3 pt-2 border-t border-slate-100 dark:border-slate-200">
+                <div className="flex items-center space-x-3 pt-2 border-t border-slate-100 dark:border-slate-800">
                   <img
                     src={service.provider.user?.avatarUrl}
                     alt="Provider Avatar"
                     className="w-8 h-8 rounded-full object-cover border border-blue-600"
                   />
                   <div>
-                    <p className="text-xs font-semibold text-slate-900 dark:text-slate-800">
+                    <p className="text-xs font-semibold text-slate-900 dark:text-slate-200">
                       {service.provider.user?.profile?.firstName}{' '}
                       {service.provider.user?.profile?.lastName}
                     </p>
@@ -416,10 +416,10 @@ export default function HomePage() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-200 flex items-center justify-between">
+              <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-slate-400 block">Starting From</span>
-                  <span className="text-xl font-extrabold text-slate-900 dark:text-slate-900">
+                  <span className="text-xs text-slate-400 dark:text-slate-500 block">Starting From</span>
+                  <span className="text-xl font-extrabold text-slate-900 dark:text-white">
                     PKR {service.basePrice.toLocaleString()}
                   </span>
                 </div>
@@ -437,43 +437,43 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="p-8 rounded-3xl bg-slate-50 dark:bg-white border border-slate-200 dark:border-slate-200 space-y-8">
+      <section className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-8">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-900">
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
             How SkillConnect Pakistan Works
           </h2>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Simple 3-step process to get verified professionals at your doorstep
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600 font-extrabold text-lg flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-extrabold text-lg flex items-center justify-center">
               1
             </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-slate-900">Select Service & City</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-slate-900 dark:text-white">Select Service & City</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Choose your required home repair service in Karachi, Lahore, Islamabad or Rawalpindi with transparent upfront rates.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600 font-extrabold text-lg flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-extrabold text-lg flex items-center justify-center">
               2
             </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-slate-900">Assigned CNIC Technician</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-slate-900 dark:text-white">Assigned CNIC Technician</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Our system matches you with a NADRA CNIC-verified artisan with top user ratings and nearby location.
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600 font-extrabold text-lg flex items-center justify-center">
+          <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 font-extrabold text-lg flex items-center justify-center">
               3
             </div>
-            <h3 className="font-bold text-base text-slate-900 dark:text-slate-900">Pay via JazzCash or Cash</h3>
-            <p className="text-xs text-slate-500 leading-relaxed">
+            <h3 className="font-bold text-base text-slate-900 dark:text-white">Pay via JazzCash or Cash</h3>
+            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Inspect the completed work and pay effortlessly using JazzCash, EasyPaisa, or Cash on Delivery (COD).
             </p>
           </div>
@@ -482,11 +482,11 @@ export default function HomePage() {
 
       {/* BOOKING MODAL */}
       {bookingService && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-white border border-slate-200 dark:border-slate-200 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl relative">
             <button
               onClick={closeBookingModal}
-              className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:bg-slate-100 hover:bg-slate-100"
+              className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
               <X className="w-5 h-5" />
             </button>
@@ -494,33 +494,33 @@ export default function HomePage() {
             {!bookingSuccessCode ? (
               <form onSubmit={handleCreateBooking} className="space-y-4">
                 <div className="space-y-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-600">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
                     Quick Booking
                   </span>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-900">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                     {bookingService.title}
                   </h3>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Assigned Technician:{' '}
-                    <span className="font-semibold text-slate-700 dark:text-slate-700">
+                    <span className="font-semibold text-slate-700 dark:text-slate-300">
                       {bookingService.provider.user?.profile?.firstName}{' '}
                       {bookingService.provider.user?.profile?.lastName} (CNIC Verified)
                     </span>
                   </p>
                 </div>
 
-                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-50/60 border border-slate-200 dark:border-slate-300 flex justify-between items-center text-sm">
-                  <span className="text-xs font-medium text-slate-600 dark:text-slate-600">
+                <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex justify-between items-center text-sm">
+                  <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
                     Service Rate
                   </span>
-                  <span className="font-extrabold text-slate-900 dark:text-slate-900">
+                  <span className="font-extrabold text-slate-900 dark:text-white">
                     PKR {bookingService.basePrice.toLocaleString()}
                   </span>
                 </div>
 
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-semibold text-slate-700 dark:text-slate-700 mb-1">
+                    <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Preferred Date & Time
                     </label>
                     <input
@@ -528,12 +528,12 @@ export default function HomePage() {
                       required
                       value={bookingDate}
                       onChange={(e) => setBookingDate(e.target.value)}
-                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-100 dark:bg-slate-50 text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 dark:text-slate-700 mb-1">
+                    <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Location
                     </label>
                     <CitySearchSelect
@@ -543,21 +543,21 @@ export default function HomePage() {
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 dark:text-slate-700 mb-1">
+                    <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Service Location
                     </label>
                     <CitySearchSelect
                       value={serviceLocation}
                       onChange={setServiceLocation}
                     />
-                    <p className="text-[10px] text-blue-600 dark:text-blue-600 font-medium mt-1 flex items-center space-x-1">
+                    <p className="text-[10px] text-blue-600 dark:text-blue-400 font-medium mt-1 flex items-center space-x-1">
                       <CheckCircle2 className="w-3 h-3" />
                       <span>Automatically filled from Location</span>
                     </p>
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 dark:text-slate-700 mb-1">
+                    <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Full Address in {serviceLocation}
                     </label>
                     <input
@@ -566,12 +566,12 @@ export default function HomePage() {
                       placeholder="e.g. House 14, Street 9, DHA Phase 6"
                       value={bookingAddress}
                       onChange={(e) => setBookingAddress(e.target.value)}
-                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-100 dark:bg-slate-50 text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
                   </div>
 
                   <div>
-                    <label className="block font-semibold text-slate-700 dark:text-slate-700 mb-1">
+                    <label className="block font-semibold text-slate-700 dark:text-slate-300 mb-1">
                       Payment Option
                     </label>
                     <div className="grid grid-cols-3 gap-2">
@@ -580,8 +580,8 @@ export default function HomePage() {
                         onClick={() => setPaymentMethod('JAZZCASH')}
                         className={`p-2.5 rounded-xl border font-bold text-center transition-all ${
                           paymentMethod === 'JAZZCASH'
-                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-50 text-blue-600'
-                            : 'border-slate-200 dark:border-slate-300 text-slate-500'
+                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400'
+                            : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400'
                         }`}
                       >
                         JazzCash
@@ -592,8 +592,8 @@ export default function HomePage() {
                         onClick={() => setPaymentMethod('EASYPAISA')}
                         className={`p-2.5 rounded-xl border font-bold text-center transition-all ${
                           paymentMethod === 'EASYPAISA'
-                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-50 text-blue-600'
-                            : 'border-slate-200 dark:border-slate-300 text-slate-500'
+                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400'
+                            : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400'
                         }`}
                       >
                         EasyPaisa
@@ -604,8 +604,8 @@ export default function HomePage() {
                         onClick={() => setPaymentMethod('COD')}
                         className={`p-2.5 rounded-xl border font-bold text-center transition-all ${
                           paymentMethod === 'COD'
-                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-50 text-blue-600'
-                            : 'border-slate-200 dark:border-slate-300 text-slate-500'
+                            ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400'
+                            : 'border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400'
                         }`}
                       >
                         Cash (COD)

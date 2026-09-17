@@ -91,12 +91,12 @@ export default function AiCareerRoadmap() {
 
       {/* Roadmap Visualization */}
       {!roadmap && !loading && (
-        <div className="p-12 rounded-3xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 text-center space-y-3 shadow-sm">
-          <Route className="w-12 h-12 text-blue-600 mx-auto animate-pulse" />
-          <h3 className="text-lg font-bold text-slate-900 dark:text-slate-900">
+        <div className="p-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-3 shadow-sm">
+          <Route className="w-12 h-12 text-blue-600 dark:text-blue-400 mx-auto animate-pulse" />
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
             Click "Build Roadmap" to Generate Your Path
           </h3>
-          <p className="text-xs text-slate-600 max-w-sm mx-auto">
+          <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
             Get a tailored progression from Beginner fundamentals to Job Ready projects designed for Pakistani tech & service industries.
           </p>
         </div>
@@ -124,8 +124,8 @@ export default function AiCareerRoadmap() {
                       onClick={() => setActiveStep(isExpanded ? null : step.stepNumber)}
                       className={`absolute left-0 top-0 w-12 h-12 rounded-2xl font-black text-sm flex items-center justify-center transition-all z-10 shadow-lg hidden sm:flex cursor-pointer ${
                         isExpanded
-                          ? 'bg-blue-900 text-slate-900 ring-4 ring-blue-600/20'
-                          : 'bg-slate-100 text-blue-600 border border-slate-300'
+                          ? 'bg-blue-600 text-white ring-4 ring-blue-600/20'
+                          : 'bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 border border-slate-300 dark:border-slate-700'
                       }`}
                     >
                       {step.stepNumber}
@@ -134,50 +134,50 @@ export default function AiCareerRoadmap() {
                     {/* Step Card */}
                     <div
                       onClick={() => setActiveStep(isExpanded ? null : step.stepNumber)}
-                      className="p-6 rounded-3xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm hover:border-blue-600/50 transition-all cursor-pointer space-y-4"
+                      className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-600/50 transition-all cursor-pointer space-y-4"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <span className="sm:hidden w-8 h-8 rounded-xl bg-blue-900 text-slate-900 font-extrabold text-xs flex items-center justify-center">
+                          <span className="sm:hidden w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
                             {step.stepNumber}
                           </span>
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-50 text-blue-600 dark:text-blue-600 border border-blue-600/20">
+                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-600/20">
                             {step.phase}
                           </span>
-                          <span className="text-xs text-slate-600 font-semibold hidden md:inline">
+                          <span className="text-xs text-slate-600 dark:text-slate-400 font-semibold hidden md:inline">
                             Difficulty: {step.estimatedDifficulty}
                           </span>
                         </div>
 
-                        <span className="text-xs font-bold text-blue-600 dark:text-blue-600">
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
                           {isExpanded ? 'Hide Details' : 'View Step →'}
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-slate-900">
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                         {step.title}
                       </h3>
 
-                      <p className="text-xs text-slate-600 dark:text-slate-700 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                         {step.whatToLearn}
                       </p>
 
                       {/* Expanded Step Details */}
                       {isExpanded && (
-                        <div className="pt-4 border-t border-slate-100 dark:border-slate-200 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs animate-fadeIn">
-                          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-50/60 border border-slate-200 dark:border-slate-300/60 space-y-1">
-                            <span className="font-bold text-slate-900 dark:text-slate-800 flex items-center space-x-1">
-                              <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-600" />
+                        <div className="pt-4 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs animate-fadeIn">
+                          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
+                            <span className="font-bold text-slate-900 dark:text-white flex items-center space-x-1">
+                              <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                               <span>Why It Matters</span>
                             </span>
-                            <p className="text-slate-600 dark:text-slate-600 leading-relaxed">
+                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                               {step.whyItMatters}
                             </p>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-50 border border-blue-600/30 space-y-1">
-                            <span className="font-bold text-blue-600 dark:text-blue-600 flex items-center space-x-1">
-                              <Wrench className="w-3.5 h-3.5 text-blue-600 dark:text-blue-600" />
+                          <div className="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border border-blue-600/30 space-y-1">
+                            <span className="font-bold text-blue-600 dark:text-blue-400 flex items-center space-x-1">
+                              <Wrench className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                               <span>Suggested Project</span>
                             </span>
                             <p className="text-blue-600 dark:text-blue-200 font-semibold">

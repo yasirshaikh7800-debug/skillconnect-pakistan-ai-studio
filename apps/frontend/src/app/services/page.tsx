@@ -214,19 +214,19 @@ function ServicesContent() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-slate-900">
+        <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">
           Skilled Services Directory
         </h1>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-500 dark:text-slate-400">
           Upfront fixed prices, CNIC verified home artisans & technicians across Pakistan
         </p>
       </div>
 
       {/* Filter Controls with Location & Service Location */}
-      <div className="p-4 rounded-2xl bg-white dark:bg-white border border-slate-200 dark:border-slate-200 shadow-sm space-y-4">
+      <div className="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
           <div className="relative">
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-700 mb-1">Search</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Search</label>
             <div className="relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
               <input
@@ -234,23 +234,23 @@ function ServicesContent() {
                 placeholder="Filter by title, electrical..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full pl-9 pr-4 py-2 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-700 mb-1">Category</label>
-            <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-300 text-xs">
-              <Filter className="w-4 h-4 text-blue-600 flex-shrink-0" />
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Category</label>
+            <div className="flex items-center space-x-2 bg-slate-50 dark:bg-slate-800 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs">
+              <Filter className="w-4 h-4 text-blue-600 dark:text-blue-400 flex-shrink-0" />
               <select
                 value={selectedCategory}
                 onChange={(e) => handleCategorySelect(e.target.value)}
-                className="bg-transparent font-semibold cursor-pointer focus:outline-none text-slate-900 dark:text-slate-900 w-full"
+                className="bg-transparent font-semibold cursor-pointer focus:outline-none text-slate-900 dark:text-white w-full"
               >
-                <option value="all">All Categories ({SAMPLE_SERVICES.length})</option>
+                <option value="all" className="dark:bg-slate-900">All Categories ({SAMPLE_SERVICES.length})</option>
                 {CATEGORIES.map((cat) => (
-                  <option key={cat.id} value={cat.slug}>
+                  <option key={cat.id} value={cat.slug} className="dark:bg-slate-900">
                     {cat.name} ({SAMPLE_SERVICES.filter((s) => s.category.slug === cat.slug).length})
                   </option>
                 ))}
@@ -259,7 +259,7 @@ function ServicesContent() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-700 mb-1">Location</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Location</label>
             <CitySearchSelect
               value={selectedCity}
               onChange={setSelectedCity}
@@ -267,12 +267,12 @@ function ServicesContent() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-700 mb-1">Service Location</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Service Location</label>
             <CitySearchSelect
               value={serviceLocation}
               onChange={setServiceLocation}
             />
-            <p className="text-[10px] text-blue-600 dark:text-blue-600 font-medium mt-1 flex items-center space-x-1">
+            <p className="text-[10px] text-blue-600 dark:text-blue-400 font-medium mt-1 flex items-center space-x-1">
               <CheckCircle2 className="w-3 h-3" />
               <span>Automatically filled from Location</span>
             </p>
@@ -284,15 +284,15 @@ function ServicesContent() {
       <section className="space-y-4 relative z-10" id="service-categories-section">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-slate-900 flex items-center space-x-2">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white flex items-center space-x-2">
               <span>Service Categories</span>
               {selectedCategory !== 'all' && (
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600 border border-blue-600/30">
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-600/30">
                   {activeCategoryObj?.name || selectedCategory}
                 </span>
               )}
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Click any category card to view its verified services
             </p>
           </div>
@@ -301,7 +301,7 @@ function ServicesContent() {
               id="reset-category-btn"
               type="button"
               onClick={() => handleCategorySelect('all')}
-              className="text-xs font-semibold text-blue-600 dark:text-blue-600 hover:underline cursor-pointer flex items-center space-x-1"
+              className="text-xs font-semibold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer flex items-center space-x-1"
             >
               <X className="w-3.5 h-3.5" />
               <span>Reset to All</span>
@@ -324,8 +324,8 @@ function ServicesContent() {
                 onClick={() => handleCategorySelect(cat.slug)}
                 className={`group p-4 rounded-2xl border text-left flex flex-col justify-between space-y-3 cursor-pointer pointer-events-auto relative transition-all duration-200 ease-out hover:-translate-y-1 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 ${
                   isSelected
-                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-50 ring-2 ring-blue-600/40 shadow-lg shadow-blue-600/10'
-                    : 'border-slate-200 dark:border-slate-200/80 bg-white dark:bg-white hover:border-blue-600/50 hover:bg-slate-50 hover:bg-slate-100/60 shadow-sm hover:shadow-md hover:shadow-blue-600/20'
+                    ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/40 ring-2 ring-blue-600/40 shadow-lg shadow-blue-600/10'
+                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-600/50 hover:bg-slate-50 dark:hover:bg-slate-800/60 shadow-sm hover:shadow-md hover:shadow-blue-600/20'
                 }`}
               >
                 {/* Header: Icon & Counter Badge */}
@@ -334,7 +334,7 @@ function ServicesContent() {
                     className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 ${
                       isSelected
                         ? 'bg-blue-600 text-white font-black shadow-md shadow-blue-600/30 scale-105'
-                        : 'bg-slate-100 dark:bg-slate-50/90 text-blue-600 dark:text-blue-600 group-hover:scale-105 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/40'
+                        : 'bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 group-hover:scale-105 group-hover:bg-blue-50 dark:group-hover:bg-blue-950/60'
                     }`}
                   >
                     <Icon className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
@@ -343,7 +343,7 @@ function ServicesContent() {
                     className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors ${
                       isSelected
                         ? 'bg-blue-600 text-white font-black shadow-sm'
-                        : 'bg-slate-100 dark:bg-slate-50 text-slate-600 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-white'
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white'
                     }`}
                   >
                     {count}
@@ -355,19 +355,19 @@ function ServicesContent() {
                   <h3
                     className={`font-bold text-sm tracking-tight transition-colors line-clamp-1 ${
                       isSelected
-                        ? 'text-blue-600 dark:text-blue-600'
-                        : 'text-slate-900 dark:text-slate-900 group-hover:text-blue-600'
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
                     }`}
                   >
                     {cat.name}
                   </h3>
-                  <p className="text-xs text-slate-500 dark:text-slate-600 line-clamp-2 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-1 leading-relaxed">
                     {cat.description}
                   </p>
                 </div>
 
                 {/* Footer: Subtle visual affordance */}
-                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-200/70 flex items-center justify-between text-[11px] font-semibold text-blue-600 dark:text-blue-600">
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] font-semibold text-blue-600 dark:text-blue-400">
                   <span>{isSelected ? 'Active Filter' : 'Explore Category'}</span>
                   <ArrowRight
                     className={`w-3.5 h-3.5 transition-transform duration-200 ${
@@ -388,13 +388,13 @@ function ServicesContent() {
         className="space-y-6 pt-2 scroll-mt-24"
       >
         {/* Active Results Summary */}
-        <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-200 dark:border-slate-200">
+        <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-800">
           <p>
-            Showing <span className="font-bold text-slate-900 dark:text-slate-900">{filteredServices.length}</span>{' '}
+            Showing <span className="font-bold text-slate-900 dark:text-white">{filteredServices.length}</span>{' '}
             {selectedCategory !== 'all' ? (
               <>
                 services for{' '}
-                <span className="font-bold text-blue-600 dark:text-blue-600">
+                <span className="font-bold text-blue-600 dark:text-blue-400">
                   {activeCategoryObj?.name || selectedCategory}
                 </span>
               </>
@@ -407,7 +407,7 @@ function ServicesContent() {
           {selectedCategory !== 'all' && (
             <button
               onClick={() => handleCategorySelect('all')}
-              className="text-blue-600 dark:text-blue-600 font-semibold hover:underline cursor-pointer"
+              className="text-blue-600 dark:text-blue-400 font-semibold hover:underline cursor-pointer"
             >
               Show All Categories
             </button>
@@ -416,9 +416,9 @@ function ServicesContent() {
 
         {/* Services List */}
         {filteredServices.length === 0 ? (
-          <div className="p-12 text-center rounded-2xl border border-slate-200 dark:border-slate-200 bg-white dark:bg-white space-y-3">
-            <p className="text-base font-bold text-slate-900 dark:text-slate-900">No services found</p>
-            <p className="text-xs text-slate-500">
+          <div className="p-12 text-center rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3">
+            <p className="text-base font-bold text-slate-900 dark:text-white">No services found</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               No verified services match your current filters. Try resetting the category or search keyword.
             </p>
             <button
@@ -436,52 +436,52 @@ function ServicesContent() {
             {filteredServices.map((service) => (
               <div
                 key={service.id}
-                className="rounded-2xl border border-slate-200 dark:border-slate-200 bg-white dark:bg-white p-6 flex flex-col justify-between space-y-4 hover:shadow-lg transition-all"
+                className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 flex flex-col justify-between space-y-4 hover:shadow-lg transition-all"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-extrabold px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-50 text-blue-600 dark:text-blue-600">
+                    <span className="text-[10px] uppercase font-extrabold px-2.5 py-1 rounded-md bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400">
                       {service.category.name}
                     </span>
-                    <span className="text-xs font-semibold text-slate-400">
+                    <span className="text-xs font-semibold text-slate-400 dark:text-slate-500">
                       ~{service.durationMinutes} mins
                     </span>
                   </div>
 
-                  <h3 className="font-bold text-base text-slate-900 dark:text-slate-900">
+                  <h3 className="font-bold text-base text-slate-900 dark:text-white">
                     {service.title}
                   </h3>
 
-                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3">
                     {service.description}
                   </p>
 
                   {/* Provider info */}
-                  <div className="flex items-center space-x-3 pt-3 border-t border-slate-100 dark:border-slate-200">
+                  <div className="flex items-center space-x-3 pt-3 border-t border-slate-100 dark:border-slate-800">
                     <img
                       src={service.provider.user?.avatarUrl}
                       alt={service.provider.user?.profile?.firstName}
                       className="w-8 h-8 rounded-full object-cover border border-blue-600"
                     />
                     <div>
-                      <p className="text-xs font-bold text-slate-900 dark:text-slate-800 flex items-center space-x-1">
+                      <p className="text-xs font-bold text-slate-900 dark:text-slate-200 flex items-center space-x-1">
                         <span>
                           {service.provider.user?.profile?.firstName}{' '}
                           {service.provider.user?.profile?.lastName}
                         </span>
-                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                        <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                       </p>
-                      <p className="text-[10px] text-slate-400">
+                      <p className="text-[10px] text-slate-400 dark:text-slate-500">
                         CNIC Verified | {selectedCity}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-200 flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Estimated Fee</span>
-                    <span className="text-lg font-black text-slate-900 dark:text-slate-900">
+                    <span className="text-[10px] text-slate-400 dark:text-slate-500 block">Estimated Fee</span>
+                    <span className="text-lg font-black text-slate-900 dark:text-white">
                       PKR {service.basePrice.toLocaleString()}
                     </span>
                   </div>
@@ -500,55 +500,55 @@ function ServicesContent() {
 
       {/* Booking Modal */}
       {selectedService && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white dark:bg-white border border-slate-200 dark:border-slate-200 rounded-3xl max-md w-full p-6 space-y-4 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-md w-full p-6 space-y-4 shadow-2xl relative">
             <button
               onClick={() => setSelectedService(null)}
-              className="absolute top-4 right-4 p-2 text-slate-400 cursor-pointer"
+              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
 
             {!bookingConfirmedCode ? (
               <form onSubmit={handleConfirm} className="space-y-4">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-slate-900">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                   Confirm Service Visit
                 </h3>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   {selectedService.title} in {selectedCity}
                 </p>
 
-                <div className="p-3 bg-slate-50 dark:bg-slate-50 rounded-xl text-xs space-y-1">
-                  <p className="font-semibold text-slate-800 dark:text-slate-800">
+                <div className="p-3 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 rounded-xl text-xs space-y-1">
+                  <p className="font-semibold text-slate-800 dark:text-slate-200">
                     Technician: {selectedService.provider.user?.profile?.firstName}{' '}
                     {selectedService.provider.user?.profile?.lastName}
                   </p>
-                  <p className="text-blue-600 dark:text-blue-600 font-bold">
+                  <p className="text-blue-600 dark:text-blue-400 font-bold">
                     Rate: PKR {selectedService.basePrice.toLocaleString()}
                   </p>
                 </div>
 
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Your Street Address ({serviceLocation})</label>
+                    <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Your Street Address ({serviceLocation})</label>
                     <input
                       type="text"
                       required
                       value={bookingAddress}
                       onChange={(e) => setBookingAddress(e.target.value)}
                       placeholder="e.g. House 14, Street 8, Block 4"
-                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
                   </div>
                   <div>
-                    <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-700">Phone Number for WhatsApp / SMS</label>
+                    <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Phone Number for WhatsApp / SMS</label>
                     <input
                       type="text"
                       required
                       value={bookingPhone}
                       onChange={(e) => setBookingPhone(e.target.value)}
                       placeholder="+92 300 1234567"
-                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-300 bg-slate-50 dark:bg-slate-50 text-slate-900 dark:text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                      className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                     />
                   </div>
                 </div>
@@ -562,13 +562,13 @@ function ServicesContent() {
               </form>
             ) : (
               <div className="text-center space-y-4 py-2">
-                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-50 text-blue-600 mx-auto flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 mx-auto flex items-center justify-center">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-xl text-slate-900 dark:text-slate-900">Visit Scheduled!</h4>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Booking Code: <span className="font-mono font-bold text-blue-600 dark:text-blue-600">{bookingConfirmedCode}</span>
+                  <h4 className="font-bold text-xl text-slate-900 dark:text-white">Visit Scheduled!</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    Booking Code: <span className="font-mono font-bold text-blue-600 dark:text-blue-400">{bookingConfirmedCode}</span>
                   </p>
                 </div>
                 <div className="flex gap-2">
@@ -580,7 +580,7 @@ function ServicesContent() {
                   </Link>
                   <button
                     onClick={() => setSelectedService(null)}
-                    className="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-50 text-slate-700 dark:text-slate-800 text-xs font-bold hover:bg-slate-200 transition-colors cursor-pointer"
+                    className="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                   >
                     Done
                   </button>
