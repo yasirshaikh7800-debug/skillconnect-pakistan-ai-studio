@@ -1,1 +1,1 @@
-web: node server.js
+web: node apps/frontend/.next/standalone/apps/frontend/server.js

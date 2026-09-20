@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/frontend",
-    "build": "npx prisma generate --schema=apps/backend/prisma/schema.prisma && NODE_ENV=production npm run build --workspace=apps/frontend && mkdir -p .next dist && cp -a apps/frontend/.next/. .next/ && cp -a apps/frontend/.next/. dist/ && mkdir -p .next/standalone/.next .next/standalone/apps/frontend/.next .next/standalone/public .next/standalone/apps/frontend/public && cp -a apps/frontend/.next/static .next/standalone/.next/ 2>/dev/null || true && cp -a apps/frontend/.next/static .next/standalone/apps/frontend/.next/ 2>/dev/null || true && cp -a apps/frontend/public/. .next/standalone/public/ 2>/dev/null || true && cp -a apps/frontend/public/. .next/standalone/apps/frontend/public/ 2>/dev/null || true && cp -a apps/frontend/public/. public/ 2>/dev/null || true",
-    "start": "node server.js",
+    "build": "npx prisma generate --schema=apps/backend/prisma/schema.prisma && NODE_ENV=production npm run build --workspace=apps/frontend && mkdir -p apps/frontend/.next/standalone/apps/frontend/.next apps/frontend/.next/standalone/apps/frontend/public .next/standalone/apps/frontend/.next .next/standalone/apps/frontend/public dist && cp -a apps/frontend/.next/static apps/frontend/.next/standalone/apps/frontend/.next/ 2>/dev/null || true && cp -a apps/frontend/public/. apps/frontend/.next/standalone/apps/frontend/public/ 2>/dev/null || true && cp -a apps/frontend/.next/. .next/ && cp -a apps/frontend/.next/. dist/ && cp -a apps/frontend/.next/static .next/standalone/apps/frontend/.next/ 2>/dev/null || true && cp -a apps/frontend/public/. .next/standalone/apps/frontend/public/ 2>/dev/null || true && cp -a apps/frontend/public/. public/ 2>/dev/null || true",
+    "start": "node apps/frontend/.next/standalone/apps/frontend/server.js",
     "test": "npm run test --workspace=apps/backend",
     "lint": "npm run lint --workspace=apps/frontend"
   },

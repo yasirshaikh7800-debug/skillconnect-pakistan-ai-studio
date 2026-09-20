@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "rm -rf .next-dev 2>/dev/null; next dev -p 3000 -H 0.0.0.0",
     "build": "NODE_ENV=production next build",
-    "start": "next start -p ${PORT:-3000} -H 0.0.0.0",
+    "start": "node .next/standalone/apps/frontend/server.js 2>/dev/null || next start -p ${PORT:-3000} -H 0.0.0.0",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
