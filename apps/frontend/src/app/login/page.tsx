@@ -23,8 +23,7 @@ export default function LoginPage() {
       const phoneClean = emailOrPhone.trim().startsWith('+') ? emailOrPhone.trim() : `+92${emailOrPhone.trim().replace(/^0/, '')}`;
       
       try {
-        const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
-        await fetch(`${BACKEND_URL}/auth/otp/send`, {
+        await fetch('/api/auth/otp/send', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ phone: phoneClean }),
@@ -34,17 +33,16 @@ export default function LoginPage() {
       router.push(`/verify-otp?phone=${encodeURIComponent(phoneClean)}&redirect=${encodeURIComponent(redirectTarget)}&role=${role}`);
     } else {
       try {
-        const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-        const res = await fetch(`${BACKEND_URL}/auth/login`, {
+        const res = await fetch('/api/auth/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: emailOrPhone, password }),
+          body: JSON.stringify({ email: emailOrPhone, password, role }),
         });
         const data = await res.json();
         
         if (res.ok && data.accessToken) {
           localStorage.setItem('skillconnect_auth_token', data.accessToken);
-          document.cookie = `skillconnect_auth_token=${data.accessToken}; path=/; max-age=86400`;
+          document.cookie = `skillconnect_auth_token=${data.accessToken}; path=/; max-age=604800; SameSite=Lax`;
           
           if (data.user?.role === 'CUSTOMER') {
             router.push('/dashboard/customer');
@@ -57,7 +55,7 @@ export default function LoginPage() {
           alert(data.message || 'Login failed');
         }
       } catch (err) {
-        alert('Login failed. Please configure backend database.');
+        alert('Login failed. Please try again.');
       }
     }
   };

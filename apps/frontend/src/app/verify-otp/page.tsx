@@ -14,8 +14,8 @@ function OtpVerificationContent() {
   const phoneParam = searchParams?.get('phone') || '+923001234567';
   const redirectParam = searchParams?.get('redirect') || '/dashboard/customer';
 
-  // Exactly 4 digits for OTP
-  const [otp, setOtp] = useState<string[]>(['', '', '', '']);
+  // Exactly 6 digits for standard secure OTP
+  const [otp, setOtp] = useState<string[]>(['', '', '', '', '', '']);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const [loading, setLoading] = useState(false);
@@ -69,8 +69,8 @@ function OtpVerificationContent() {
   // Submit REAL OTP Verification (Fires ONCE)
   const handleVerify = async (codeToVerify?: string) => {
     const finalCode = codeToVerify || otp.join('');
-    if (finalCode.length < 4) {
-      setError('Please enter all 4 digits.');
+    if (finalCode.length < 6) {
+      setError('Please enter all 6 digits.');
       return;
     }
 
@@ -87,6 +87,7 @@ function OtpVerificationContent() {
         body: JSON.stringify({
           phone: phoneParam,
           code: finalCode,
+          role: searchParams?.get('role') || (redirectParam.includes('provider') ? 'PROVIDER' : 'CUSTOMER'),
         }),
       });
 
@@ -94,6 +95,11 @@ function OtpVerificationContent() {
 
       if (!response.ok) {
         throw new Error(data.message || 'Invalid verification code. Please check the code.');
+      }
+
+      if (data.accessToken) {
+        localStorage.setItem('skillconnect_auth_token', data.accessToken);
+        document.cookie = `skillconnect_auth_token=${data.accessToken}; path=/; max-age=604800; SameSite=Lax`;
       }
 
       setSuccess(true);
@@ -122,14 +128,14 @@ function OtpVerificationContent() {
     setOtp(newOtp);
 
     // Auto-advance focus
-    if (digit && index < 3 && inputRefs.current[index + 1]) {
+    if (digit && index < 5 && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1]?.focus();
       setActiveInputIndex(index + 1);
     } else {
       setActiveInputIndex(index);
     }
 
-    // Immediately after 4th digit is entered -> trigger verification ONCE
+    // Immediately after 6th digit is entered -> trigger verification ONCE
     if (newOtp.every((d) => d !== '') && !isVerifyingRef.current) {
       handleVerify(newOtp.join(''));
     }
@@ -146,7 +152,7 @@ function OtpVerificationContent() {
     } else if (e.key === 'ArrowLeft' && index > 0) {
       inputRefs.current[index - 1]?.focus();
       setActiveInputIndex(index - 1);
-    } else if (e.key === 'ArrowRight' && index < 3) {
+    } else if (e.key === 'ArrowRight' && index < 5) {
       inputRefs.current[index + 1]?.focus();
       setActiveInputIndex(index + 1);
     }
@@ -156,20 +162,20 @@ function OtpVerificationContent() {
   const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     if (loading || success) return;
     e.preventDefault();
-    const pastedData = e.clipboardData.getData('text/plain').replace(/\D/g, '').slice(0, 4);
+    const pastedData = e.clipboardData.getData('text/plain').replace(/\D/g, '').slice(0, 6);
     if (!pastedData) return;
 
-    const newOtp = ['', '', '', ''];
-    for (let i = 0; i < 4; i++) {
+    const newOtp = ['', '', '', '', '', ''];
+    for (let i = 0; i < 6; i++) {
       newOtp[i] = pastedData[i] || '';
     }
     setOtp(newOtp);
 
-    const nextFocusIndex = Math.min(pastedData.length, 3);
+    const nextFocusIndex = Math.min(pastedData.length, 5);
     inputRefs.current[nextFocusIndex]?.focus();
     setActiveInputIndex(nextFocusIndex);
 
-    if (pastedData.length === 4 && !isVerifyingRef.current) {
+    if (pastedData.length === 6 && !isVerifyingRef.current) {
       handleVerify(pastedData);
     }
   };
@@ -196,7 +202,7 @@ function OtpVerificationContent() {
 
       setCountdown(30);
       setCanResend(false);
-      setOtp(['', '', '', '']);
+      setOtp(['', '', '', '', '', '']);
       isVerifyingRef.current = false;
       setActiveInputIndex(0);
       if (inputRefs.current[0]) inputRefs.current[0].focus();
@@ -262,7 +268,7 @@ function OtpVerificationContent() {
                 Verify your phone number
               </h1>
               <p className="text-xs text-slate-400">
-                Enter the verification code sent to your phone
+                Enter the 6-digit verification code sent to your phone
               </p>
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-600/30 text-xs font-mono text-blue-300 font-semibold shadow-inner">
                 <Phone className="w-3.5 h-3.5 text-blue-600" />
@@ -270,8 +276,8 @@ function OtpVerificationContent() {
               </div>
             </div>
 
-            {/* 4 SEPARATE SQUARE INPUT BOXES */}
-            <div className="flex justify-center items-center gap-3 sm:gap-4">
+            {/* 6 SEPARATE SQUARE INPUT BOXES */}
+            <div className="flex justify-center items-center gap-2 sm:gap-3">
               {otp.map((digit, idx) => {
                 const isActive = activeInputIndex === idx;
                 const isFilled = Boolean(digit);
@@ -291,7 +297,7 @@ function OtpVerificationContent() {
                       onChange={(e) => handleChange(idx, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(idx, e)}
                       onPaste={handlePaste}
-                      className={`w-14 sm:w-16 h-16 sm:h-20 text-center text-2xl sm:text-3xl font-black rounded-2xl border transition-all duration-200 outline-none select-none ${
+                      className={`w-10 sm:w-13 h-13 sm:h-16 text-center text-xl sm:text-2xl font-black rounded-xl sm:rounded-2xl border transition-all duration-200 outline-none select-none ${
                         success
                           ? 'bg-blue-900/80 border-blue-600 text-blue-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] scale-105'
                           : error

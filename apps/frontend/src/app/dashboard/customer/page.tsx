@@ -36,6 +36,7 @@ export default function CustomerDashboardPage() {
   const handleLogout = () => {
     localStorage.removeItem('skillconnect_auth_token');
     localStorage.removeItem('skillconnect_user_session');
+    document.cookie = 'skillconnect_auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     router.push('/login');
   };
 

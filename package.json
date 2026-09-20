@@ -8,21 +8,26 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=apps/frontend",
-    "build": "NODE_ENV=production npm run build --workspace=apps/frontend && mkdir -p .next dist apps/frontend/dist && cp -a apps/frontend/.next/. .next/ && cp -a apps/frontend/.next/. dist/ && cp -a apps/frontend/.next/. apps/frontend/dist/ && mkdir -p .next/standalone/.next .next/standalone/public public && cp -a .next/static .next/standalone/.next/ 2>/dev/null || true && cp -a public/. .next/standalone/public/ 2>/dev/null || true && cp -f apps/frontend/.next/server/app/index.html dist/index.html 2>/dev/null || true",
-    "start": "node server.cjs",
+    "build": "npx prisma generate --schema=apps/backend/prisma/schema.prisma && NODE_ENV=production npm run build --workspace=apps/frontend && mkdir -p .next dist && cp -a apps/frontend/.next/. .next/ && cp -a apps/frontend/.next/. dist/ && mkdir -p .next/standalone/.next .next/standalone/apps/frontend/.next .next/standalone/public .next/standalone/apps/frontend/public && cp -a apps/frontend/.next/static .next/standalone/.next/ 2>/dev/null || true && cp -a apps/frontend/.next/static .next/standalone/apps/frontend/.next/ 2>/dev/null || true && cp -a apps/frontend/public/. .next/standalone/public/ 2>/dev/null || true && cp -a apps/frontend/public/. .next/standalone/apps/frontend/public/ 2>/dev/null || true && cp -a apps/frontend/public/. public/ 2>/dev/null || true",
+    "start": "node server.js",
     "test": "npm run test --workspace=apps/backend",
     "lint": "npm run lint --workspace=apps/frontend"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "eslint": "^10.8.1",
-    "eslint-config-next": "^16.3.0"
+    "eslint-config-next": "^16.3.0",
+    "prisma": "^5.22.0"
   },
   "dependencies": {
     "@google/genai": "^2.16.0",
+    "@prisma/client": "^5.22.0",
     "@types/three": "^0.185.4",
+    "bcryptjs": "^2.4.3",
     "next": "15.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "styled-jsx": "^5.1.6",
     "three": "^0.185.1"
   }
 }
