@@ -36,15 +36,15 @@ export default function AiCareerRoadmap() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 border border-blue-600/30 text-slate-900 space-y-4 shadow-xl relative overflow-hidden">
-        <div className="flex items-center space-x-2 text-blue-600 text-xs font-bold uppercase tracking-wider">
-          <Route className="w-4 h-4" />
+      <div className="p-6 rounded-3xl bg-gradient-to-br from-[#0a1024] via-[#0d1633] to-[#070d20] border border-cyan-500/30 text-white space-y-4 shadow-[0_10px_35px_rgba(0,0,0,0.5)] relative overflow-hidden">
+        <div className="flex items-center space-x-2 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <Route className="w-4 h-4 text-cyan-400" />
           <span>Interactive AI Career Roadmap</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          Visual Step-by-Step Pathway to Becoming <span className="text-blue-600">{targetRole}</span>
+          Visual Step-by-Step Pathway to Becoming <span className="text-gradient-cyan-blue">{targetRole}</span>
         </h2>
-        <p className="text-slate-700 text-xs sm:text-sm max-w-2xl">
+        <p className="text-slate-300 text-xs sm:text-sm max-w-2xl">
           Enter any career goal in Pakistan (Full Stack Developer, Solar Engineer, Graphic Designer, Flutter Developer). Gemini AI generates a structured milestone roadmap with projects and skill prerequisites.
         </p>
 
@@ -56,23 +56,23 @@ export default function AiCareerRoadmap() {
             value={targetRole}
             onChange={(e) => setTargetRole(e.target.value)}
             placeholder="e.g. Full Stack Developer, MERN Developer..."
-            className="flex-1 px-4 py-2.5 rounded-xl bg-white text-slate-900 placeholder-slate-400 border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="flex-1 px-4 py-2.5 rounded-xl bg-[#050814] text-white placeholder-slate-500 border border-cyan-500/20 text-xs focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 font-mono"
           />
 
           <select
             value={timeframe}
             onChange={(e) => setTimeframe(e.target.value)}
-            className="px-4 py-2.5 rounded-xl bg-white text-slate-900 border border-slate-300 text-xs focus:outline-none focus:ring-2 focus:ring-blue-600"
+            className="px-4 py-2.5 rounded-xl bg-[#050814] text-white border border-cyan-500/20 text-xs focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 font-medium"
           >
-            <option value="3 Months">Fast Track (3 Months)</option>
-            <option value="6 Months">Standard (6 Months)</option>
-            <option value="12 Months">Comprehensive (1 Year)</option>
+            <option value="3 Months" className="bg-[#0a1024]">Fast Track (3 Months)</option>
+            <option value="6 Months" className="bg-[#0a1024]">Standard (6 Months)</option>
+            <option value="12 Months" className="bg-[#0a1024]">Comprehensive (1 Year)</option>
           </select>
 
           <button
             type="submit"
             disabled={loading}
-            className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-slate-900 font-bold text-xs shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
+            className="px-6 py-2.5 rounded-xl glow-btn-cyan text-slate-950 font-bold text-xs shadow-lg transition-all flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
           >
             {loading ? (
               <>
@@ -91,12 +91,12 @@ export default function AiCareerRoadmap() {
 
       {/* Roadmap Visualization */}
       {!roadmap && !loading && (
-        <div className="p-12 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center space-y-3 shadow-sm">
-          <Route className="w-12 h-12 text-blue-600 dark:text-blue-400 mx-auto animate-pulse" />
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+        <div className="p-12 rounded-3xl bg-[#0a1024]/60 border border-cyan-500/20 text-center space-y-3 shadow-sm">
+          <Route className="w-12 h-12 text-cyan-400 mx-auto animate-pulse" />
+          <h3 className="text-lg font-bold text-white">
             Click "Build Roadmap" to Generate Your Path
           </h3>
-          <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
             Get a tailored progression from Beginner fundamentals to Job Ready projects designed for Pakistani tech & service industries.
           </p>
         </div>
@@ -107,7 +107,7 @@ export default function AiCareerRoadmap() {
           {/* Timeline Nodes */}
           <div className="relative">
             {/* Center Connecting Line */}
-            <div className="absolute left-6 top-8 bottom-8 w-1 bg-gradient-to-b from-blue-800 via-blue-900 to-blue-800 rounded-full hidden sm:block" />
+            <div className="absolute left-6 top-8 bottom-8 w-1 bg-gradient-to-b from-cyan-400 via-sky-500 to-violet-600 rounded-full hidden sm:block shadow-[0_0_10px_rgba(0,242,254,0.4)]" />
 
             <div className="space-y-6">
               {roadmap.roadmapSteps?.map((step: any, index: number) => {
@@ -124,8 +124,8 @@ export default function AiCareerRoadmap() {
                       onClick={() => setActiveStep(isExpanded ? null : step.stepNumber)}
                       className={`absolute left-0 top-0 w-12 h-12 rounded-2xl font-black text-sm flex items-center justify-center transition-all z-10 shadow-lg hidden sm:flex cursor-pointer ${
                         isExpanded
-                          ? 'bg-blue-600 text-white ring-4 ring-blue-600/20'
-                          : 'bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 border border-slate-300 dark:border-slate-700'
+                          ? 'glow-btn-cyan text-slate-950 ring-4 ring-cyan-400/20'
+                          : 'bg-[#050814] text-cyan-400 border border-cyan-500/30'
                       }`}
                     >
                       {step.stepNumber}
@@ -134,53 +134,53 @@ export default function AiCareerRoadmap() {
                     {/* Step Card */}
                     <div
                       onClick={() => setActiveStep(isExpanded ? null : step.stepNumber)}
-                      className="p-6 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-blue-600/50 transition-all cursor-pointer space-y-4"
+                      className="p-6 rounded-3xl bg-[#0a1024]/85 backdrop-blur-xl border border-cyan-500/20 shadow-sm hover:border-cyan-500/50 transition-all cursor-pointer space-y-4"
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-3">
-                          <span className="sm:hidden w-8 h-8 rounded-xl bg-blue-600 text-white font-extrabold text-xs flex items-center justify-center">
+                          <span className="sm:hidden w-8 h-8 rounded-xl bg-cyan-400 text-slate-950 font-extrabold text-xs flex items-center justify-center">
                             {step.stepNumber}
                           </span>
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 border border-blue-600/20">
+                          <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
                             {step.phase}
                           </span>
-                          <span className="text-xs text-slate-600 dark:text-slate-400 font-semibold hidden md:inline">
+                          <span className="text-xs text-slate-400 font-semibold hidden md:inline">
                             Difficulty: {step.estimatedDifficulty}
                           </span>
                         </div>
 
-                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">
+                        <span className="text-xs font-bold text-cyan-400">
                           {isExpanded ? 'Hide Details' : 'View Step →'}
                         </span>
                       </div>
 
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-lg font-bold text-white">
                         {step.title}
                       </h3>
 
-                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      <p className="text-xs text-slate-300 leading-relaxed">
                         {step.whatToLearn}
                       </p>
 
                       {/* Expanded Step Details */}
                       {isExpanded && (
-                        <div className="pt-4 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs animate-fadeIn">
-                          <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1">
-                            <span className="font-bold text-slate-900 dark:text-white flex items-center space-x-1">
-                              <BookOpen className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                        <div className="pt-4 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs animate-fadeIn">
+                          <div className="p-3.5 rounded-2xl bg-[#050814]/70 border border-slate-800 space-y-1">
+                            <span className="font-bold text-white flex items-center space-x-1">
+                              <BookOpen className="w-3.5 h-3.5 text-cyan-400" />
                               <span>Why It Matters</span>
                             </span>
-                            <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            <p className="text-slate-300 leading-relaxed">
                               {step.whyItMatters}
                             </p>
                           </div>
 
-                          <div className="p-3.5 rounded-2xl bg-blue-50 dark:bg-blue-950/50 border border-blue-600/30 space-y-1">
-                            <span className="font-bold text-blue-600 dark:text-blue-400 flex items-center space-x-1">
-                              <Wrench className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                          <div className="p-3.5 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 space-y-1">
+                            <span className="font-bold text-cyan-300 flex items-center space-x-1">
+                              <Wrench className="w-3.5 h-3.5 text-cyan-400" />
                               <span>Suggested Project</span>
                             </span>
-                            <p className="text-blue-600 dark:text-blue-200 font-semibold">
+                            <p className="text-cyan-200 font-semibold">
                               {step.suggestedProject}
                             </p>
                           </div>

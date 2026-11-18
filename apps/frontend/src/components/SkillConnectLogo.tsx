@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { useTheme } from '@/context/ThemeContext';
 
 interface SkillConnectLogoProps {
   variant?: 'full' | 'compact' | 'icon-only';
@@ -12,7 +11,7 @@ interface SkillConnectLogoProps {
 }
 
 export function SkillConnectIcon({
-  size = 36,
+  size = 38,
   className = '',
 }: {
   size?: number;
@@ -26,71 +25,76 @@ export function SkillConnectIcon({
       <svg
         width={size}
         height={size}
-        viewBox="0 0 48 48"
+        viewBox="0 0 54 54"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full drop-shadow-sm"
+        className="w-full h-full drop-shadow-[0_0_12px_rgba(0,242,254,0.35)]"
       >
         <defs>
-          {/* Deep Royal to Vibrant Cobalt Blue Gradient */}
-          <linearGradient id="scGradientPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1e40af" />
-            <stop offset="50%" stopColor="#1d4ed8" />
-            <stop offset="100%" stopColor="#2563eb" />
+          {/* Futuristic Cyan to Royal Blue to Purple Gradient */}
+          <linearGradient id="scFuturisticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#00f2fe" />
+            <stop offset="48%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#a855f7" />
           </linearGradient>
 
-          {/* Cyan/Light Blue Accent for Interlocking Flow */}
-          <linearGradient id="scGradientAccent" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#2563eb" />
-            <stop offset="60%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#93c5fd" />
+          {/* Accent Flow for Inner Nodes */}
+          <linearGradient id="scNodeFlow" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#a855f7" />
+            <stop offset="50%" stopColor="#38bdf8" />
+            <stop offset="100%" stopColor="#00f2fe" />
           </linearGradient>
 
-          {/* Subtle Glow Filter */}
-          <filter id="scGlow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#1e40af" floodOpacity="0.25" />
+          {/* Subtle Outer Neon Glow */}
+          <filter id="scNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3.5" floodColor="#00f2fe" floodOpacity="0.38" />
           </filter>
         </defs>
 
-        {/* Outer Shield/Hex Modern Squircle Base */}
+        {/* Outer Dark Glass Background with Neon Border */}
         <rect
-          x="3"
-          y="3"
-          width="42"
-          height="42"
-          rx="12"
-          fill="url(#scGradientPrimary)"
-          filter="url(#scGlow)"
+          x="3.5"
+          y="3.5"
+          width="47"
+          height="47"
+          rx="14"
+          fill="#060c20"
+          stroke="url(#scFuturisticGradient)"
+          strokeWidth="1.8"
+          filter="url(#scNeonGlow)"
         />
 
-        {/* Inner White Network & Skill Connection Knot */}
-        {/* Pathway 1: Customer Node Arc (Left to Center-Right) */}
+        {/* Interlocking Orbital Skill & Network Arcs */}
+        {/* Top-Left to Bottom-Right Arc (Skills Network) */}
         <path
-          d="M15 24C15 19.0294 19.0294 15 24 15C27.5 15 30.5 17 32 20"
-          stroke="#ffffff"
+          d="M17 27C17 20.3726 21.4772 16 27 16C31.5 16 35.5 18.5 37 22"
+          stroke="url(#scFuturisticGradient)"
           strokeWidth="3.2"
           strokeLinecap="round"
-          strokeLinejoin="round"
         />
 
-        {/* Pathway 2: Worker Node Arc (Right to Center-Left) */}
+        {/* Bottom-Right to Top-Left Arc (People Connection) */}
         <path
-          d="M33 24C33 28.9706 28.9706 33 24 33C20.5 33 17.5 31 16 28"
-          stroke="url(#scGradientAccent)"
+          d="M37 27C37 33.6274 32.5228 38 27 38C22.5 38 18.5 35.5 17 32"
+          stroke="url(#scNodeFlow)"
           strokeWidth="3.2"
           strokeLinecap="round"
-          strokeLinejoin="round"
         />
 
-        {/* Central Convergence Axis & Core Node */}
-        <circle cx="24" cy="24" r="3.6" fill="#ffffff" />
-        <circle cx="24" cy="24" r="1.6" fill="#1d4ed8" />
+        {/* Central Convergence Core (The National Platform) */}
+        <circle cx="27" cy="27" r="4.2" fill="url(#scFuturisticGradient)" />
+        <circle cx="27" cy="27" r="2" fill="#ffffff" />
 
-        {/* Customer Node Pin */}
-        <circle cx="15" cy="24" r="2.2" fill="#ffffff" />
+        {/* Node 1: Citizen (Cyan) */}
+        <circle cx="17" cy="27" r="2.8" fill="#00f2fe" />
+        <circle cx="17" cy="27" r="1.2" fill="#ffffff" />
 
-        {/* Skilled Worker Node Pin */}
-        <circle cx="33" cy="24" r="2.2" fill="#93c5fd" />
+        {/* Node 2: Skilled Artisan (Purple) */}
+        <circle cx="37" cy="27" r="2.8" fill="#c084fc" />
+        <circle cx="37" cy="27" r="1.2" fill="#ffffff" />
+
+        {/* Top Digital Link Orbit Node */}
+        <circle cx="27" cy="16" r="1.8" fill="#38bdf8" />
       </svg>
     </div>
   );
@@ -101,26 +105,12 @@ export default function SkillConnectLogo({
   size = 'md',
   className = '',
   showSubtitle = true,
-  forceTheme,
 }: SkillConnectLogoProps) {
-  let isDark = false;
-  try {
-    const { theme } = useTheme();
-    isDark = theme === 'dark';
-  } catch {
-    // If rendered outside ThemeProvider
-    isDark = false;
-  }
-
-  if (forceTheme) {
-    isDark = forceTheme === 'dark';
-  }
-
   const iconSizes = {
-    sm: 28,
-    md: 38,
-    lg: 46,
-    xl: 56,
+    sm: 30,
+    md: 40,
+    lg: 48,
+    xl: 58,
   };
 
   const currentIconSize = iconSizes[size];
@@ -129,33 +119,13 @@ export default function SkillConnectLogo({
     return <SkillConnectIcon size={currentIconSize} className={className} />;
   }
 
-  // Explicit text styling based on theme or caller classes
-  const isCustomColor = className.includes('text-white') || className.includes('text-slate-');
-  const mainTextColor = isCustomColor 
-    ? '' 
-    : isDark 
-      ? 'text-white' 
-      : 'text-slate-900';
-
-  const dotPkColor = className.includes('text-white')
-    ? 'text-blue-300'
-    : isDark
-      ? 'text-blue-400'
-      : 'text-blue-600';
-
-  const subtitleColor = className.includes('text-white')
-    ? 'text-blue-100'
-    : isDark
-      ? 'text-slate-400'
-      : 'text-slate-500';
-
   return (
-    <div className={`inline-flex items-center space-x-2.5 select-none ${className}`}>
+    <div className={`inline-flex items-center space-x-3 select-none ${className}`}>
       <SkillConnectIcon size={currentIconSize} />
       <div className="flex flex-col leading-none">
         <div className="flex items-baseline">
           <span
-            className={`font-bold tracking-tight ${mainTextColor} ${
+            className={`font-extrabold tracking-tight text-white ${
               size === 'sm'
                 ? 'text-lg'
                 : size === 'md'
@@ -168,7 +138,7 @@ export default function SkillConnectLogo({
             SkillConnect
           </span>
           <span
-            className={`font-extrabold ${dotPkColor} ${
+            className={`font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 ${
               size === 'sm'
                 ? 'text-lg'
                 : size === 'md'
@@ -183,17 +153,22 @@ export default function SkillConnectLogo({
         </div>
 
         {(variant === 'full' || showSubtitle) && (
-          <span
-            className={`font-semibold uppercase tracking-wider ${subtitleColor} ${
-              size === 'sm'
-                ? 'text-[8.5px]'
-                : size === 'md'
-                ? 'text-[9.5px]'
-                : 'text-[11px]'
-            }`}
-          >
-            Pakistan Services Network
-          </span>
+          <div className="flex items-center space-x-1.5 mt-0.5">
+            <span
+              className={`font-bold uppercase tracking-[0.22em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-200 to-purple-300 ${
+                size === 'sm'
+                  ? 'text-[8px]'
+                  : size === 'md'
+                  ? 'text-[9.5px]'
+                  : 'text-[11px]'
+              }`}
+            >
+              PAKISTAN
+            </span>
+            <span className="text-[7.5px] font-medium text-slate-400 tracking-wider">
+              · SERVICES PLATFORM
+            </span>
+          </div>
         )}
       </div>
     </div>

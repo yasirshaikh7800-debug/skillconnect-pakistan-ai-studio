@@ -11,29 +11,29 @@ export default function AiCareerHubPage() {
   const [activeTab, setActiveTab] = useState<'matcher' | 'roadmap' | 'profile' | 'insights'>('matcher');
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto pb-16">
+    <div className="space-y-8 max-w-7xl mx-auto pb-16 px-4">
       {/* Top Banner */}
-      <div className="text-center space-y-3 max-w-2xl mx-auto pt-4">
-        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-600/10 border border-blue-600/30 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" />
+      <div className="text-center space-y-3 max-w-2xl mx-auto pt-6">
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono font-bold uppercase tracking-wider shadow-lg shadow-cyan-500/10">
+          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>SkillConnect Pakistan AI Engine</span>
         </div>
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-          AI Career & Skills Hub
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+          AI Career & <span className="text-gradient-cyan-blue">Skills Hub</span>
         </h1>
-        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
+        <p className="text-xs sm:text-sm text-slate-400">
           Match your skills with top Pakistani job market demands, generate interactive career roadmaps, and polish your professional service profile.
         </p>
       </div>
 
       {/* Tabs Bar */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 w-fit mx-auto">
+      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-[#0a1024]/90 backdrop-blur-xl border border-cyan-500/20 w-fit mx-auto shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
         <button
           onClick={() => setActiveTab('matcher')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'matcher'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-slate-950 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
+              : 'text-slate-400 hover:text-white'
           }`}
         >
           <BrainCircuit className="w-4 h-4" />
@@ -44,8 +44,8 @@ export default function AiCareerHubPage() {
           onClick={() => setActiveTab('roadmap')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'roadmap'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-slate-950 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
+              : 'text-slate-400 hover:text-white'
           }`}
         >
           <Route className="w-4 h-4" />
@@ -56,8 +56,8 @@ export default function AiCareerHubPage() {
           onClick={() => setActiveTab('profile')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'profile'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-slate-950 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
+              : 'text-slate-400 hover:text-white'
           }`}
         >
           <UserCheck className="w-4 h-4" />
@@ -68,8 +68,8 @@ export default function AiCareerHubPage() {
           onClick={() => setActiveTab('insights')}
           className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 cursor-pointer ${
             activeTab === 'insights'
-              ? 'bg-blue-600 text-white shadow-md'
-              : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+              ? 'bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 text-slate-950 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
+              : 'text-slate-400 hover:text-white'
           }`}
         >
           <LayoutDashboard className="w-4 h-4" />

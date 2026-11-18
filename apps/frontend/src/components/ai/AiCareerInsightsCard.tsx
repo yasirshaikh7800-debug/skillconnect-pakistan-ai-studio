@@ -22,25 +22,25 @@ export default function AiCareerInsightsCard({
   ],
 }: AiCareerInsightsProps) {
   return (
-    <div className="p-6 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 border border-blue-600/30 text-slate-900 shadow-xl space-y-6">
+    <div className="p-6 rounded-3xl bg-[#0a1024]/85 backdrop-blur-xl border border-cyan-500/25 text-white shadow-[0_15px_35px_rgba(0,0,0,0.5)] space-y-6">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-300/80 pb-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
         <div className="space-y-1">
-          <div className="flex items-center space-x-2 text-blue-600 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-4 h-4" />
-            <span>AI Career Insights</span>
+          <div className="flex items-center space-x-2 text-cyan-400 text-xs font-mono font-bold uppercase tracking-wider">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span>AI Career Insights Engine</span>
           </div>
-          <h3 className="text-xl font-extrabold text-slate-900">
-            Target Role: <span className="text-blue-600">{currentProfileRole}</span>
+          <h3 className="text-xl font-extrabold text-white">
+            Target Role: <span className="text-gradient-cyan-blue">{currentProfileRole}</span>
           </h3>
         </div>
 
         {/* Match Percentage Badge */}
-        <div className="flex items-center space-x-3 bg-blue-600/10 border border-blue-600/30 px-4 py-2 rounded-2xl w-fit">
-          <Award className="w-6 h-6 text-blue-600" />
+        <div className="flex items-center space-x-3 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-2xl w-fit shadow-[0_0_20px_rgba(0,242,254,0.15)]">
+          <Award className="w-6 h-6 text-cyan-400" />
           <div>
-            <span className="text-2xl font-black text-blue-600">{matchScore}%</span>
-            <span className="block text-[10px] text-slate-700 font-semibold uppercase">
+            <span className="text-2xl font-black text-cyan-300">{matchScore}%</span>
+            <span className="block text-[10px] text-slate-400 font-semibold uppercase font-mono">
               Profile AI Match
             </span>
           </div>
@@ -49,19 +49,19 @@ export default function AiCareerInsightsCard({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
         {/* Recommended Next Skills */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-3">
-          <h4 className="font-extrabold text-slate-700 uppercase tracking-wider flex items-center space-x-2">
-            <Target className="w-4 h-4 text-blue-600" />
+        <div className="p-5 rounded-2xl bg-[#050814]/70 border border-cyan-500/20 space-y-3">
+          <h4 className="font-extrabold text-slate-300 uppercase tracking-wider flex items-center space-x-2 font-mono">
+            <Target className="w-4 h-4 text-cyan-400" />
             <span>Recommended Next Skills</span>
           </h4>
           <div className="space-y-2">
             {recommendedSkills.map((skill, idx) => (
               <div
                 key={idx}
-                className="p-2.5 rounded-xl bg-slate-100/80 border border-slate-300/60 flex items-center justify-between text-slate-700"
+                className="p-3 rounded-xl bg-[#0a1024] border border-slate-800 flex items-center justify-between text-slate-200 hover:border-cyan-500/30 transition-all"
               >
-                <span className="font-bold">{idx + 1}. {skill}</span>
-                <span className="text-[10px] text-blue-600 font-semibold px-2 py-0.5 rounded bg-blue-900">
+                <span className="font-semibold">{idx + 1}. {skill}</span>
+                <span className="text-[10px] text-cyan-300 font-semibold px-2 py-0.5 rounded bg-cyan-950/80 border border-cyan-500/30">
                   High Impact
                 </span>
               </div>
@@ -70,8 +70,8 @@ export default function AiCareerInsightsCard({
         </div>
 
         {/* Recommended Opportunities */}
-        <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-3">
-          <h4 className="font-extrabold text-slate-700 uppercase tracking-wider flex items-center space-x-2">
+        <div className="p-5 rounded-2xl bg-[#050814]/70 border border-cyan-500/20 space-y-3">
+          <h4 className="font-extrabold text-slate-300 uppercase tracking-wider flex items-center space-x-2 font-mono">
             <Briefcase className="w-4 h-4 text-cyan-400" />
             <span>Recommended Opportunities</span>
           </h4>
@@ -79,10 +79,10 @@ export default function AiCareerInsightsCard({
             {recommendedOpportunities.map((opp, idx) => (
               <div
                 key={idx}
-                className="p-2.5 rounded-xl bg-slate-100/80 border border-slate-300/60 flex items-center justify-between text-slate-700"
+                className="p-3 rounded-xl bg-[#0a1024] border border-slate-800 flex items-center justify-between text-slate-200 hover:border-cyan-500/30 transition-all"
               >
                 <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0" />
                   <span className="font-medium">{opp}</span>
                 </div>
               </div>
@@ -92,13 +92,13 @@ export default function AiCareerInsightsCard({
       </div>
 
       {/* Footer CTA */}
-      <div className="pt-2 flex items-center justify-between text-xs">
-        <span className="text-slate-600">
+      <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs border-t border-slate-800">
+        <span className="text-slate-400">
           Powered by SkillConnect Gemini AI Engine
         </span>
         <Link
           href="/ai-hub"
-          className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-slate-900 font-bold shadow-md shadow-blue-600/20 transition-all flex items-center space-x-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl glow-btn-cyan text-slate-950 font-bold shadow-md transition-all flex items-center space-x-1.5 cursor-pointer"
         >
           <span>Open Full AI Hub</span>
           <ArrowRight className="w-4 h-4" />

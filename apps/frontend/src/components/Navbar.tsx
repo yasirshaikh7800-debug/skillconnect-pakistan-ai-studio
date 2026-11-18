@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useTheme } from '@/context/ThemeContext';
-import { Sun, Moon, Search, ShieldCheck, Menu, X, Sparkles } from 'lucide-react';
+import { Sun, Moon, Search, Menu, X, Sparkles, ArrowRight } from 'lucide-react';
 import CitySearchSelect from '@/components/CitySearchSelect';
 import SkillConnectLogo from '@/components/SkillConnectLogo';
 
@@ -29,17 +29,17 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-blue-900 border-b border-blue-600 transition-colors shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#050814]/85 backdrop-blur-xl border-b border-cyan-500/15 shadow-[0_4px_30px_rgba(0,0,0,0.6)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <Link href="/" className="flex items-center">
-              <SkillConnectLogo variant="compact" size="md" className="text-white" />
+        <div className="flex items-center justify-between h-20">
+          {/* Logo & City Selector */}
+          <div className="flex items-center space-x-4">
+            <Link href="/" className="flex items-center group">
+              <SkillConnectLogo variant="compact" size="md" />
             </Link>
 
             {/* City Selector */}
-            <div className="hidden md:flex items-center pl-2">
+            <div className="hidden xl:flex items-center pl-2 border-l border-slate-800">
               <CitySearchSelect
                 compact
                 value={selectedCity}
@@ -48,125 +48,129 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Search Quick Bar */}
-          <div className="hidden lg:flex items-center flex-1 max-w-md mx-8">
+          {/* Quick Search Bar */}
+          <div className="hidden lg:flex items-center flex-1 max-w-sm mx-6">
             <form onSubmit={handleNavSearch} className="relative w-full">
               <input
                 type="text"
                 value={navSearch}
                 onChange={(e) => setNavSearch(e.target.value)}
-                placeholder="Search electricians, plumbers, AC repair in PKR..."
-                className="w-full pl-10 pr-4 py-2 text-sm rounded-full bg-white text-slate-900 placeholder-slate-500 border border-transparent focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all"
+                placeholder="Search electricians, plumbers, AC..."
+                className="w-full pl-9 pr-4 py-2 text-xs rounded-full bg-[#0a1024]/90 text-slate-100 placeholder-slate-400 border border-cyan-500/20 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400/40 transition-all shadow-inner"
               />
-              <button type="submit" className="absolute left-3.5 top-2.5 text-slate-400 hover:text-white">
-                <Search className="w-4 h-4" />
+              <button
+                type="submit"
+                className="absolute left-3 top-2.5 text-slate-400 hover:text-cyan-400 transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-3.5 h-3.5" />
               </button>
             </form>
           </div>
 
-          {/* Right Navigation & Controls */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
+          {/* Clean Navigation Links & Actions */}
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
             <Link
               href="/ai-hub"
               id="nav-aihub-link"
               aria-current={isAiHubActive ? 'page' : undefined}
-              className={`group relative text-sm font-bold flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`relative text-xs font-semibold flex items-center space-x-1.5 px-3 py-2 rounded-lg transition-all ${
                 isAiHubActive
-                  ? 'text-slate-100 dark:text-slate-100 bg-blue-50 dark:bg-blue-50 border border-blue-200 dark:border-blue-600 shadow-[0_0_12px_rgba(37,99,235,0.18)] hover:bg-blue-100/70 dark:hover:bg-blue-900/40'
-                  : 'text-blue-100 hover:text-white bg-blue-600/60 border border-blue-600/60 hover:border-blue-600 hover:bg-blue-700'
+                  ? 'text-cyan-300 bg-cyan-950/40 border border-cyan-500/30 shadow-[0_0_15px_rgba(0,242,254,0.15)]'
+                  : 'text-slate-300 hover:text-cyan-300 hover:bg-slate-900/60'
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5 animate-pulse text-slate-100 dark:text-slate-100" />
-              <span>AI Career Hub</span>
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400 animate-pulse" />
+              <span>AI Hub</span>
               {isAiHubActive && (
-                <span className="absolute bottom-0.5 left-3.5 right-3.5 h-[2px] bg-blue-900 dark:bg-blue-50 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.7)] pointer-events-none transition-opacity duration-200" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_8px_#00f2fe]" />
               )}
             </Link>
+
             <Link
               href="/services"
               id="nav-services-link"
               aria-current={isServicesActive ? 'page' : undefined}
-              className={`group relative text-sm px-3.5 py-1.5 rounded-xl transition-all duration-200 ease-out inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`relative text-xs font-medium px-3 py-2 rounded-lg transition-all ${
                 isServicesActive
-                  ? 'font-bold text-white bg-blue-600 border border-blue-600 shadow-md'
-                  : 'font-medium text-blue-100 hover:text-white hover:bg-blue-700/80'
+                  ? 'text-white font-semibold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
               }`}
             >
               <span>Services</span>
               {isServicesActive && (
-                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-blue-900 dark:bg-blue-50 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.7)] pointer-events-none transition-opacity duration-200" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_8px_#00f2fe]" />
               )}
             </Link>
+
             <Link
               href="/search"
               id="nav-search-link"
               aria-current={isSearchActive ? 'page' : undefined}
-              className={`group relative text-sm px-3.5 py-1.5 rounded-xl transition-all duration-200 ease-out inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`relative text-xs font-medium px-3 py-2 rounded-lg transition-all ${
                 isSearchActive
-                  ? 'font-bold text-white bg-blue-600 border border-blue-600 shadow-md'
-                  : 'font-medium text-blue-100 hover:text-white hover:bg-blue-700/80'
+                  ? 'text-white font-semibold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
               }`}
             >
               <span>Find Workers</span>
               {isSearchActive && (
-                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-blue-900 dark:bg-blue-50 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.7)] pointer-events-none transition-opacity duration-200" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_8px_#00f2fe]" />
               )}
             </Link>
+
             <Link
               href="/dashboard/customer"
               id="nav-dashboard-link"
               aria-current={isDashboardActive ? 'page' : undefined}
-              className={`group relative text-sm px-3.5 py-1.5 rounded-xl transition-all duration-200 ease-out inline-flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`relative text-xs font-medium px-3 py-2 rounded-lg transition-all ${
                 isDashboardActive
-                  ? 'font-bold text-white bg-blue-600 border border-blue-600 shadow-md'
-                  : 'font-medium text-blue-100 hover:text-white hover:bg-blue-700/80'
+                  ? 'text-white font-semibold'
+                  : 'text-slate-300 hover:text-white hover:bg-slate-900/60'
               }`}
             >
               <span>Dashboard</span>
               {isDashboardActive && (
-                <span className="absolute bottom-0.5 left-3 right-3 h-[2px] bg-blue-900 dark:bg-blue-50 rounded-full shadow-[0_0_8px_rgba(37,99,235,0.7)] pointer-events-none transition-opacity duration-200" />
+                <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 shadow-[0_0_8px_#00f2fe]" />
               )}
             </Link>
 
-            {/* Dark/Light Mode Toggle */}
+            {/* Subtle Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-blue-800 hover:bg-blue-700 text-blue-100 hover:text-white transition-colors"
+              className="p-2 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-slate-900/60 transition-colors"
               title="Toggle Theme"
+              aria-label="Toggle Theme"
             >
-              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4 text-cyan-400" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            {/* Login / Join CTA */}
+            {/* Auth Link */}
             <Link
               href="/login"
-              className="text-sm font-semibold text-blue-100 hover:text-white px-3 py-2"
+              className="text-xs font-medium text-slate-300 hover:text-white px-3 py-2 rounded-lg transition-colors"
             >
               Log In
             </Link>
+
+            {/* Glowing Cyan Get Started Button */}
             <Link
               href="/register"
-              className="text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg shadow-md shadow-blue-600/20 transition-all"
+              className="group relative inline-flex items-center space-x-1.5 px-4 py-2 text-xs font-semibold text-slate-950 rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-400 shadow-[0_0_20px_rgba(0,242,254,0.35)] hover:shadow-[0_0_28px_rgba(0,242,254,0.55)] hover:brightness-105 active:scale-[0.98] transition-all"
             >
-              Become a Provider
+              <span>Get Started</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center space-x-2">
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-blue-800 hover:bg-blue-700 text-blue-100"
-              title="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-blue-800 hover:bg-blue-700 text-blue-100"
+              className="p-2 rounded-lg bg-slate-900 border border-cyan-500/30 text-cyan-400"
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -174,88 +178,52 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-blue-700 bg-blue-900 backdrop-blur-lg px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden border-b border-cyan-500/20 bg-[#050814]/95 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-2.5">
           <Link
             href="/ai-hub"
-            id="mobile-nav-aihub-link"
             onClick={() => setMobileMenuOpen(false)}
-            aria-current={isAiHubActive ? 'page' : undefined}
-            className={`block font-bold py-2.5 px-3.5 rounded-xl flex items-center justify-between transition-all duration-200 ${
-              isAiHubActive
-                ? 'text-slate-100 bg-blue-900/60 border border-blue-600/40 shadow-sm shadow-blue-600/30'
-                : 'text-slate-100 hover:text-white hover:bg-slate-100/50'
-            }`}
+            className="flex items-center justify-between py-2.5 px-3.5 rounded-xl text-xs font-semibold text-cyan-300 bg-cyan-950/40 border border-cyan-500/20"
           >
             <div className="flex items-center space-x-2">
-              <Sparkles className="w-4 h-4 text-slate-100" />
+              <Sparkles className="w-4 h-4 text-cyan-400" />
               <span>AI Career Hub</span>
             </div>
-            {isAiHubActive && (
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_6px_rgba(59,130,246,0.8)]" />
-            )}
           </Link>
           <Link
             href="/services"
-            id="mobile-nav-services-link"
             onClick={() => setMobileMenuOpen(false)}
-            aria-current={isServicesActive ? 'page' : undefined}
-            className={`block py-2.5 px-3.5 rounded-xl transition-all duration-200 flex items-center justify-between ${
-              isServicesActive
-                ? 'font-bold text-slate-100 bg-blue-900/60 border border-blue-600/40 shadow-sm shadow-blue-600/30'
-                : 'font-medium text-slate-300 hover:text-white hover:bg-slate-100/50'
-            }`}
+            className="block py-2 px-3 text-xs font-medium text-slate-200 hover:text-cyan-300"
           >
-            <span>Services</span>
-            {isServicesActive && (
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_6px_rgba(59,130,246,0.8)]" />
-            )}
+            Services
           </Link>
           <Link
             href="/search"
-            id="mobile-nav-search-link"
             onClick={() => setMobileMenuOpen(false)}
-            aria-current={isSearchActive ? 'page' : undefined}
-            className={`block py-2.5 px-3.5 rounded-xl transition-all duration-200 flex items-center justify-between ${
-              isSearchActive
-                ? 'font-bold text-slate-100 bg-blue-900/60 border border-blue-600/40 shadow-sm shadow-blue-600/30'
-                : 'font-medium text-slate-300 hover:text-white hover:bg-slate-100/50'
-            }`}
+            className="block py-2 px-3 text-xs font-medium text-slate-200 hover:text-cyan-300"
           >
-            <span>Find Workers</span>
-            {isSearchActive && (
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_6px_rgba(59,130,246,0.8)]" />
-            )}
+            Find Workers
           </Link>
           <Link
             href="/dashboard/customer"
-            id="mobile-nav-dashboard-link"
             onClick={() => setMobileMenuOpen(false)}
-            aria-current={isDashboardActive ? 'page' : undefined}
-            className={`block py-2.5 px-3.5 rounded-xl transition-all duration-200 flex items-center justify-between ${
-              isDashboardActive
-                ? 'font-bold text-slate-100 bg-blue-900/60 border border-blue-600/40 shadow-sm shadow-blue-600/30'
-                : 'font-medium text-slate-300 hover:text-white hover:bg-slate-100/50'
-            }`}
+            className="block py-2 px-3 text-xs font-medium text-slate-200 hover:text-cyan-300"
           >
-            <span>Dashboard</span>
-            {isDashboardActive && (
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 shadow-[0_0_6px_rgba(59,130,246,0.8)]" />
-            )}
+            Dashboard
           </Link>
-          <div className="pt-2 flex flex-col space-y-2">
+          <div className="pt-2 flex flex-col space-y-2 border-t border-slate-800">
             <Link
               href="/login"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 rounded-lg border border-slate-400 text-slate-100 font-medium hover:bg-blue-800 transition-colors"
+              className="w-full text-center py-2 rounded-lg border border-slate-700 text-xs font-medium text-slate-200 hover:bg-slate-900"
             >
               Log In
             </Link>
             <Link
               href="/register"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full text-center py-2.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow transition-colors"
+              className="w-full text-center py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 text-xs font-bold shadow-[0_0_15px_rgba(0,242,254,0.3)]"
             >
-              Register as Provider
+              Get Started · Register
             </Link>
           </div>
         </div>

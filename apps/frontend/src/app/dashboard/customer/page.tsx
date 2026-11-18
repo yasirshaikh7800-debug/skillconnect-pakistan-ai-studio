@@ -76,14 +76,17 @@ export default function CustomerDashboardPage() {
     .reduce((sum, b) => sum + (b.totalAmount || 0), 0);
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-w-7xl mx-auto py-6">
       {/* Top Header with Profile, Notifications, and Logout */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-cyan-500/15">
         <div>
-          <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white">
-            Customer & Career Dashboard
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-[11px] font-mono font-bold tracking-wider uppercase mb-1">
+            <span>Customer Command Center</span>
+          </div>
+          <h1 className="text-3xl font-extrabold text-white tracking-tight">
+            Customer & <span className="text-gradient-cyan-blue">Career Dashboard</span>
           </h1>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-slate-400">
             Track active service bookings, AI career recommendations, payment receipts & completed work
           </p>
         </div>
@@ -93,22 +96,22 @@ export default function CustomerDashboardPage() {
           <div className="relative">
             <button
               onClick={() => setNotificationsOpen(!notificationsOpen)}
-              className="relative p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors shadow-sm cursor-pointer"
+              className="relative p-2.5 rounded-xl border border-cyan-500/20 bg-[#0a1024] text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-colors shadow-sm cursor-pointer"
               title="Notifications"
             >
               <Bell className="w-4 h-4" />
               {notifications.some((n) => !n.read) && (
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-600 ring-2 ring-white dark:ring-slate-900" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-cyan-400 ring-2 ring-[#050814]" />
               )}
             </button>
 
             {notificationsOpen && (
-              <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-2xl p-4 z-50 space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
-                  <span className="text-xs font-bold text-slate-900 dark:text-white">Platform Notifications</span>
+              <div className="absolute right-0 mt-2 w-80 bg-[#0a1024]/95 backdrop-blur-2xl rounded-2xl border border-cyan-500/30 shadow-[0_20px_50px_rgba(0,0,0,0.8)] p-4 z-50 space-y-3 animate-fadeIn">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+                  <span className="text-xs font-bold text-white">Platform Notifications</span>
                   <button
                     onClick={markAllNotificationsRead}
-                    className="text-[10px] font-bold text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
+                    className="text-[10px] font-bold text-cyan-400 hover:underline cursor-pointer"
                   >
                     Mark read
                   </button>
@@ -118,10 +121,10 @@ export default function CustomerDashboardPage() {
                     <div
                       key={notif.id}
                       className={`p-2.5 rounded-xl text-xs space-y-0.5 ${
-                        notif.read ? 'bg-slate-50 dark:bg-slate-800/50' : 'bg-blue-50 dark:bg-blue-950/50 border border-blue-600/20'
+                        notif.read ? 'bg-[#050814]/60 border border-slate-800' : 'bg-cyan-950/40 border border-cyan-500/30'
                       }`}
                     >
-                      <p className="font-semibold text-slate-900 dark:text-white">{notif.title}</p>
+                      <p className="font-semibold text-white">{notif.title}</p>
                       <span className="text-[10px] text-slate-400">{notif.time}</span>
                     </div>
                   ))}
@@ -133,16 +136,16 @@ export default function CustomerDashboardPage() {
           {/* Profile & Settings Button */}
           <button
             onClick={() => setProfileModalOpen(true)}
-            className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center space-x-1.5 hover:border-blue-600 shadow-sm transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl border border-cyan-500/25 bg-[#0a1024] text-slate-200 font-bold text-xs flex items-center space-x-1.5 hover:border-cyan-400 hover:text-white shadow-sm transition-all cursor-pointer"
           >
-            <Settings className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+            <Settings className="w-3.5 h-3.5 text-cyan-400" />
             <span>Profile & Settings</span>
           </button>
 
           {/* Logout Button */}
           <button
             onClick={handleLogout}
-            className="px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-red-500/10 text-slate-700 dark:text-slate-300 hover:text-red-500 font-bold text-xs flex items-center space-x-1.5 transition-colors cursor-pointer"
+            className="px-3.5 py-2 rounded-xl bg-[#0a1024] border border-slate-800 hover:border-red-500/40 hover:bg-red-500/10 text-slate-400 hover:text-red-400 font-bold text-xs flex items-center space-x-1.5 transition-colors cursor-pointer"
             title="Log Out"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -156,21 +159,21 @@ export default function CustomerDashboardPage() {
 
       {/* Overview Stats */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-1">
-          <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">Active Bookings</p>
-          <p className="text-2xl font-black text-blue-600 dark:text-blue-400">{activeBookingsCount}</p>
+        <div className="p-5 rounded-2xl bg-[#0a1024]/80 backdrop-blur-xl border border-cyan-500/20 shadow-sm space-y-1">
+          <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Active Bookings</p>
+          <p className="text-3xl font-black text-cyan-400">{activeBookingsCount}</p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-1">
-          <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">Total Spent (PKR)</p>
-          <p className="text-2xl font-black text-slate-900 dark:text-white">
+        <div className="p-5 rounded-2xl bg-[#0a1024]/80 backdrop-blur-xl border border-cyan-500/20 shadow-sm space-y-1">
+          <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Total Spent (PKR)</p>
+          <p className="text-3xl font-black text-white">
             PKR {totalSpent.toLocaleString()}
           </p>
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-1">
-          <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">Primary Service City</p>
-          <p className="text-sm font-bold text-slate-800 dark:text-slate-200 truncate">
+        <div className="p-5 rounded-2xl bg-[#0a1024]/80 backdrop-blur-xl border border-cyan-500/20 shadow-sm space-y-1">
+          <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Primary Service City</p>
+          <p className="text-sm font-bold text-cyan-300 truncate">
             {bookings[0]?.address ? bookings[0].address.split(',').pop()?.trim() : 'Karachi, Pakistan'}
           </p>
         </div>
@@ -179,10 +182,10 @@ export default function CustomerDashboardPage() {
       {/* Active & Past Bookings */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
+          <h2 className="text-xl font-bold text-white tracking-tight">
             My Service Requests ({bookings.length})
           </h2>
-          <span className="text-xs text-slate-500 dark:text-slate-400">Auto-synced with instant booking</span>
+          <span className="text-xs text-cyan-400 font-mono">Auto-synced with instant booking</span>
         </div>
 
         <div className="space-y-4">
@@ -191,14 +194,14 @@ export default function CustomerDashboardPage() {
             return (
               <div
                 key={booking.id || booking.bookingCode}
-                className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm space-y-4"
+                className="p-6 rounded-2xl bg-[#0a1024]/80 backdrop-blur-xl border border-cyan-500/20 shadow-sm space-y-4 hover:border-cyan-500/40 transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-4">
                   <div className="space-y-1">
-                    <span className="text-[10px] font-mono font-bold text-slate-400">
+                    <span className="text-[10px] font-mono font-bold text-cyan-400">
                       REF: {booking.bookingCode}
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                    <h3 className="text-lg font-bold text-white">
                       {booking.service?.title || 'Home Maintenance Service'}
                     </h3>
                   </div>
@@ -206,64 +209,64 @@ export default function CustomerDashboardPage() {
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-bold w-fit ${
                       isCompleted
-                        ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400'
-                        : 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300'
+                        ? 'bg-cyan-950/60 text-cyan-400 border border-cyan-500/30'
+                        : 'bg-amber-950/60 text-amber-300 border border-amber-500/30'
                     }`}
                   >
                     {booking.status}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-slate-600 dark:text-slate-400">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs text-slate-300">
                   <div>
-                    <span className="block text-slate-400 text-[10px]">Assigned Worker</span>
-                    <span className="font-bold text-slate-900 dark:text-white">
+                    <span className="block text-slate-500 text-[10px] uppercase font-mono">Assigned Worker</span>
+                    <span className="font-bold text-white">
                       {booking.provider?.profile?.firstName || 'Assigned Worker'}{' '}
                       {booking.provider?.profile?.lastName || ''}
                     </span>
                     {booking.provider?.cnicNumber && (
-                      <span className="block text-[10px] text-blue-600 dark:text-blue-400 font-semibold">
+                      <span className="block text-[10px] text-cyan-400 font-semibold">
                         CNIC Verified
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <span className="block text-slate-400 text-[10px]">Location Address</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200 truncate block">
+                    <span className="block text-slate-500 text-[10px] uppercase font-mono">Location Address</span>
+                    <span className="font-semibold text-slate-300 truncate block">
                       {booking.address}
                     </span>
                   </div>
 
                   <div>
-                    <span className="block text-slate-400 text-[10px]">Scheduled Time</span>
-                    <span className="font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="block text-slate-500 text-[10px] uppercase font-mono">Scheduled Time</span>
+                    <span className="font-semibold text-slate-300">
                       {new Date(booking.scheduledAt).toLocaleString()}
                     </span>
                   </div>
 
                   <div>
-                    <span className="block text-slate-400 text-[10px]">Total Fee (PKR)</span>
-                    <span className="font-black text-blue-600 dark:text-blue-400 text-sm">
+                    <span className="block text-slate-500 text-[10px] uppercase font-mono">Total Fee (PKR)</span>
+                    <span className="font-black text-cyan-400 text-sm">
                       PKR {booking.totalAmount.toLocaleString()}
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-end space-x-2">
+                <div className="pt-3 border-t border-slate-800 flex justify-end space-x-2">
                   <button
                     onClick={() => {
                       setSupportBooking(booking);
                       setDisputeSent(false);
                       setDisputeReason('');
                     }}
-                    className="px-3.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-lg border border-cyan-500/20 text-xs font-semibold text-slate-300 hover:text-white hover:bg-cyan-500/10 transition-colors cursor-pointer"
                   >
                     Support / Help
                   </button>
                   <button
                     onClick={() => setReceiptBooking(booking)}
-                    className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-colors flex items-center space-x-1.5 cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-lg glow-btn-cyan text-slate-950 text-xs font-bold transition-all flex items-center space-x-1.5 cursor-pointer"
                   >
                     <FileText className="w-3.5 h-3.5" />
                     <span>View Receipt</span>
@@ -277,52 +280,52 @@ export default function CustomerDashboardPage() {
 
       {/* Support / Dispute Modal */}
       {supportBooking && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050814]/80 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="w-full max-w-md bg-[#0a1024]/95 backdrop-blur-2xl rounded-3xl border border-cyan-500/30 p-6 shadow-[0_0_50px_rgba(0,242,254,0.2)] space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center space-x-2">
-                <HelpCircle className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <HelpCircle className="w-5 h-5 text-cyan-400" />
+                <h3 className="font-bold text-base text-white">
                   SkillConnect Support Desk
                 </h3>
               </div>
               <button
                 onClick={() => setSupportBooking(null)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer"
+                className="text-slate-400 hover:text-white cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="text-xs space-y-3">
-              <p className="text-slate-600 dark:text-slate-300">
+              <p className="text-slate-300">
                 Assistance for Booking Reference:{' '}
-                <span className="font-mono font-bold text-blue-600 dark:text-blue-400">
+                <span className="font-mono font-bold text-cyan-400">
                   {supportBooking.bookingCode}
                 </span>
               </p>
 
-              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 space-y-1.5">
-                <p className="font-bold text-slate-800 dark:text-slate-200">24/7 Citizen Helpline</p>
-                <p className="text-slate-600 dark:text-slate-400">📞 Phone: 021-111-SKILL (75455)</p>
-                <p className="text-slate-600 dark:text-slate-400">💬 WhatsApp: +92 300 1234567</p>
-                <p className="text-slate-600 dark:text-slate-400">✉️ Email: support@skillconnect.pk</p>
+              <div className="p-3 rounded-xl bg-[#050814]/80 border border-slate-800 space-y-1.5">
+                <p className="font-bold text-white">24/7 Citizen Helpline</p>
+                <p className="text-slate-400">📞 Phone: 021-111-SKILL (75455)</p>
+                <p className="text-slate-400">💬 WhatsApp: +92 300 1234567</p>
+                <p className="text-slate-400">✉️ Email: support@skillconnect.pk</p>
               </div>
 
               {disputeSent ? (
-                <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400">
+                <div className="p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/40 text-cyan-300">
                   <p className="font-bold">Ticket Submitted Successfully!</p>
                   <p className="text-[11px] mt-1">Ticket #TK-{Math.floor(1000 + Math.random() * 9000)} is logged. A support representative will call you within 15 minutes.</p>
                 </div>
               ) : (
                 <div className="space-y-2">
-                  <label className="block font-semibold text-slate-700 dark:text-slate-300">
+                  <label className="block font-semibold text-slate-300">
                     Report an Issue or Request Reschedule
                   </label>
                   <select
                     value={disputeReason}
                     onChange={(e) => setDisputeReason(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white focus:outline-none focus:ring-1 focus:ring-cyan-400"
                   >
                     <option value="">Select reason...</option>
                     <option value="reschedule">Reschedule Visit Time</option>
@@ -332,7 +335,7 @@ export default function CustomerDashboardPage() {
                   </select>
                   <button
                     onClick={() => setDisputeSent(true)}
-                    className="w-full py-2.5 rounded-xl bg-blue-600 text-white font-bold text-xs hover:bg-blue-700 transition-colors cursor-pointer"
+                    className="w-full py-2.5 rounded-xl glow-btn-cyan text-slate-950 font-bold text-xs transition-all cursor-pointer"
                   >
                     Submit Support Ticket
                   </button>
@@ -342,7 +345,7 @@ export default function CustomerDashboardPage() {
 
             <button
               onClick={() => setSupportBooking(null)}
-              className="w-full py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold cursor-pointer"
+              className="w-full py-2 rounded-xl bg-[#050814] border border-slate-800 text-slate-300 hover:text-white text-xs font-semibold cursor-pointer"
             >
               Close
             </button>
@@ -352,67 +355,67 @@ export default function CustomerDashboardPage() {
 
       {/* Invoice / Receipt Modal */}
       {receiptBooking && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050814]/80 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="w-full max-w-md bg-[#0a1024]/95 backdrop-blur-2xl rounded-3xl border border-cyan-500/30 p-6 shadow-[0_0_50px_rgba(0,242,254,0.2)] space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center space-x-2">
-                <ShieldCheck className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <ShieldCheck className="w-5 h-5 text-cyan-400" />
+                <h3 className="font-bold text-base text-white">
                   Payment Receipt & Tax Invoice
                 </h3>
               </div>
               <button
                 onClick={() => setReceiptBooking(null)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
+                className="text-slate-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="flex justify-between text-slate-500 dark:text-slate-400">
+              <div className="flex justify-between text-slate-400">
                 <span>Invoice Number:</span>
-                <span className="font-mono font-bold text-slate-900 dark:text-white">
+                <span className="font-mono font-bold text-cyan-400">
                   INV-{receiptBooking.bookingCode}
                 </span>
               </div>
-              <div className="flex justify-between text-slate-500 dark:text-slate-400">
+              <div className="flex justify-between text-slate-400">
                 <span>Date:</span>
-                <span className="font-semibold text-slate-900 dark:text-white">
+                <span className="font-semibold text-white">
                   {new Date(receiptBooking.createdAt || receiptBooking.scheduledAt).toLocaleDateString()}
                 </span>
               </div>
-              <div className="flex justify-between text-slate-500 dark:text-slate-400">
+              <div className="flex justify-between text-slate-400">
                 <span>Service:</span>
-                <span className="font-semibold text-slate-900 dark:text-white">
+                <span className="font-semibold text-white">
                   {receiptBooking.service?.title || 'Home Maintenance'}
                 </span>
               </div>
-              <div className="flex justify-between text-slate-500 dark:text-slate-400">
+              <div className="flex justify-between text-slate-400">
                 <span>Payment Mode:</span>
-                <span className="font-bold text-blue-600 dark:text-blue-400">
+                <span className="font-bold text-cyan-300">
                   {receiptBooking.paymentMethod || 'JazzCash / EasyPaisa'}
                 </span>
               </div>
 
-              <div className="border-t border-dashed border-slate-200 dark:border-slate-800 pt-3 space-y-1.5">
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
+              <div className="border-t border-dashed border-slate-800 pt-3 space-y-1.5">
+                <div className="flex justify-between text-slate-400">
                   <span>Service Fee:</span>
                   <span>PKR {Math.round(receiptBooking.totalAmount * 0.95).toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between text-slate-600 dark:text-slate-400">
+                <div className="flex justify-between text-slate-400">
                   <span>Sindh / Punjab Services Sales Tax (5%):</span>
                   <span>PKR {Math.round(receiptBooking.totalAmount * 0.05).toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between font-bold text-sm text-slate-900 dark:text-white pt-2 border-t border-slate-200 dark:border-slate-800">
+                <div className="flex justify-between font-bold text-sm text-white pt-2 border-t border-slate-800">
                   <span>Total Amount Paid:</span>
-                  <span className="text-blue-600 dark:text-blue-400">
+                  <span className="text-cyan-400">
                     PKR {receiptBooking.totalAmount.toLocaleString()}
                   </span>
                 </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-900 text-[11px] text-blue-600 dark:text-blue-400">
+              <div className="p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-[11px] text-cyan-300">
                 ✓ NADRA CNIC-Verified Provider Guarantee Applied
               </div>
             </div>
@@ -420,7 +423,7 @@ export default function CustomerDashboardPage() {
             <div className="flex gap-2 pt-2">
               <button
                 onClick={() => setReceiptBooking(null)}
-                className="w-full py-2.5 rounded-xl bg-blue-600 text-white hover:bg-blue-700 text-xs font-bold cursor-pointer transition-colors"
+                className="w-full py-2.5 rounded-xl glow-btn-cyan text-slate-950 text-xs font-bold cursor-pointer transition-all"
               >
                 Close Receipt
               </button>
@@ -431,33 +434,33 @@ export default function CustomerDashboardPage() {
 
       {/* Profile & Account Settings Modal */}
       {profileModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 shadow-2xl space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#050814]/80 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="w-full max-w-md bg-[#0a1024]/95 backdrop-blur-2xl rounded-3xl border border-cyan-500/30 p-6 shadow-[0_0_50px_rgba(0,242,254,0.2)] space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div className="flex items-center space-x-2">
-                <User className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <h3 className="font-bold text-base text-slate-900 dark:text-white">
+                <User className="w-5 h-5 text-cyan-400" />
+                <h3 className="font-bold text-base text-white">
                   Customer Profile & Settings
                 </h3>
               </div>
               <button
                 onClick={() => setProfileModalOpen(false)}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 cursor-pointer"
+                className="text-slate-400 hover:text-white cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {profileSaved && (
-              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-950/50 border border-blue-600 text-blue-600 dark:text-blue-400 text-xs font-semibold flex items-center space-x-2">
-                <Check className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <div className="p-3 rounded-xl bg-cyan-950/40 border border-cyan-400 text-cyan-300 text-xs font-semibold flex items-center space-x-2">
+                <Check className="w-4 h-4 text-cyan-400" />
                 <span>Profile updated successfully!</span>
               </div>
             )}
 
             <form onSubmit={handleProfileSave} className="space-y-4 text-xs">
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
+                <label className="block font-semibold mb-1 text-slate-300">
                   Full Name
                 </label>
                 <input
@@ -465,12 +468,12 @@ export default function CustomerDashboardPage() {
                   required
                   value={userProfile.name}
                   onChange={(e) => setUserProfile({ ...userProfile, name: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white focus:outline-none focus:ring-1 focus:ring-cyan-400"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
+                <label className="block font-semibold mb-1 text-slate-300">
                   Mobile Number (SMS / OTP Verified)
                 </label>
                 <input
@@ -478,12 +481,12 @@ export default function CustomerDashboardPage() {
                   required
                   value={userProfile.phone}
                   onChange={(e) => setUserProfile({ ...userProfile, phone: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white font-mono focus:outline-none focus:ring-1 focus:ring-cyan-400"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
+                <label className="block font-semibold mb-1 text-slate-300">
                   Default City
                 </label>
                 <input
@@ -491,12 +494,12 @@ export default function CustomerDashboardPage() {
                   required
                   value={userProfile.city}
                   onChange={(e) => setUserProfile({ ...userProfile, city: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white focus:outline-none focus:ring-1 focus:ring-cyan-400"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
+                <label className="block font-semibold mb-1 text-slate-300">
                   Primary Address for Repairs
                 </label>
                 <input
@@ -504,18 +507,18 @@ export default function CustomerDashboardPage() {
                   required
                   value={userProfile.address}
                   onChange={(e) => setUserProfile({ ...userProfile, address: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white focus:outline-none focus:ring-1 focus:ring-cyan-400"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold mb-1 text-slate-700 dark:text-slate-300">
+                <label className="block font-semibold mb-1 text-slate-300">
                   Interface Language
                 </label>
                 <select
                   value={userProfile.preferredLang}
                   onChange={(e) => setUserProfile({ ...userProfile, preferredLang: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full p-2.5 rounded-xl border border-cyan-500/20 bg-[#050814] text-xs text-white focus:outline-none focus:ring-1 focus:ring-cyan-400"
                 >
                   <option value="English & Urdu">English & Urdu (Bilingual)</option>
                   <option value="Urdu Only">اردو (Urdu)</option>
@@ -527,13 +530,13 @@ export default function CustomerDashboardPage() {
                 <button
                   type="button"
                   onClick={() => setProfileModalOpen(false)}
-                  className="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-semibold cursor-pointer"
+                  className="flex-1 py-2.5 rounded-xl bg-[#050814] border border-slate-800 text-slate-300 hover:text-white font-semibold cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-colors cursor-pointer"
+                  className="flex-1 py-2.5 rounded-xl glow-btn-cyan text-slate-950 font-bold transition-all cursor-pointer"
                 >
                   Save Changes
                 </button>

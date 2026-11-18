@@ -69,42 +69,46 @@ export default function BookingSuccess3DModal({
         rendererRef.current = renderer;
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+        const ambientLight = new THREE.AmbientLight(0x0a1026, 1.5);
         scene.add(ambientLight);
 
-        const pointLight = new THREE.PointLight(0x3b82f6, 4, 20);
+        const pointLight = new THREE.PointLight(0x00f2fe, 5, 20);
         pointLight.position.set(0, 0, 4);
         scene.add(pointLight);
+
+        const pointLightViolet = new THREE.PointLight(0x8b5cf6, 3, 20);
+        pointLightViolet.position.set(-2, 3, 3);
+        scene.add(pointLightViolet);
 
         // 3D Floating Checkmark Mesh
         const checkGroup = new THREE.Group();
 
         // 3D Outer Ring
-        const ringGeo = new THREE.TorusGeometry(1.2, 0.12, 16, 64);
+        const ringGeo = new THREE.TorusGeometry(1.2, 0.1, 16, 64);
         const ringMat = new THREE.MeshStandardMaterial({
-          color: 0x3b82f6,
-          emissive: 0x2563eb,
-          roughness: 0.2,
-          metalness: 0.8,
+          color: 0x00f2fe,
+          emissive: 0x0284c7,
+          roughness: 0.15,
+          metalness: 0.85,
         });
         const ringMesh = new THREE.Mesh(ringGeo, ringMat);
         checkGroup.add(ringMesh);
 
         // 3D Checkmark Wings
         const checkMat = new THREE.MeshStandardMaterial({
-          color: 0x34d399,
-          emissive: 0x3b82f6,
+          color: 0x00f2fe,
+          emissive: 0x8b5cf6,
           roughness: 0.1,
           metalness: 0.9,
         });
 
-        const stem1Geo = new THREE.CylinderGeometry(0.12, 0.12, 0.8, 16);
+        const stem1Geo = new THREE.CylinderGeometry(0.11, 0.11, 0.8, 16);
         const stem1 = new THREE.Mesh(stem1Geo, checkMat);
         stem1.position.set(-0.3, -0.1, 0);
         stem1.rotation.z = -Math.PI / 4;
         checkGroup.add(stem1);
 
-        const stem2Geo = new THREE.CylinderGeometry(0.12, 0.12, 1.5, 16);
+        const stem2Geo = new THREE.CylinderGeometry(0.11, 0.11, 1.5, 16);
         const stem2 = new THREE.Mesh(stem2Geo, checkMat);
         stem2.position.set(0.25, 0.15, 0);
         stem2.rotation.z = Math.PI / 4;
@@ -112,8 +116,8 @@ export default function BookingSuccess3DModal({
 
         scene.add(checkGroup);
 
-        // Particle confetti
-        const particlesCount = 40;
+        // Particle confetti in cyan and violet
+        const particlesCount = 45;
         const particleGeo = new THREE.BufferGeometry();
         const positions = new Float32Array(particlesCount * 3);
 
@@ -126,10 +130,10 @@ export default function BookingSuccess3DModal({
         particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const particleMat = new THREE.PointsMaterial({
-          color: 0x34d399,
-          size: 0.1,
+          color: 0x00f2fe,
+          size: 0.12,
           transparent: true,
-          opacity: 0.8,
+          opacity: 0.85,
         });
 
         const particles = new THREE.Points(particleGeo, particleMat);
@@ -175,45 +179,45 @@ export default function BookingSuccess3DModal({
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-md rounded-3xl bg-white border border-blue-600/40 p-6 sm:p-8 text-slate-900 shadow-2xl space-y-6 glow-cyan-blue">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#050814]/80 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-md rounded-3xl bg-[#0a1024]/95 border border-cyan-500/35 p-6 sm:p-8 text-white shadow-[0_0_50px_rgba(0,242,254,0.25)] space-y-6">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all"
+          className="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-cyan-400 hover:bg-cyan-500/10 border border-transparent hover:border-cyan-500/20 transition-all cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* 3D Canvas or fallback */}
-        <div className="relative w-full h-44 rounded-2xl bg-slate-50 overflow-hidden border border-blue-600/20 flex items-center justify-center">
+        <div className="relative w-full h-44 rounded-2xl bg-[#050814]/80 overflow-hidden border border-cyan-500/20 flex items-center justify-center shadow-inner">
           {webglSupported ? (
             <div ref={containerRef} className="w-full h-full" />
           ) : (
             <div className="flex flex-col items-center justify-center text-center p-4">
-              <CheckCircle2 className="w-16 h-16 text-blue-600 animate-bounce mb-2" />
-              <span className="text-xs font-bold text-blue-300">Booking Confirmed!</span>
+              <CheckCircle2 className="w-16 h-16 text-cyan-400 animate-bounce mb-2" />
+              <span className="text-xs font-bold text-cyan-300">Booking Confirmed!</span>
             </div>
           )}
         </div>
 
         {/* Details */}
         <div className="text-center space-y-2">
-          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-600/20 text-blue-300 text-xs font-bold border border-blue-600/30">
-            <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-bold border border-cyan-500/30">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
             <span>Booking #{bookingCode}</span>
           </div>
 
-          <h3 className="text-xl font-extrabold text-slate-900">Booking Placed Successfully!</h3>
-          <p className="text-xs text-slate-700">
-            Your request for <strong className="text-blue-300">{serviceTitle}</strong> has been received. A CNIC-verified artisan in your city is preparing for dispatch.
+          <h3 className="text-xl font-extrabold text-white">Booking Placed Successfully!</h3>
+          <p className="text-xs text-slate-300">
+            Your request for <strong className="text-cyan-300">{serviceTitle}</strong> has been received. A CNIC-verified artisan in your city is preparing for dispatch.
           </p>
         </div>
 
         {/* Action Button */}
         <button
           onClick={onClose}
-          className="w-full py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-slate-950 font-black text-xs shadow-xl transition-all flex items-center justify-center space-x-2"
+          className="w-full py-3.5 rounded-2xl glow-btn-cyan text-slate-950 font-black text-xs shadow-xl transition-all flex items-center justify-center space-x-2 cursor-pointer"
         >
           <span>View My Bookings</span>
           <ArrowRight className="w-4 h-4" />

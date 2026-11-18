@@ -85,18 +85,18 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         rendererRef.current = renderer;
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0x0a1329, 1.8);
+        const ambientLight = new THREE.AmbientLight(0x050814, 2.0);
         scene.add(ambientLight);
 
-        const pointLightCyan = new THREE.PointLight(0x2563eb, 3.5, 35);
+        const pointLightCyan = new THREE.PointLight(0x00f2fe, 4.5, 40);
         pointLightCyan.position.set(6, 6, 6);
         scene.add(pointLightCyan);
 
-        const pointLightEmerald = new THREE.PointLight(0x1e3a8a, 2.5, 35);
-        pointLightEmerald.position.set(-6, -5, 4);
-        scene.add(pointLightEmerald);
+        const pointLightPurple = new THREE.PointLight(0x8b5cf6, 3.5, 40);
+        pointLightPurple.position.set(-6, -5, 4);
+        scene.add(pointLightPurple);
 
-        const pointLightAccent = new THREE.PointLight(0x60a5fa, 2, 25);
+        const pointLightAccent = new THREE.PointLight(0x3b82f6, 2.5, 30);
         pointLightAccent.position.set(0, 8, -4);
         scene.add(pointLightAccent);
 
@@ -107,21 +107,23 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         const count = isMobile ? 5 : 10;
 
         const glassMaterial = new THREE.MeshPhongMaterial({
-          color: 0x0f2744,
-          emissive: 0x1e3a8a,
-          specular: 0x60a5fa,
-          shininess: 100,
+          color: 0x071126,
+          emissive: 0x00f2fe,
+          emissiveIntensity: 0.15,
+          specular: 0x00f2fe,
+          shininess: 120,
           transparent: true,
-          opacity: 0.38,
+          opacity: 0.42,
         });
 
         const accentGlassMaterial = new THREE.MeshPhongMaterial({
-          color: 0x1e3a8a,
-          emissive: 0x2563eb,
-          specular: 0x93c5fd,
-          shininess: 120,
+          color: 0x130d2a,
+          emissive: 0x8b5cf6,
+          emissiveIntensity: 0.25,
+          specular: 0xa855f7,
+          shininess: 140,
           transparent: true,
-          opacity: 0.25,
+          opacity: 0.35,
         });
 
         const meshes: any[] = [];
@@ -160,10 +162,10 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
         particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
         const particleMat = new THREE.PointsMaterial({
-          color: 0x60a5fa,
+          color: 0x00f2fe,
           size: 0.09,
           transparent: true,
-          opacity: 0.55,
+          opacity: 0.65,
         });
 
         const particleSystem = new THREE.Points(particleGeo, particleMat);
@@ -204,21 +206,21 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
 
             // Status light adjustments
             if (isSuccessRef.current) {
-              pointLightEmerald.intensity = 5;
-              pointLightCyan.color.setHex(0x3b82f6);
-              particleMat.color.setHex(0x60a5fa);
+              pointLightPurple.intensity = 5;
+              pointLightCyan.color.setHex(0x00f2fe);
+              particleMat.color.setHex(0x00f2fe);
               particleSystem.rotation.y = time * 0.08;
             } else if (isErrorRef.current) {
               pointLightCyan.color.setHex(0xef4444);
               pointLightCyan.intensity = 4;
             } else if (isVerifyingRef.current) {
-              pointLightCyan.color.setHex(0x60a5fa);
+              pointLightCyan.color.setHex(0x38bdf8);
               pointLightCyan.intensity = 4.5;
             } else {
-              pointLightCyan.color.setHex(0x2563eb);
+              pointLightCyan.color.setHex(0x00f2fe);
               pointLightCyan.intensity = 3.5;
-              pointLightEmerald.intensity = 2.5;
-              particleMat.color.setHex(0x60a5fa);
+              pointLightPurple.intensity = 2.5;
+              particleMat.color.setHex(0x00f2fe);
             }
 
             particleSystem.rotation.y = time * 0.015;
@@ -273,10 +275,10 @@ export default function ThreeAuth3D({ isSuccess, isError, isVerifying }: ThreeAu
   // WebGL Fallback / Reduced Motion 2D Glass Scene
   if (!webglSupported) {
     return (
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-blue-50">
-        <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-blue-100/30 blur-[80px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-blue-100/30 blur-[100px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:32px_32px] opacity-10" />
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden bg-[#050814]">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-cyan-500/10 blur-[90px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-violet-600/10 blur-[100px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#00f2fe_1px,transparent_1px)] [background-size:32px_32px] opacity-10" />
       </div>
     );
   }

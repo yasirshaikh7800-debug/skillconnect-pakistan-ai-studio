@@ -33,10 +33,19 @@ module.exports = {
           900: '#172554', // Deepest navy
           950: '#0f172a',
         },
+        cyber: {
+          cyan: '#00f2fe',
+          neon: '#06b6d4',
+          blue: '#3b82f6',
+          violet: '#8b5cf6',
+          purple: '#a855f7',
+        },
         dark: {
-          bg: '#0a0f1d',
-          card: '#0f172a',
-          border: '#1e293b',
+          bg: '#050814',
+          surface: '#0a1024',
+          surfaceLight: '#111a36',
+          card: 'rgba(13, 22, 44, 0.75)',
+          border: 'rgba(56, 189, 248, 0.18)',
         },
       },
       fontFamily: {

@@ -9,8 +9,10 @@ const __dirname = path.dirname(__filename);
 // Potential paths to the standalone server.js
 const candidatePaths = [
   path.resolve(__dirname, 'apps/frontend/.next/standalone/apps/frontend/server.js'),
+  path.resolve(__dirname, 'apps/frontend/server.js'),
   path.resolve(__dirname, '.next/standalone/apps/frontend/server.js'),
   path.resolve(process.cwd(), 'apps/frontend/.next/standalone/apps/frontend/server.js'),
+  path.resolve(process.cwd(), 'apps/frontend/server.js'),
   path.resolve(process.cwd(), '.next/standalone/apps/frontend/server.js'),
 ];
 
@@ -29,6 +31,14 @@ const child = spawn(process.execPath, [target], {
     HOSTNAME: process.env.HOSTNAME || '0.0.0.0',
     NODE_ENV: 'production',
   },
+});
+
+process.on('SIGTERM', () => {
+  child.kill('SIGTERM');
+});
+
+process.on('SIGINT', () => {
+  child.kill('SIGINT');
 });
 
 child.on('exit', (code, signal) => {

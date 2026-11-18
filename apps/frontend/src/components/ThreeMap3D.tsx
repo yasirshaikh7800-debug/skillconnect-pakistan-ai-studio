@@ -49,8 +49,8 @@ export default function ThreeMap3D({
   const [activeLocation, setActiveLocation] = useState<Location3D>(
     () => PAKISTAN_3D_LOCATIONS.find((l) => l.name === selectedCity) || PAKISTAN_3D_LOCATIONS[0]
   );
-  
-  // Angle indicators (throttled updates)
+
+  // Angle indicators
   const [pitch, setPitch] = useState<number>(55);
   const [yaw, setYaw] = useState<number>(20);
 
@@ -69,7 +69,6 @@ export default function ThreeMap3D({
     pulseMeshList?: any[];
   }>({});
 
-  // Sync state when selectedCity prop changes
   useEffect(() => {
     const loc = PAKISTAN_3D_LOCATIONS.find((l) => l.name === selectedCity);
     if (loc) {
@@ -84,7 +83,6 @@ export default function ThreeMap3D({
     setMounted(true);
     let isMounted = true;
 
-    // WebGL Capability Check
     const checkWebGL = () => {
       try {
         const canvas = document.createElement('canvas');
@@ -112,14 +110,13 @@ export default function ThreeMap3D({
         const height = container.clientHeight || 500;
         const isMobile = window.innerWidth < 768;
 
-        // Scene
+        // Scene with Dark Cyber Space Fog
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0xf8fafc, 0.035);
+        scene.fog = new THREE.FogExp2(0x050814, 0.035);
 
-        // Perspective Camera with initial 3D tilt perspective
+        // Perspective Camera
         const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
 
-        // Renderer with optimized settings
         const renderer = new THREE.WebGLRenderer({
           alpha: true,
           antialias: !isMobile,
@@ -131,7 +128,6 @@ export default function ThreeMap3D({
         renderer.shadowMap.enabled = !isMobile;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-        // Clean container
         while (container.firstChild) {
           container.removeChild(container.firstChild);
         }
@@ -143,28 +139,26 @@ export default function ThreeMap3D({
         const segments = isMobile ? 32 : 64;
         const terrainGeo = new THREE.PlaneGeometry(terrainWidth, terrainHeight, segments, segments);
 
-        // Deform terrain for Realistic Pakistani Mountainous Elevation & Valleys
         const posAttr = terrainGeo.attributes.position;
         for (let i = 0; i < posAttr.count; i++) {
           const vx = posAttr.getX(i);
           const vy = posAttr.getY(i);
-          
-          // Mountainous elevation contour (higher in North/Z+, lower in South/Z-)
+
           const elevation =
             Math.sin(vx * 0.7) * Math.cos(vy * 0.7) * 0.35 +
             Math.sin(vx * 1.4 + vy * 1.1) * 0.18 +
             Math.cos(vx * 0.3) * 0.22 +
-            (vy > 0 ? (vy / 6) * 0.4 : 0); // Elevation increase toward northern areas
-          
+            (vy > 0 ? (vy / 6) * 0.4 : 0);
+
           posAttr.setZ(i, Math.max(0, elevation));
         }
         terrainGeo.computeVertexNormals();
 
-        // Dark Futuristic Tech Terrain Material
+        // Dark Futuristic Cyber Navy Terrain Material
         const terrainMat = new THREE.MeshStandardMaterial({
-          color: 0xf8fafc,
-          roughness: 0.75,
-          metalness: 0.25,
+          color: 0x070e24,
+          roughness: 0.65,
+          metalness: 0.4,
           flatShading: true,
         });
         const terrainMesh = new THREE.Mesh(terrainGeo, terrainMat);
@@ -172,12 +166,12 @@ export default function ThreeMap3D({
         terrainMesh.receiveShadow = !isMobile;
         scene.add(terrainMesh);
 
-        // Subtle Contour Line Overlay
+        // Subtle Neon Cyan Wireframe Contour Overlay
         const wireMat = new THREE.MeshBasicMaterial({
-          color: 0x1e3a8a,
+          color: 0x00f2fe,
           wireframe: true,
           transparent: true,
-          opacity: 0.15,
+          opacity: 0.16,
         });
         const wireMesh = new THREE.Mesh(terrainGeo, wireMat);
         wireMesh.rotation.x = -Math.PI / 2;
@@ -187,28 +181,27 @@ export default function ThreeMap3D({
         // ==================== 2. GLOWING HIGHWAY & ROAD NETWORK ====================
         const roadGroup = new THREE.Group();
 
-        // Main Highway Arc (Grand Trunk Road / Motorway Representation)
         const highwayCurve = new THREE.CatmullRomCurve3([
-          new THREE.Vector3(-2.8, 0.04, 1.8),  // Karachi
-          new THREE.Vector3(-2.3, 0.04, 1.4),  // Hyderabad
-          new THREE.Vector3(-1.7, 0.04, 0.8),  // Sukkur
+          new THREE.Vector3(-2.8, 0.04, 1.8), // Karachi
+          new THREE.Vector3(-2.3, 0.04, 1.4), // Hyderabad
+          new THREE.Vector3(-1.7, 0.04, 0.8), // Sukkur
           new THREE.Vector3(-0.6, 0.04, -0.2), // Multan
-          new THREE.Vector3(0.1, 0.04, -0.8),  // Faisalabad
-          new THREE.Vector3(0.8, 0.04, -0.9),  // Lahore
-          new THREE.Vector3(0.3, 0.04, -1.6),  // Rawalpindi
-          new THREE.Vector3(0.5, 0.04, -1.8),  // Islamabad
+          new THREE.Vector3(0.1, 0.04, -0.8), // Faisalabad
+          new THREE.Vector3(0.8, 0.04, -0.9), // Lahore
+          new THREE.Vector3(0.3, 0.04, -1.6), // Rawalpindi
+          new THREE.Vector3(0.5, 0.04, -1.8), // Islamabad
           new THREE.Vector3(-0.4, 0.04, -1.9), // Peshawar
         ]);
-        const highwayGeo = new THREE.TubeGeometry(highwayCurve, 64, 0.04, 8, false);
-        const highwayMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
+        const highwayGeo = new THREE.TubeGeometry(highwayCurve, 64, 0.035, 8, false);
+        const highwayMat = new THREE.MeshBasicMaterial({ color: 0x00f2fe });
         const highwayMesh = new THREE.Mesh(highwayGeo, highwayMat);
         roadGroup.add(highwayMesh);
 
         // Secondary Arterial Grid
-        const gridHelper = new THREE.GridHelper(12, 24, 0x3b82f6, 0x1e293b);
+        const gridHelper = new THREE.GridHelper(12, 24, 0x00f2fe, 0x0e1b38);
         gridHelper.position.y = 0.02;
         (gridHelper.material as any).transparent = true;
-        (gridHelper.material as any).opacity = 0.22;
+        (gridHelper.material as any).opacity = 0.25;
         roadGroup.add(gridHelper);
 
         scene.add(roadGroup);
@@ -216,16 +209,15 @@ export default function ThreeMap3D({
         // ==================== 3. 3D BUILDINGS & CITY DISTRICTS ====================
         const buildingsGroup = new THREE.Group();
 
-        // Shared Geometries & Materials for minimal GPU draw calls
         const bMatStandard = new THREE.MeshStandardMaterial({
-          color: 0xe2e8f0,
-          emissive: 0xe2e8f0,
+          color: 0x14203d,
+          emissive: 0x081024,
           roughness: 0.3,
-          metalness: 0.7,
+          metalness: 0.8,
         });
 
-        const roofMatEmerald = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
-        const roofMatCyan = new THREE.MeshBasicMaterial({ color: 0x2563eb });
+        const roofMatCyan = new THREE.MeshBasicMaterial({ color: 0x00f2fe });
+        const roofMatPurple = new THREE.MeshBasicMaterial({ color: 0xa855f7 });
 
         PAKISTAN_3D_LOCATIONS.forEach((loc) => {
           const clusterCount = Math.floor(loc.height * 4) + 2;
@@ -247,7 +239,7 @@ export default function ThreeMap3D({
 
             // Rooftop Light Accents
             const roofGeo = new THREE.BoxGeometry(bWidth * 0.8, 0.02, bDepth * 0.8);
-            const roofMesh = new THREE.Mesh(roofGeo, b % 2 === 0 ? roofMatEmerald : roofMatCyan);
+            const roofMesh = new THREE.Mesh(roofGeo, b % 2 === 0 ? roofMatCyan : roofMatPurple);
             roofMesh.position.y = bHeight / 2 + 0.01;
             bMesh.add(roofMesh);
 
@@ -269,8 +261,9 @@ export default function ThreeMap3D({
           // 3D Extruded Metallic Pin
           const pinGeo = new THREE.ConeGeometry(0.18, 0.38, 16);
           const pinMat = new THREE.MeshStandardMaterial({
-            color: isSelected ? 0x2563eb : 0x2563eb,
-            emissive: isSelected ? 0x1e3a8a : 0x1e3a8a,
+            color: isSelected ? 0x00f2fe : 0x8b5cf6,
+            emissive: isSelected ? 0x00f2fe : 0x6d28d9,
+            emissiveIntensity: 0.6,
             roughness: 0.2,
             metalness: 0.8,
           });
@@ -282,7 +275,7 @@ export default function ThreeMap3D({
           // Top Glowing Orb
           const orbGeo = new THREE.SphereGeometry(0.11, 16, 16);
           const orbMat = new THREE.MeshBasicMaterial({
-            color: isSelected ? 0x60a5fa : 0x60a5fa,
+            color: isSelected ? 0x00f2fe : 0xc084fc,
           });
           const orbMesh = new THREE.Mesh(orbGeo, orbMat);
           orbMesh.position.y = 0.95;
@@ -291,10 +284,10 @@ export default function ThreeMap3D({
           // Pulsating Ground Aura Ring
           const ringGeo = new THREE.RingGeometry(0.08, 0.32, 24);
           const ringMat = new THREE.MeshBasicMaterial({
-            color: isSelected ? 0x2563eb : 0x2563eb,
+            color: isSelected ? 0x00f2fe : 0x8b5cf6,
             side: THREE.DoubleSide,
             transparent: true,
-            opacity: 0.7,
+            opacity: 0.75,
           });
           const ringMesh = new THREE.Mesh(ringGeo, ringMat);
           ringMesh.rotation.x = -Math.PI / 2;
@@ -313,36 +306,70 @@ export default function ThreeMap3D({
 
         // ==================== 5. ACTIVE CITY VERTICAL LIGHT BEACON ====================
         const beaconGroup = new THREE.Group();
-        const beaconGeo = new THREE.CylinderGeometry(0.02, 0.25, 3.5, 16, 1, true);
+        const beaconGeo = new THREE.CylinderGeometry(0.02, 0.28, 4.0, 16, 1, true);
         const beaconMat = new THREE.MeshBasicMaterial({
-          color: 0x60a5fa,
+          color: 0x00f2fe,
           transparent: true,
-          opacity: 0.45,
+          opacity: 0.5,
           side: THREE.DoubleSide,
         });
         const beaconMesh = new THREE.Mesh(beaconGeo, beaconMat);
-        beaconMesh.position.y = 1.75;
+        beaconMesh.position.y = 2.0;
         beaconGroup.add(beaconMesh);
 
-        // Position beacon at initial selected city
         const initialLoc = PAKISTAN_3D_LOCATIONS.find((l) => l.name === selectedCity) || PAKISTAN_3D_LOCATIONS[0];
         beaconGroup.position.set(initialLoc.x, 0, -initialLoc.z);
         scene.add(beaconGroup);
 
-        // ==================== 6. LIGHTING ====================
-        const ambientLight = new THREE.AmbientLight(0xf8fafc, 1.8);
+        // ==================== 6. DYNAMIC SERVICE CONNECTION ARCS ====================
+        const arcGroup = new THREE.Group();
+        const arcPairs = [
+          ['Karachi', 'Lahore'],
+          ['Lahore', 'Islamabad'],
+          ['Islamabad', 'Peshawar'],
+          ['Multan', 'Faisalabad'],
+          ['Quetta', 'Karachi'],
+        ];
+
+        arcPairs.forEach(([fromCity, toCity], idx) => {
+          const fromLoc = PAKISTAN_3D_LOCATIONS.find((l) => l.name === fromCity);
+          const toLoc = PAKISTAN_3D_LOCATIONS.find((l) => l.name === toCity);
+          if (!fromLoc || !toLoc) return;
+
+          const start = new THREE.Vector3(fromLoc.x, 0.5, -fromLoc.z);
+          const end = new THREE.Vector3(toLoc.x, 0.5, -toLoc.z);
+          const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+          mid.y += 1.2 + idx * 0.2; // Elevation curve
+
+          const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+          const points = curve.getPoints(36);
+          const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+          const arcMat = new THREE.LineBasicMaterial({
+            color: idx % 2 === 0 ? 0x00f2fe : 0xa855f7,
+            transparent: true,
+            opacity: 0.45,
+          });
+          const line = new THREE.Line(geometry, arcMat);
+          arcGroup.add(line);
+        });
+
+        scene.add(arcGroup);
+
+        // ==================== 7. LIGHTING ====================
+        const ambientLight = new THREE.AmbientLight(0x0a1428, 2.2);
         scene.add(ambientLight);
 
-        const dirLight = new THREE.DirectionalLight(0x60a5fa, 2.5);
+        const dirLight = new THREE.DirectionalLight(0x00f2fe, 3.2); // Neon Cyan Key
         dirLight.position.set(6, 12, 8);
         dirLight.castShadow = !isMobile;
         scene.add(dirLight);
 
-        const fillLight = new THREE.PointLight(0x3b82f6, 2.5, 20);
+        const fillLight = new THREE.PointLight(0x8b5cf6, 3.5, 20); // Electric Violet Fill
         fillLight.position.set(-6, 4, -4);
         scene.add(fillLight);
 
-        // ==================== 7. INTERACTION & CAMERA ORBIT CONTROLS ====================
+        // ==================== 8. INTERACTION & CAMERA ORBIT CONTROLS ====================
         let currentZoom = 12;
         let targetYaw = 20;
         let targetPitch = 55;
@@ -365,7 +392,6 @@ export default function ThreeMap3D({
 
         updateCameraPosition();
 
-        // Function to update active city visuals cleanly without teardown
         const updateActiveCity = (cityName: string) => {
           const loc = PAKISTAN_3D_LOCATIONS.find((l) => l.name === cityName);
           if (!loc) return;
@@ -377,30 +403,26 @@ export default function ThreeMap3D({
             const ringMat = node.userData.ringMesh.material as any;
 
             if (isSel) {
-              pinMat.color.setHex(0x2563eb);
-              pinMat.emissive.setHex(0x1e3a8a);
-              orbMat.color.setHex(0x60a5fa);
-              ringMat.color.setHex(0x2563eb);
-              node.scale.set(1.35, 1.35, 1.35);
+              pinMat.color.setHex(0x00f2fe);
+              pinMat.emissive.setHex(0x00f2fe);
+              orbMat.color.setHex(0x00f2fe);
+              ringMat.color.setHex(0x00f2fe);
+              node.scale.set(1.4, 1.4, 1.4);
             } else {
-              pinMat.color.setHex(0x2563eb);
-              pinMat.emissive.setHex(0x1e3a8a);
-              orbMat.color.setHex(0x60a5fa);
-              ringMat.color.setHex(0x2563eb);
+              pinMat.color.setHex(0x8b5cf6);
+              pinMat.emissive.setHex(0x6d28d9);
+              orbMat.color.setHex(0xc084fc);
+              ringMat.color.setHex(0x8b5cf6);
               node.scale.set(1.0, 1.0, 1.0);
             }
           });
 
-          // Move Light Beacon smoothly
           beaconGroup.position.set(loc.x, 0, -loc.z);
-
-          // Focus Camera Target
           targetCamX = loc.x * 0.4;
           targetCamZ = -loc.z * 0.4;
           updateCameraPosition();
         };
 
-        // Raycasting for interactive marker clicks/hovers
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
 
@@ -428,7 +450,6 @@ export default function ThreeMap3D({
 
             updateCameraPosition();
 
-            // Throttled React state updates for indicators
             const now = Date.now();
             if (now - lastAngleUpdate > 80) {
               lastAngleUpdate = now;
@@ -438,7 +459,6 @@ export default function ThreeMap3D({
             return;
           }
 
-          // Raycast markers on hover
           raycaster.setFromCamera(mouse, camera);
           const intersects = raycaster.intersectObjects(markersGroup.children, true);
 
@@ -448,28 +468,12 @@ export default function ThreeMap3D({
               hit = hit.parent;
             }
             if (hit.userData && hit.userData.locData) {
-              container.style.cursor = 'pointer';
               setHoveredLocation(hit.userData.locData);
-
-              markerNodesMap.forEach((node) => {
-                if (node === hit) {
-                  node.scale.set(1.4, 1.4, 1.4);
-                } else if (node.userData.locData.name !== activeLocation?.name) {
-                  node.scale.set(1.0, 1.0, 1.0);
-                }
-              });
-              return;
+              container.style.cursor = 'pointer';
             }
           } else {
-            container.style.cursor = 'grab';
             setHoveredLocation(null);
-            markerNodesMap.forEach((node) => {
-              if (node.userData.locData.name === activeLocation?.name) {
-                node.scale.set(1.35, 1.35, 1.35);
-              } else {
-                node.scale.set(1.0, 1.0, 1.0);
-              }
-            });
+            container.style.cursor = 'grab';
           }
         };
 
@@ -477,7 +481,7 @@ export default function ThreeMap3D({
           isDragging = false;
         };
 
-        const onPointerClick = (e: MouseEvent) => {
+        const onCanvasClick = (e: MouseEvent) => {
           const rect = container.getBoundingClientRect();
           mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
           mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
@@ -491,136 +495,131 @@ export default function ThreeMap3D({
               hit = hit.parent;
             }
             if (hit.userData && hit.userData.locData) {
-              const loc = hit.userData.locData;
+              const loc = hit.userData.locData as Location3D;
               setActiveLocation(loc);
               updateActiveCity(loc.name);
-              if (onCitySelect) onCitySelect(loc.name);
+              if (onCitySelect) {
+                onCitySelect(loc.name);
+              }
             }
           }
-        };
-
-        // Scroll Zoom
-        const onWheel = (e: WheelEvent) => {
-          e.preventDefault();
-          currentZoom = Math.max(5, Math.min(22, currentZoom + e.deltaY * 0.01));
-          updateCameraPosition();
-        };
-
-        // Manual controls
-        const controlsAction = (action: string) => {
-          if (action === 'zoomIn') {
-            currentZoom = Math.max(5, currentZoom - 1.5);
-          } else if (action === 'zoomOut') {
-            currentZoom = Math.min(22, currentZoom + 1.5);
-          } else if (action === 'rotateLeft') {
-            targetYaw -= 30;
-          } else if (action === 'rotateRight') {
-            targetYaw += 30;
-          } else if (action === 'focusCity') {
-            if (activeLocation) {
-              targetCamX = activeLocation.x * 0.4;
-              targetCamZ = -activeLocation.z * 0.4;
-            }
-          } else if (action === 'reset') {
-            currentZoom = 12;
-            targetYaw = 20;
-            targetPitch = 55;
-            targetCamX = 0;
-            targetCamZ = 0;
-          }
-          setYaw(Math.round(targetYaw % 360));
-          setPitch(Math.round(targetPitch));
-          updateCameraPosition();
         };
 
         container.addEventListener('mousedown', onPointerDown);
         window.addEventListener('mousemove', onPointerMove);
         window.addEventListener('mouseup', onPointerUp);
-        container.addEventListener('click', onPointerClick);
-        container.addEventListener('wheel', onWheel, { passive: false });
+        container.addEventListener('click', onCanvasClick);
 
-        // Save refs for state and control integration
+        const controlsAction = (action: string) => {
+          switch (action) {
+            case 'zoomIn':
+              currentZoom = Math.max(6, currentZoom - 1.8);
+              break;
+            case 'zoomOut':
+              currentZoom = Math.min(22, currentZoom + 1.8);
+              break;
+            case 'rotateLeft':
+              targetYaw += 30;
+              break;
+            case 'rotateRight':
+              targetYaw -= 30;
+              break;
+            case 'focusCity':
+              if (activeLocation) {
+                targetCamX = activeLocation.x * 0.6;
+                targetCamZ = -activeLocation.z * 0.6;
+                currentZoom = 9;
+              }
+              break;
+            case 'reset':
+              targetYaw = 20;
+              targetPitch = 55;
+              currentZoom = 12;
+              targetCamX = 0;
+              targetCamZ = 0;
+              break;
+          }
+          updateCameraPosition();
+          setYaw(Math.round(targetYaw % 360));
+          setPitch(Math.round(targetPitch));
+        };
+
         threeStateRef.current = {
           scene,
           camera,
           renderer,
-          isIntersecting: true,
           updateCamera: updateCameraPosition,
           controlsAction,
           updateActiveCity,
           markerNodes: markerNodesMap,
           beaconGroup,
           pulseMeshList,
+          isIntersecting: true,
         };
 
-        // ==================== 8. HIGH-PERFORMANCE RENDER LOOP ====================
-        let time = 0;
-        let animFrameId: number | null = null;
-
-        const animate = () => {
-          if (!isMounted) return;
-
-          // Skip rendering if not visible or document hidden
-          if (threeStateRef.current.isIntersecting && !document.hidden) {
-            time += 0.015;
-
-            // Animate Ground Pulse Rings
-            pulseMeshList.forEach((ring, idx) => {
-              const scale = 1 + Math.sin(time * 2.5 + idx) * 0.22;
-              ring.scale.set(scale, scale, scale);
-            });
-
-            // Animate Beacon Beam Rotation
-            if (beaconGroup) {
-              beaconGroup.rotation.y = time * 0.5;
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (threeStateRef.current) {
+              threeStateRef.current.isIntersecting = entry.isIntersecting;
             }
+          });
+        });
+        observer.observe(container);
 
-            renderer.render(scene, camera);
-          }
+        let pulseTime = 0;
+        const animate = () => {
+          threeStateRef.current.animFrameId = requestAnimationFrame(animate);
 
-          animFrameId = requestAnimationFrame(animate);
-          threeStateRef.current.animFrameId = animFrameId;
+          if (!threeStateRef.current.isIntersecting) return;
+
+          pulseTime += 0.035;
+
+          pulseMeshList.forEach((mesh, idx) => {
+            const scale = 1.0 + Math.sin(pulseTime + idx * 0.8) * 0.28;
+            mesh.scale.set(scale, scale, scale);
+          });
+
+          beaconMesh.rotation.y += 0.02;
+          arcGroup.rotation.y = Math.sin(pulseTime * 0.2) * 0.015;
+
+          renderer.render(scene, camera);
         };
 
         animate();
 
-        // ==================== 9. INTERSECTION OBSERVER FOR GPU AUTO-PAUSE ====================
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              threeStateRef.current.isIntersecting = entry.isIntersecting;
-            });
-          },
-          { threshold: 0.1 }
-        );
-        observer.observe(container);
-
-        // Resize Listener
         const handleResize = () => {
-          if (!isMounted || !container || !renderer || !camera) return;
-          const w = container.clientWidth;
-          const h = container.clientHeight;
-          camera.aspect = w / h;
+          if (!containerRef.current || !renderer) return;
+          const newW = containerRef.current.clientWidth;
+          const newH = containerRef.current.clientHeight;
+          camera.aspect = newW / newH;
           camera.updateProjectionMatrix();
-          renderer.setSize(w, h);
+          renderer.setSize(newW, newH);
         };
 
         window.addEventListener('resize', handleResize);
-
-        // Initial City Focus setup
-        updateActiveCity(selectedCity);
 
         return () => {
           observer.disconnect();
           container.removeEventListener('mousedown', onPointerDown);
           window.removeEventListener('mousemove', onPointerMove);
           window.removeEventListener('mouseup', onPointerUp);
-          container.removeEventListener('click', onPointerClick);
-          container.removeEventListener('wheel', onWheel);
+          container.removeEventListener('click', onCanvasClick);
           window.removeEventListener('resize', handleResize);
+
+          if (threeStateRef.current.animFrameId) {
+            cancelAnimationFrame(threeStateRef.current.animFrameId);
+          }
+          try {
+            renderer.dispose();
+            if (container.firstChild) {
+              container.removeChild(container.firstChild);
+            }
+          } catch {
+            // Cleaned
+          }
         };
       } catch (err) {
-        console.warn('3D Map WebGL initialization error:', err);
+        console.warn('Three.js Pakistan Map failed', err);
         setWebglSupported(false);
       }
     };
@@ -629,31 +628,18 @@ export default function ThreeMap3D({
 
     return () => {
       isMounted = false;
-      if (threeStateRef.current.animFrameId) {
-        cancelAnimationFrame(threeStateRef.current.animFrameId);
-      }
-      if (threeStateRef.current.renderer && containerRef.current) {
-        try {
-          threeStateRef.current.renderer.dispose();
-          if (containerRef.current.firstChild) {
-            containerRef.current.removeChild(containerRef.current.firstChild);
-          }
-        } catch {
-          // Dispose completed
-        }
-      }
     };
-  }, []);
+  }, [selectedCity, onCitySelect]);
 
   const handleControlAction = useCallback((action: string) => {
-    if (threeStateRef.current.controlsAction) {
+    if (threeStateRef.current && threeStateRef.current.controlsAction) {
       threeStateRef.current.controlsAction(action);
     }
   }, []);
 
   if (!mounted) {
     return (
-      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-white border border-slate-200 animate-pulse flex items-center justify-center text-slate-600 text-xs ${className}`}>
+      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-[#0a1024] border border-cyan-500/20 animate-pulse flex items-center justify-center text-cyan-300 text-xs ${className}`}>
         Initializing 3D Map Engine...
       </div>
     );
@@ -661,10 +647,10 @@ export default function ThreeMap3D({
 
   if (!webglSupported) {
     return (
-      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-white border border-slate-200/20 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden ${className}`}>
-        <MapPin className="w-12 h-12 text-blue-600 mb-2 animate-bounce" />
-        <h3 className="font-extrabold text-slate-900 text-base">SkillConnect Interactive Map</h3>
-        <p className="text-xs text-slate-600 max-w-sm mt-1">
+      <div className={`w-full ${compact ? 'h-72' : 'h-[460px]'} rounded-3xl bg-[#0a1024] border border-cyan-500/20 p-6 flex flex-col justify-center items-center text-center relative overflow-hidden ${className}`}>
+        <MapPin className="w-12 h-12 text-cyan-400 mb-2 animate-bounce" />
+        <h3 className="font-extrabold text-white text-base">SkillConnect Interactive Map</h3>
+        <p className="text-xs text-slate-400 max-w-sm mt-1">
           399 Pakistani cities covered with CNIC-verified technicians.
         </p>
       </div>
@@ -672,56 +658,56 @@ export default function ThreeMap3D({
   }
 
   return (
-    <div className={`relative w-full ${compact ? 'h-80' : 'h-[480px]'} rounded-3xl overflow-hidden border border-slate-200 bg-blue-50 shadow-2xl group ${className}`}>
+    <div className={`relative w-full ${compact ? 'h-80' : 'h-[480px]'} rounded-3xl overflow-hidden border border-cyan-500/25 bg-[#050814]/90 shadow-[0_0_40px_rgba(0,242,254,0.12)] group ${className}`}>
       {/* Three.js Canvas Container */}
       <div ref={containerRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
 
       {/* Top Floating Badge */}
       <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
-        <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/40 text-blue-700 text-xs font-bold shadow-xl backdrop-blur-md pointer-events-auto">
-          <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+        <div className="flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#0a1024]/90 border border-cyan-500/40 text-cyan-300 text-xs font-bold shadow-xl backdrop-blur-md pointer-events-auto">
+          <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
           <span>SkillConnect 3D Map • {activeLocation?.name || selectedCity}</span>
-          <span className="text-slate-600">|</span>
-          <span className="text-[10px] text-blue-600 font-mono">{activeLocation?.providers} Artisans</span>
+          <span className="text-slate-500">|</span>
+          <span className="text-[10px] text-cyan-400 font-mono">{activeLocation?.providers} Artisans</span>
         </div>
 
         {/* Orbit Angle Display */}
-        <div className="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-white border border-slate-200 text-[10px] font-mono text-slate-600 backdrop-blur-md">
-          <Compass className="w-3 h-3 text-blue-600" />
+        <div className="hidden sm:flex items-center space-x-2 px-3 py-1 rounded-full bg-[#0a1024]/80 border border-cyan-500/30 text-[10px] font-mono text-slate-300 backdrop-blur-md">
+          <Compass className="w-3 h-3 text-cyan-400" />
           <span>Pitch: {pitch}° | Yaw: {yaw}°</span>
         </div>
       </div>
 
       {/* Active City Location Card Drawer */}
       {activeLocation && (
-        <div className="absolute bottom-16 left-4 max-w-xs p-4 rounded-2xl bg-white/95 border border-slate-200/40 text-slate-900 text-xs shadow-2xl space-y-2.5 backdrop-blur-md animate-fadeIn pointer-events-auto z-10">
+        <div className="absolute bottom-16 left-4 max-w-xs p-4 rounded-2xl bg-[#0a1024]/95 border border-cyan-500/40 text-white text-xs shadow-[0_0_30px_rgba(0,242,254,0.2)] space-y-2.5 backdrop-blur-md animate-fadeIn pointer-events-auto z-10">
           <div className="flex items-center justify-between">
-            <h4 className="font-extrabold text-sm text-blue-700 flex items-center space-x-1.5">
-              <MapPin className="w-4 h-4 text-blue-600" />
+            <h4 className="font-extrabold text-sm text-cyan-300 flex items-center space-x-1.5">
+              <MapPin className="w-4 h-4 text-cyan-400" />
               <span>{activeLocation.name}, {activeLocation.province}</span>
             </h4>
-            <span className="flex items-center space-x-1 text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/20">
+            <span className="flex items-center space-x-1 text-amber-400 font-bold bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/30">
               <Star className="w-3 h-3 fill-current" />
               <span>{activeLocation.rating}</span>
             </span>
           </div>
 
-          <p className="text-[11px] text-slate-700 leading-relaxed">
+          <p className="text-[11px] text-slate-300 leading-relaxed">
             {activeLocation.providers} CNIC-verified background-checked technicians active in this sector.
           </p>
 
-          <div className="pt-2 border-t border-slate-200 flex items-center justify-between">
+          <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
             <button
               onClick={() => {
                 if (onCitySelect) onCitySelect(activeLocation.name);
               }}
-              className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] flex items-center space-x-1.5 shadow-md shadow-blue-600/20 transition-all cursor-pointer"
+              className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 font-bold text-[11px] flex items-center space-x-1.5 shadow-[0_0_15px_rgba(0,242,254,0.3)] transition-all cursor-pointer"
             >
-              <CheckCircle2 className="w-3.5 h-3.5" />
+              <CheckCircle2 className="w-3.5 h-3.5 text-slate-950" />
               <span>Select {activeLocation.name}</span>
             </button>
-            <span className="text-[10px] text-blue-600 font-semibold flex items-center space-x-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-ping" />
+            <span className="text-[10px] text-cyan-400 font-semibold flex items-center space-x-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
               <span>Live Dispatch</span>
             </span>
           </div>
@@ -729,11 +715,11 @@ export default function ThreeMap3D({
       )}
 
       {/* Floating 3D Map Control Toolbar */}
-      <div className="absolute bottom-4 right-4 flex items-center space-x-1 p-1.5 rounded-2xl bg-white border border-slate-200 shadow-2xl backdrop-blur-md pointer-events-auto z-10">
+      <div className="absolute bottom-4 right-4 flex items-center space-x-1 p-1.5 rounded-2xl bg-[#0a1024]/90 border border-cyan-500/30 shadow-2xl backdrop-blur-md pointer-events-auto z-10">
         <button
           onClick={() => handleControlAction('zoomIn')}
           title="Zoom In"
-          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all cursor-pointer"
         >
           <ZoomIn className="w-4 h-4" />
         </button>
@@ -741,7 +727,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('zoomOut')}
           title="Zoom Out"
-          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all cursor-pointer"
         >
           <ZoomOut className="w-4 h-4" />
         </button>
@@ -749,7 +735,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('rotateLeft')}
           title="Rotate Left"
-          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all cursor-pointer"
         >
           <RotateCw className="w-4 h-4 -scale-x-100" />
         </button>
@@ -757,7 +743,7 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('rotateRight')}
           title="Rotate Right"
-          className="p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all cursor-pointer"
         >
           <RotateCw className="w-4 h-4" />
         </button>
@@ -765,17 +751,17 @@ export default function ThreeMap3D({
         <button
           onClick={() => handleControlAction('focusCity')}
           title="Center Active City"
-          className="p-2 rounded-xl text-slate-700 hover:text-blue-600 hover:bg-slate-100 transition-all cursor-pointer"
+          className="p-2 rounded-xl text-slate-300 hover:text-cyan-400 hover:bg-slate-800 transition-all cursor-pointer"
         >
           <Crosshair className="w-4 h-4" />
         </button>
 
-        <div className="w-px h-4 bg-slate-300 my-auto mx-0.5" />
+        <div className="w-px h-4 bg-slate-700 my-auto mx-0.5" />
 
         <button
           onClick={() => handleControlAction('reset')}
           title="Reset View"
-          className="px-3 py-1.5 rounded-xl bg-blue-100 text-blue-700 hover:bg-blue-200 text-xs font-bold transition-all cursor-pointer"
+          className="px-3 py-1.5 rounded-xl bg-cyan-950/60 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-900/60 text-xs font-bold transition-all cursor-pointer"
         >
           Reset 3D
         </button>
